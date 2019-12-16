@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { Route, useHistory, Redirect } from "react-router-dom"
-import Auth from "./pages/Auth.js"
+import { Route, useHistory } from "react-router-dom"
 import API from './adapters/api.js';
-import Home from './pages/Home.js';
+import MainContainer from './containers/MainContainer.js';
+import WelcomeContainer from './containers/WelcomeContainer.js';
+
 import paths from './paths.js';
 
 const App = () => {
@@ -14,7 +15,6 @@ const App = () => {
     API.validate()
     .then(resp => {
       setUser(resp.user)
-      history.push(paths.HOME)
     })
     .catch(() => {
       history.push(paths.LOGIN)
@@ -29,21 +29,19 @@ const App = () => {
 
   return (
     <div className="App">
-      {user && <button onClick={logout}>log out</button>}
-      <Route path="/auth">
-        <Auth setUser={setUser}/>
-      </Route>
-      {
-        user ? (
-          <>
-            <Route path="/">
-              <Home user={user}/>
-            </Route>
-          </>
-          ) : (
-            <Redirect to={'/auth/login'} />
-          )
-      }
+      {user ? (
+        <Route path='/'
+        render={() => {
+          return <MainContainer user={user} setUser={user} logout={logout}/>
+        }}
+      />
+      ) : (
+        <Route exact path='/welcome'
+        render={() => {
+          return <WelcomeContainer user={user} setUser={setUser} logout={logout}/>
+        }}
+      />
+      )}
     </div>
   );
 }
