@@ -1,0 +1,10 @@
+.searchResults {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 100%;
+  grid-row-gap: 2em;
+}
+
+.searchResult {
+  color: red;
+}

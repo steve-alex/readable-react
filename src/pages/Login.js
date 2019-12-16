@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Route, useHistory } from 'react-router-dom'
-import { Form, Checkbox, Button } from 'semantic-ui-react'
+import { Form, Button } from 'semantic-ui-react'
 import API from '../adapters/api.js';
+import paths from '../paths.js';
+
 
 
 const Login = ({setUser}) => {
@@ -15,7 +17,7 @@ const Login = ({setUser}) => {
     API.login({ email, password })
       .then(resp => {
         setUser(resp.data.email)
-        history.push("/")
+        history.push(paths.HOME)
       })
       .catch(errors => {
         setErrors(errors)
