@@ -11,7 +11,7 @@ const SearchResult = ( {book, shelves} ) => {
   return (
     <div className="searchResult">
       <h1>{book.title}</h1>
-      <AddToShelfForm />
+      <AddToShelfForm book={book} shelves={shelves}/>
     </div>
   )
 }

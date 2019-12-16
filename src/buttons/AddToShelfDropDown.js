@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Dropdown } from 'semantic-ui-react'
+import { Button, Dropdown, Form } from 'semantic-ui-react'
 
-const AddToShelfDropDown = ( {shelves} ) => {
+const AddToShelfDropDown = ( {shelves, setSelectedShelf} ) => {
 
   
   const shelfNames = () => {
@@ -16,12 +16,18 @@ const AddToShelfDropDown = ( {shelves} ) => {
   }
 
   return (
-    <Dropdown
-      placeholder="Select Shelf"
-      fluid
-      selection
-      options={shelfNames()}
-    />
+    <Form>
+      <Form.Field>
+        <Dropdown
+        placeholder="Select Shelf"
+        fluid
+        selection
+        options={shelfNames()}
+      />
+      </Form.Field>
+      <Button type='submit'>Submit</Button>
+    </Form>
+
   )
 
 }

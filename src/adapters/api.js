@@ -3,6 +3,7 @@ const LOGIN_URL = `${API_ENDPOINT}/users/login`;
 const SIGNUP_URL = `${API_ENDPOINT}/users/signup`;
 const VALIDATE_URL = `${API_ENDPOINT}/users/validate`
 const SEARCH_URL =`${API_ENDPOINT}/books/search`
+const SHELF_URL = `${API_ENDPOINT}/shelves`
 
 const login = ({ email, password }) => {
   return fetch(LOGIN_URL, {
@@ -50,6 +51,21 @@ const search = (query) => {
   .then(resp => jsonify(resp))
 }
 
+const addBookToShelf = (google_id, shelfId) => {
+  return fetch(SEARCH_URL, {
+    method: "PATCH",
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      google_id: google_id,
+      shelfId: shelfId
+    })
+  })
+  .then(resp => jsonify(resp))
+}
+
 const jsonify = (resp) => {
   if (!resp.ok)
     throw resp
@@ -67,5 +83,6 @@ export default {
   login,
   logout,
   search,
+  addBookToShelf,
   jsonify
 }
