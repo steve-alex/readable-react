@@ -1,8 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Route, Link } from "react-router-dom"
-import paths from '../paths.js';
-import { Input, Form, Button} from 'semantic-ui-react'
-import API from '../adapters/api.js'
+import React, { } from 'react';
 import SearchResult from '../components/SearchResult.js'
 
 const SearchResultsContainer = ( {searchResults, userShelves, setInstanceToRender} ) => {

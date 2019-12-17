@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import API from '../adapters/api.js'
 import { Form, Button} from 'semantic-ui-react'
 
@@ -13,20 +13,20 @@ const SearchForm = ( {setSearchResults}) => {
   }
 
   return (
-      <div>
-        <p></p>
-        <Form
-          onSubmit={handleSubmit}>
-          <Form.Field className="searchBar">
-            <label>Get reading!</label>
-            <input
-              placeholder='Search for a book...'
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}/>
-          </Form.Field>
-          <Button className="searchButton" type='submit'>Submit</Button>
-        </Form>
-      </div>
+    <div>
+      <p></p>
+      <Form
+        onSubmit={handleSubmit}>
+        <Form.Field className="searchBar">
+          <label>Get reading!</label>
+          <input
+            placeholder='Search for a book...'
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}/>
+        </Form.Field>
+        <Button className="searchButton" type='submit'>Submit</Button>
+      </Form>
+    </div>
   )
 }
 

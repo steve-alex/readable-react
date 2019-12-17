@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Route } from "react-router-dom"
-import paths from '../paths.js';
+import React, { } from 'react';
+
 import Login from '../pages/Login.js'
 
 const WelcomeContainer = ( {user, setUser}) => {
