@@ -9,6 +9,7 @@ const SearchForm = ( {setSearchResults}) => {
     e.preventDefault()
     API.search(searchTerm)
       .then(searchResults => setSearchResults(searchResults))
+      .then(() => setSearchTerm(""))
   }
 
   return (

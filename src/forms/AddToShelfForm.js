@@ -3,38 +3,47 @@ import { Route, Link } from "react-router-dom"
 import paths from '../paths.js';
 import { Input, Form, Button, Dropdown } from 'semantic-ui-react'
 import API from '../adapters/api.js'
-import AddToShelfDropDown from '../buttons/AddToShelfDropDown.js'
 
 const AddToShelfForm = ( {book, shelves} ) => {
-  const [selectedShelfId, setSelectedShelfId] = useState("")
+  const [shelfId, setShelfId] = useState("")
 
   const shelfNames = () => {
-    return Array.from(shelves.map(shelf => {
+    const shelfNames = shelves.map(shelf => {
       return {
         key: shelf.name,
         text: shelf.name,
         value: shelf.id
       }
-    }))
+    })
+    return shelfNames
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    API.addBookToShelf(book.google_id, selectedShelfId)
+    API.addBookToShelf(book, shelfId)
       .then(console.log)
+      //Make this more dynamic and render errors or something?
+  }
+
+  const onChange = (e) => {
+    let selectedOption = e.target.childNodes[0].textContent
+    let selectedShelf = shelves.filter(shelf => {
+      return shelf.name === selectedOption;
+    })
+    setShelfId(selectedShelf[0].id)
   }
 
   return (
     <Form
-      onChange={handleSubmit}>
+      onSubmit={handleSubmit}>
       <Form.Field>
         <Dropdown
-        placeholder="Select Shelf"
-        fluid
-        selection
-        options={shelfNames()}
-        value={selectedShelfId}
-        onChange={(e) => setSelectedShelfId(e.target.value)}
+          placeholder="Select Shelf"
+          fluid
+          search
+          selection
+          options={shelfNames()}
+          onChange={onChange}
         />
       </Form.Field>
       <Button type='submit'>Submit</Button>

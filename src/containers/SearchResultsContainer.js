@@ -5,13 +5,18 @@ import { Input, Form, Button} from 'semantic-ui-react'
 import API from '../adapters/api.js'
 import SearchResult from '../components/SearchResult.js'
 
-const SearchResultsContainer = ( {searchResults, shelves} ) => {
+const SearchResultsContainer = ( {searchResults, shelves, setToRender} ) => {
 
   return (
     <div className="searchResults">
       {searchResults && 
         searchResults.results.map(book => {
-          return <SearchResult book={book} shelves={shelves} />
+          return <SearchResult
+                    key={book.id}
+                    book={book}
+                    shelves={shelves}
+                    setToRender={setToRender}
+                  />
         })
       }
     </div>

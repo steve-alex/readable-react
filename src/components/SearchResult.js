@@ -6,12 +6,15 @@ import API from '../adapters/api.js'
 import AddToShelfDropDown from '../buttons/AddToShelfDropDown.js'
 import AddToShelfForm from '../forms/AddToShelfForm.js'
 
-const SearchResult = ( {book, shelves} ) => {
+const SearchResult = ( {book, shelves, setToRender} ) => {
 
   return (
     <div className="searchResult">
-      <h1>{book.title}</h1>
-      <AddToShelfForm book={book} shelves={shelves}/>
+      <h1 onClick={() => setToRender(book)}>{book.title}</h1>
+      <AddToShelfForm
+        book={book}
+        shelves={shelves}
+        setToRender={setToRender}/>
     </div>
   )
 }

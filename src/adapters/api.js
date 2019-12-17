@@ -51,15 +51,15 @@ const search = (query) => {
   .then(resp => jsonify(resp))
 }
 
-const addBookToShelf = (google_id, shelfId) => {
-  return fetch(SEARCH_URL, {
-    method: "PATCH",
+const addBookToShelf = (book, shelfId) => {
+  return fetch(`${SHELF_URL}/add_book`, {
+    method: "POST",
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     },
     body: JSON.stringify({
-      google_id: google_id,
+      book: book,
       shelfId: shelfId
     })
   })
