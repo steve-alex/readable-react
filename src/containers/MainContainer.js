@@ -7,30 +7,49 @@ import SearchPageContainer from './SearchPageContainer.js'
 
 
 const MainContainer = ( {user, setUser, logout}) => {
-  const [currentPage, setCurrentPage] = useState('/home')
   const [instanceToRender, setInstanceToRender] = useState(undefined)
+  //could this be called resource to render?
 
   return (
     <div>
       <Switch>
         <Route path='/home'>
-          <HomeContainer user={user} logout={logout}/>
+          <HomeContainer
+            user={user}
+            logout={logout}
+            setInstanceToRender={setInstanceToRender}/>
         </Route>
         <Route path='/search'>
           <SearchPageContainer
-            shelves={user.shelves}
+            userShelves={user.shelves}
             logout={logout}
-            setToRender={setToRender}/>
+            setInstanceToRender={setInstanceToRender}/>
         </Route>
-        <Route path='/book'>
-          <BookPageContainer user={user}/>
-        </Route>
-        <Route path='/user'>
-          <UserPageContainer user={user}/>
-        </Route>
+        <Route
+          path='/books'
+          render={routerProps => {
+            return <BookPageContainer
+                      instanceToRender={instanceToRender}
+                      setInstanceToRender={setInstanceToRender}
+                      user={user}
+                      {...routerProps}
+                  />
+          }}
+        />
+        <Route
+          path='/users'
+          render={routerProps => {
+            return <UserPageContainer
+                      instanceToRender={instanceToRender}
+                      setInstanceToRender={setInstanceToRender}
+                      user={user}
+                      {...routerProps}
+                  />
+          }}
+        />
       </Switch>
+      <a href="http://localhost:3001/search">Search</a>
     </div>
-
   )
 }
 
