@@ -4,11 +4,11 @@ import paths from '../paths.js';
 import { Input, Form, Button, Dropdown } from 'semantic-ui-react'
 import API from '../adapters/api.js'
 
-const AddToShelfForm = ( {book, shelves} ) => {
+const AddToShelfForm = ( {book, userShelves} ) => {
   const [shelfId, setShelfId] = useState("")
 
   const shelfNames = () => {
-    const shelfNames = shelves.map(shelf => {
+    const shelfNames = userShelves.map(shelf => {
       return {
         key: shelf.name,
         text: shelf.name,
@@ -27,7 +27,7 @@ const AddToShelfForm = ( {book, shelves} ) => {
 
   const onChange = (e) => {
     let selectedOption = e.target.childNodes[0].textContent
-    let selectedShelf = shelves.filter(shelf => {
+    let selectedShelf = userShelves.filter(shelf => {
       return shelf.name === selectedOption;
     })
     setShelfId(selectedShelf[0].id)

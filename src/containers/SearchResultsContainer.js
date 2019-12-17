@@ -5,7 +5,7 @@ import { Input, Form, Button} from 'semantic-ui-react'
 import API from '../adapters/api.js'
 import SearchResult from '../components/SearchResult.js'
 
-const SearchResultsContainer = ( {searchResults, shelves, setToRender} ) => {
+const SearchResultsContainer = ( {searchResults, userShelves, setInstanceToRender} ) => {
 
   return (
     <div className="searchResults">
@@ -14,8 +14,8 @@ const SearchResultsContainer = ( {searchResults, shelves, setToRender} ) => {
           return <SearchResult
                     key={book.id}
                     book={book}
-                    shelves={shelves}
-                    setToRender={setToRender}
+                    userShelves={userShelves}
+                    setInstanceToRender={setInstanceToRender}
                   />
         })
       }

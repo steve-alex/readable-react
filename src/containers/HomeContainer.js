@@ -4,7 +4,7 @@ import paths from '../paths.js';
 import Login from '../pages/Login.js'
 import SearchBar from '../components/SearchBar.js'
 
-const HomeContainer = ( {user, setUser, logout} ) => {
+const HomeContainer = ( {user, logout, setInstanceToRender} ) => {
   return (
       <div>
         <h1>Readable</h1>

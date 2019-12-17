@@ -7,7 +7,7 @@ import SearchForm from '../forms/SearchForm.js'
 import SearchResultsContainer from './SearchResultsContainer.js'
 import './containers.css'
 
-const SearchContainer = ( {shelves, logout, setToRender} ) => {
+const SearchPageContainer = ( {userShelves, logout, setInstanceToRender} ) => {
   const [searchResults, setSearchResults] = useState(undefined)
 
   return (
@@ -15,14 +15,14 @@ const SearchContainer = ( {shelves, logout, setToRender} ) => {
         <h1>Search</h1>
         <SearchForm
           setSearchResults={setSearchResults}
-          />
+        />
         <SearchResultsContainer
           searchResults={searchResults}
-          shelves={shelves}
-          setToRender={setToRender}
+          userShelves={userShelves}
+          setInstanceToRender={setInstanceToRender}
         />
       </div>
   )
 }
 
-export default SearchContainer;
+export default SearchPageContainer;
