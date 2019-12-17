@@ -4,6 +4,7 @@ const SIGNUP_URL = `${API_ENDPOINT}/users/signup`;
 const VALIDATE_URL = `${API_ENDPOINT}/users/validate`
 const SEARCH_URL =`${API_ENDPOINT}/books/search`
 const SHELF_URL = `${API_ENDPOINT}/shelves`
+const BOOKS_URL = `${API_ENDPOINT}/books`
 
 const login = ({ email, password }) => {
   return fetch(LOGIN_URL, {
@@ -37,6 +38,23 @@ const validate = () => {
   .then(resp => jsonify(resp))
 }
 
+const getBook = (bookid) => {
+  return fetch(`${BOOKS_URL}/${bookid}`).then(res => jsonify(res))
+}
+
+const findOrCreateBook = (book) => {
+  return fetch(`${BOOKS_URL}/find_or_create`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      book: book
+    })
+  }).then(resp => jsonify(resp))
+}
+
 const search = (query) => {
   return fetch(SEARCH_URL, {
     method: "POST",
@@ -47,8 +65,7 @@ const search = (query) => {
     body: JSON.stringify({
       query: query
     })
-  })
-  .then(resp => jsonify(resp))
+  }).then(resp => jsonify(resp))
 }
 
 const addBookToShelf = (book, shelfId) => {
@@ -84,5 +101,7 @@ export default {
   logout,
   search,
   addBookToShelf,
+  findOrCreateBook,
+  getBook,
   jsonify
 }
