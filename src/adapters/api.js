@@ -5,6 +5,8 @@ const VALIDATE_URL = `${API_ENDPOINT}/users/validate`
 const SEARCH_URL =`${API_ENDPOINT}/books/search`
 const SHELF_URL = `${API_ENDPOINT}/shelves`
 const BOOKS_URL = `${API_ENDPOINT}/books`
+const REVIEWS_URL = `${API_ENDPOINT}/reviews`
+const TIMELINE_URL = `${API_ENDPOINT}/users/timeline`
 
 const login = ({ email, password }) => {
   return fetch(LOGIN_URL, {
@@ -38,8 +40,18 @@ const validate = () => {
   .then(resp => jsonify(resp))
 }
 
+const getTimeline = () => {
+  return fetch(`${TIMELINE_URL}`)
+    .then(res => jsonify(res))
+    
+}
+
 const getBook = (bookid) => {
-  return fetch(`${BOOKS_URL}/${bookid}`).then(res => jsonify(res))
+  return fetch(`${BOOKS_URL}/${bookid}`, {
+    headers: {
+      Authorisation: localStorage.getItem("token")
+    }
+  }).then(res => jsonify(res))
 }
 
 const findOrCreateBook = (book) => {
@@ -83,6 +95,23 @@ const addBookToShelf = (book, shelfId) => {
   .then(resp => jsonify(resp))
 }
 
+const createReview = (content, rating, bookId, userId) => {
+  return fetch(`${REVIEWS_URL}`, {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      content: content,
+      rating: rating,
+      book_id: bookId,
+      user_id: userId,
+      sentiment: 0
+    })
+  }).then(resp => jsonify(resp))
+}
+
 const jsonify = (resp) => {
   if (!resp.ok)
     throw resp
@@ -99,9 +128,11 @@ export default {
   validate,
   login,
   logout,
+  getTimeline,
   search,
   addBookToShelf,
   findOrCreateBook,
   getBook,
+  createReview,
   jsonify
 }
