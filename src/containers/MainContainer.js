@@ -20,12 +20,14 @@ const MainContainer = ( {user, setUser, logout}) => {
           <HomeContainer
             user={user}
             logout={logout}
+            instanceToRender={instanceToRender}
             setInstanceToRender={setInstanceToRender}/>
         </Route>
         <Route path='/search'>
           <SearchPageContainer
             userShelves={user.shelves}
             logout={logout}
+            instanceToRender={instanceToRender}
             setInstanceToRender={setInstanceToRender}/>
         </Route>
         <Route

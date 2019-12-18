@@ -1,7 +1,7 @@
 import React, { } from 'react';
 import SearchResult from '../components/SearchResult.js'
 
-const SearchResultsContainer = ( {searchResults, userShelves, setInstanceToRender} ) => {
+const SearchResultsContainer = ( {searchResults, userShelves, instanceToRender, setInstanceToRender} ) => {
 
   return (
     <div className="searchResults">
@@ -11,8 +11,9 @@ const SearchResultsContainer = ( {searchResults, userShelves, setInstanceToRende
                     key={book.id}
                     book={book}
                     userShelves={userShelves}
+                    instanceToRender={instanceToRender}
                     setInstanceToRender={setInstanceToRender}
-                  />
+                 />
         })
       }
     </div>

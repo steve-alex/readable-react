@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, TextArea, Rating } from 'semantic-ui-react'
 import API from '../adapters/api.js'
 
-const NewReviewForm = ( {bookId, userId, setUserHasReviewed} ) => {
+const NewReviewForm = ( {bookId, userId, setUserHasReviewed, renderPage, setRenderPage, handleUpdate} ) => {
   const [content, setContent] = useState("")
   const [rating, setRating] = useState("")
 
@@ -10,6 +10,7 @@ const NewReviewForm = ( {bookId, userId, setUserHasReviewed} ) => {
     e.preventDefault()
     API.createReview(content, rating, bookId, userId)
       .then(setUserHasReviewed(true))
+      .then(() => handleUpdate())
       .catch(console.log)
     //Something here to make sure the review has gone through
   }

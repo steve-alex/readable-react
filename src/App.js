@@ -36,7 +36,7 @@ const App = () => {
         }}
       />
       ) : (
-        <Route exact path='/welcome'
+        <Route path='/welcome'
         render={() => {
           return <WelcomeContainer user={user} setUser={setUser} logout={logout}/>
         }}
