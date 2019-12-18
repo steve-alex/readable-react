@@ -4,6 +4,7 @@ import HomeContainer from './HomeContainer.js'
 import BookPageContainer from './BookPageContainer.js'
 import UserPageContainer from './UserPageContainer.js'
 import SearchPageContainer from './SearchPageContainer.js'
+import MiscellaneousContainer from './MiscellaneousContainer.js'
 
 
 const MainContainer = ( {user, setUser, logout}) => {
@@ -50,7 +51,15 @@ const MainContainer = ( {user, setUser, logout}) => {
           }}
         />
         <Route
-          
+          path='/'
+          render={routerProps => {
+            return <MiscellaneousContainer
+              instanceToRender={instanceToRender}
+              setInstanceToRender={setInstanceToRender}
+              user={user}
+              {...routerProps}
+            />
+          }}
         />
       </Switch>
       <a href="http://localhost:3001/search">Search</a>
