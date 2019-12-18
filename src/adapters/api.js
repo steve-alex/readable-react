@@ -36,14 +36,15 @@ const validate = () => {
     headers: {
       Authorisation: localStorage.getItem("token")
     }
-  })
-  .then(resp => jsonify(resp))
+  }).then(resp => jsonify(resp))
 }
 
 const getTimeline = () => {
-  return fetch(`${TIMELINE_URL}`)
-    .then(res => jsonify(res))
-    
+  return fetch(`${TIMELINE_URL}`, {
+    headers: {
+      Authorisation: localStorage.getItem("token")
+    }
+  }).then(res => jsonify(res))
 }
 
 const getBook = (bookid) => {
@@ -100,7 +101,8 @@ const createReview = (content, rating, bookId, userId) => {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json'
+      'Accept': 'application/json',
+      'Authorisation': localStorage.getItem("token")
     },
     body: JSON.stringify({
       content: content,
