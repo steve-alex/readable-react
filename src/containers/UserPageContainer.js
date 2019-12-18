@@ -2,7 +2,7 @@ import React, { } from 'react';
 import { Route, Switch } from "react-router-dom"
 
 
-const UserPageContainer = ( {user, setUser}) => {
+const UserPageContainer = ( {instanceToRender, setInstanceToRender, user, match}) => {
   return (
       <div>
         <Switch>
