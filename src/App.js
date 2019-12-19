@@ -32,11 +32,11 @@ const App = () => {
       {user ? (
         <Route path='/'
         render={() => {
-          return <MainContainer user={user} setUser={user} logout={logout}/>
+          return <MainContainer user={user} logout={logout}/>
         }}
       />
       ) : (
-        <Route exact path='/welcome'
+        <Route path='/welcome'
         render={() => {
           return <WelcomeContainer user={user} setUser={setUser} logout={logout}/>
         }}

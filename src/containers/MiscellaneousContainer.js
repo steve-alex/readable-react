@@ -9,7 +9,8 @@ const MiscellaneousContainer = ( {instanceToRender, setInstanceToRender, user, m
         path={`${match.url}/shelves/:shelfid`}
         instanceToRender={instanceToRender}
         setInstanceToRender={setInstanceToRender}
-        user={user}
+        
+        
       />
       <Route
         path={`${match.url}/reviews/:reviewid`}

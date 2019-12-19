@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, Dropdown } from 'semantic-ui-react'
 import API from '../adapters/api.js'
 
-const AddBookToShelfForm = ( {book, userShelves} ) => {
+const AddBookToShelfForm = ( {book, userShelves, renderPage, setRenderPage} ) => {
   const [shelfId, setShelfId] = useState("")
 
   const shelfNames = () => {
@@ -18,6 +18,7 @@ const AddBookToShelfForm = ( {book, userShelves} ) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     API.addBookToShelf(book, shelfId)
+      .then(setRenderPage(!renderPage))
       .then(console.log)
       //This could be more dynamic and display something cool when you add a book to a shelf?
   }
