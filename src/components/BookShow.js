@@ -36,20 +36,9 @@ const BookShow = ( {user, match} ) => {
     }
   }
 
-  const getPercentage = () => {
+  const renderMostAppearedOnShelves = () => {
 
   }
-
-  // const renderMostAppearedOnShelves = () => {
-  //   let shelvesBookAppearsOn = book.metrics.most_appeared_on_shelves
-  //   if (book.metrics.most_appeared_on_shelves !== undefined) {
-  //     return book.metrics.most_appeared_on_shelves.map(shelf => {
-  //       return <p>{shelf[0]} {shelf[1]}</p>
-  //     })
-  //   } else {
-  //     return <p>This book has not been added to a shelf yet</p>
-  //   }
-  // }
 
   const renderUsersReviews = () => {
     return (
@@ -74,9 +63,7 @@ const BookShow = ( {user, match} ) => {
       <p>Number of Google Ratings: {book.rating_count}</p>
       <AddBookToShelfForm
         book={book}
-        userShelves={user.shelves}
-        renderPage={renderPage}
-        setRenderPage={setRenderPage}/>
+        userShelves={user.shelves}/>
       <NewReviewForm
         bookId={book.id}
         userId={user.id}
