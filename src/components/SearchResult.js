@@ -4,14 +4,12 @@ import API from '../adapters/api.js'
 import AddBookToShelfForm from '../forms/AddBookToShelfForm.js'
 import SearchResultBookPanel from '../panels/SearchResultBookPanel.js'
 
-const SearchResult = ( {book, userShelves, instanceToRender, setInstanceToRender} ) => {
+const SearchResult = ( {book, userShelves} ) => {
 
   return (
     <div className="searchResult">
       <SearchResultBookPanel
         book={book}
-        instanceToRender={instanceToRender}
-        setInstanceToRender={setInstanceToRender}
       />
       <AddBookToShelfForm
         book={book}

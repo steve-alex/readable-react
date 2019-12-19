@@ -6,13 +6,13 @@ import UserReview from './userReview.js'
 import FriendActivity from './FriendActivity.js'
 import BookMetrics from './BookMetrics.js'
 
-const BookShow = ( {match, instanceToRender, setInstanceToRender, user} ) => {
+const BookShow = ( {user, match} ) => {
   const [book, setBook] = useState([])
   const [userHasReviewed, setUserHasReviewed] = useState(false)
   const [renderPage, setRenderPage] = useState(false)
 
   useEffect(() => {
-    API.getBook(instanceToRender)
+    API.getBook(match.params.bookId)
       .then(res => {
         setBook(res.book)
         setUserHasReviewed(checkUserHasReviewed(res.book))
@@ -20,7 +20,7 @@ const BookShow = ( {match, instanceToRender, setInstanceToRender, user} ) => {
   }, [])
 
   const handleUpdate = () => {
-    API.getBook(instanceToRender)
+    API.getBook(match.params.bookId)
     .then(res => {
       setBook(res.book)
       setUserHasReviewed(checkUserHasReviewed(res.book))
@@ -89,7 +89,9 @@ const BookShow = ( {match, instanceToRender, setInstanceToRender, user} ) => {
         <p>Number of users currently reading: {book.metrics.currently_reading_count}</p>
       }
       <h1>My Reviews</h1>
-      {userHasReviewed && renderUsersReviews()}
+      {userHasReviewed && 
+        renderUsersReviews()
+      }
       <h1>Friend's Activities</h1>
       <FriendActivity
         followedUsersReviews={book.followed_users_reviews}

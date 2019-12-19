@@ -7,7 +7,7 @@ import SearchPageContainer from './SearchPageContainer.js'
 import MiscellaneousContainer from './MiscellaneousContainer.js'
 
 
-const MainContainer = ( {user, setUser, logout}) => {
+const MainContainer = ( {user, logout}) => {
   const [instanceToRender, setInstanceToRender] = useState(undefined)
   //could this be called resource to render?
   //Once a user has been authenticated, all the things dealing with data relating to a user
@@ -20,26 +20,21 @@ const MainContainer = ( {user, setUser, logout}) => {
           <HomeContainer
             user={user}
             logout={logout}
-            instanceToRender={instanceToRender}
-            setInstanceToRender={setInstanceToRender}/>
+          />
         </Route>
         <Route path='/search'>
           <SearchPageContainer
             userShelves={user.shelves}
             logout={logout}
-            instanceToRender={instanceToRender}
-            setInstanceToRender={setInstanceToRender}/>
+          />
         </Route>
         <Route
           path='/books'
           render={routerProps => {
             return <BookPageContainer
-                      instanceToRender={instanceToRender}
-                      setInstanceToRender={setInstanceToRender}
                       user={user}
-                      {...routerProps}
-                  />
-          }}
+                      {...routerProps}/>
+                    }}
         />
         <Route
           path='/users'

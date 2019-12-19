@@ -3,7 +3,7 @@ import SearchForm from '../forms/SearchForm.js'
 import SearchResultsContainer from './SearchResultsContainer.js'
 import './containers.css'
 
-const SearchPageContainer = ( {userShelves, logout, instanceToRender, setInstanceToRender} ) => {
+const SearchPageContainer = ( {userShelves, logout} ) => {
   const [searchResults, setSearchResults] = useState(undefined)
 
   return (
@@ -15,8 +15,6 @@ const SearchPageContainer = ( {userShelves, logout, instanceToRender, setInstanc
       <SearchResultsContainer
         searchResults={searchResults}
         userShelves={userShelves}
-        instanceToRender={instanceToRender}
-        setInstanceToRender={setInstanceToRender}
       />
     </div>
   )

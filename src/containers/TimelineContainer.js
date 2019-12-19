@@ -1,7 +1,7 @@
 import React from 'react'
 import { Rating } from 'semantic-ui-react'
 
-const TimelineContainer = ( {instanceToRender, setInstanceToRender, timeline} ) => {
+const TimelineContainer = ( {timeline} ) => {
 
   return (
     <>

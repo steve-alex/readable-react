@@ -5,10 +5,11 @@ import API from '../adapters/api.js';
 
 const SearchResultBookPanel = ( {book, instanceToRender, setInstanceToRender} ) => {
   const [clicked, setClicked] = useState(false)
+  const [selectedBookId, setSelectedBookId] = useState(undefined)
 
   const handleClick = () => {
     API.findOrCreateBook(book)
-      .then((resp) => setInstanceToRender(resp.book.id))
+      .then((resp) => setSelectedBookId(resp.book.id))
       .then(() => setClicked(true))
   }
 
@@ -17,7 +18,7 @@ const SearchResultBookPanel = ( {book, instanceToRender, setInstanceToRender} ) 
       <img src={book.image_url}></img>
       <a onClick={handleClick}>{book.title}</a>
       {clicked && 
-        <Redirect to={`/books/${instanceToRender}`}/>
+        <Redirect to={`/books/${selectedBookId}`}/>
       }
       <p>{book.subtitle}</p>
       <p>{book.authors}</p>

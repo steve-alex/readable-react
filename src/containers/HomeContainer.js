@@ -5,7 +5,7 @@ import API from '../adapters/api.js'
 
 
 
-const HomeContainer = ( {user, logout, instanceToRender, setInstanceToRender} ) => {
+const HomeContainer = ( {user, logout} ) => {
   const [timeline, setTimeline] = useState([])
   //The search bar here, filters the users that are in the whole database, by username, email address etc.
   ///User.find_by(email: params[:search]) \\ User.find_by(username: params[:search])
@@ -20,8 +20,6 @@ const HomeContainer = ( {user, logout, instanceToRender, setInstanceToRender} ) 
       <h1>Readable</h1>
       {timeline &&
         <TimelineContainer
-          instanceToRender={instanceToRender}
-          setInstanceToRender={setInstanceToRender}
           timeline={timeline}
         />
       }
