@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchForm from '../forms/SearchForm.js'
 import SearchResultsContainer from './SearchResultsContainer.js'
+import API from '../adapters/api.js'
 import './containers.css'
 
-const SearchPageContainer = ( {userShelves, logout} ) => {
+const SearchPageContainer = ( {logout, userShelves} ) => {
   const [searchResults, setSearchResults] = useState(undefined)
-
+  const [searchType, setSearchType] = useState(undefined)
   return (
     <div>
       <h1>Search</h1>
@@ -13,8 +14,8 @@ const SearchPageContainer = ( {userShelves, logout} ) => {
         setSearchResults={setSearchResults}
       />
       <SearchResultsContainer
-        searchResults={searchResults}
         userShelves={userShelves}
+        searchResults={searchResults}
       />
     </div>
   )

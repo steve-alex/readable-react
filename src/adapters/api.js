@@ -148,6 +148,10 @@ const followUser = (userId) => {
   .then(res => jsonify(res))
 }
 
+const getUserShelves = (userId) => {
+  return fetch(`${SHELF_URL}/${userId}`).then(res => jsonify(res))
+}
+
 const jsonify = (resp) => {
   if (!resp.ok)
     throw resp
@@ -173,5 +177,6 @@ export default {
   getUserProfile,
   unfollowUser,
   followUser,
+  getUserShelves,
   jsonify
 }

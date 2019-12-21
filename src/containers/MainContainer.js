@@ -18,13 +18,13 @@ const MainContainer = ( {user, logout}) => {
     <div>
       {/* <Navbar
         userId={user.data.id}/> */}
-      {/* <Switch>
-        <Route path='/home'>
+      <Switch>
+        {/* <Route path='/home'>
           <HomeContainer
             user={user}
             logout={logout}
           />
-        </Route>
+        </Route> */}
         <Route path='/search'>
           <SearchPageContainer
             userShelves={user.shelves}
@@ -39,7 +39,7 @@ const MainContainer = ( {user, logout}) => {
                       {...routerProps}/>
                     }}
         />
-        <Route
+        {/* <Route
           path='/users'
           render={routerProps => {
             return <UserPageContainer
@@ -59,7 +59,7 @@ const MainContainer = ( {user, logout}) => {
             />
           }}
         /> */}
-      {/* </Switch> */}
+      </Switch>
       <a href="http://localhost:3001/search">Search</a>
     </div>
   )

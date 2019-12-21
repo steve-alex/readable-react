@@ -9,7 +9,7 @@ const SearchResultsContainer = ( {searchResults, userShelves} ) => {
         searchResults.results.map(book => {
           return (
             <SearchResult
-              key={book.id}
+              key={book.google_id}
               book={book}
               userShelves={userShelves}
             />
