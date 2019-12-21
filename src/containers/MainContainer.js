@@ -5,6 +5,7 @@ import BookPageContainer from './BookPageContainer.js'
 import UserPageContainer from './UserPageContainer.js'
 import SearchPageContainer from './SearchPageContainer.js'
 import MiscellaneousContainer from './MiscellaneousContainer.js'
+import Navbar from '../components/Navbar.js'
 
 
 const MainContainer = ( {user, logout}) => {
@@ -15,7 +16,9 @@ const MainContainer = ( {user, logout}) => {
 
   return (
     <div>
-      <Switch>
+      {/* <Navbar
+        userId={user.data.id}/> */}
+      {/* <Switch>
         <Route path='/home'>
           <HomeContainer
             user={user}
@@ -40,8 +43,6 @@ const MainContainer = ( {user, logout}) => {
           path='/users'
           render={routerProps => {
             return <UserPageContainer
-                      instanceToRender={instanceToRender}
-                      setInstanceToRender={setInstanceToRender}
                       user={user}
                       {...routerProps}
                   />
@@ -57,8 +58,8 @@ const MainContainer = ( {user, logout}) => {
               {...routerProps}
             />
           }}
-        />
-      </Switch>
+        /> */}
+      {/* </Switch> */}
       <a href="http://localhost:3001/search">Search</a>
     </div>
   )

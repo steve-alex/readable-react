@@ -7,6 +7,8 @@ const SHELF_URL = `${API_ENDPOINT}/shelves`
 const BOOKS_URL = `${API_ENDPOINT}/books`
 const REVIEWS_URL = `${API_ENDPOINT}/reviews`
 const TIMELINE_URL = `${API_ENDPOINT}/users/timeline`
+const USERS_URL = `${API_ENDPOINT}/users`
+const FOLLOW_URL = `${API_ENDPOINT}/follows`
 
 const login = ({ email, password }) => {
   return fetch(LOGIN_URL, {
@@ -90,7 +92,7 @@ const addBookToShelf = (book, shelfId) => {
     },
     body: JSON.stringify({
       book: book,
-      shelfId: shelfId
+      shelf_id: shelfId
     })
   })
   .then(resp => jsonify(resp))
@@ -112,6 +114,38 @@ const createReview = (content, rating, bookId, userId) => {
       sentiment: 0
     })
   }).then(resp => jsonify(resp))
+}
+
+const getUserProfile = (userId) => {
+  return fetch(`${USERS_URL}/${userId}/profile`, {
+    'headers': {
+      'Authorisation': localStorage.getItem("token")
+    }
+  }).then(res => jsonify(res))
+}
+
+const unfollowUser = (userId) => {
+  return fetch(`${FOLLOW_URL}/${userId}`, {
+    'method': "DELETE",
+    'headers': {
+      'Authorisation': localStorage.getItem("token"),
+    }
+  }).then(res => jsonify(res))
+}
+
+const followUser = (userId) => {
+  return fetch(`${FOLLOW_URL}`, {
+    'method': "POST",
+    'headers': {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      'Authorisation': localStorage.getItem("token"),
+    },
+    'body': JSON.stringify({
+      id: userId
+    })
+  })
+  .then(res => jsonify(res))
 }
 
 const jsonify = (resp) => {
@@ -136,5 +170,8 @@ export default {
   findOrCreateBook,
   getBook,
   createReview,
+  getUserProfile,
+  unfollowUser,
+  followUser,
   jsonify
 }

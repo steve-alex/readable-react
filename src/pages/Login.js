@@ -17,7 +17,7 @@ const Login = ({setUser}) => {
     API.login({ email, password })
       .then(resp => {
         setUser(resp.data.email)
-        history.push(paths.HOME)
+        history.push('/home')
       })
       .catch(errors => {
         setErrors(errors)
