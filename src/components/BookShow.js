@@ -12,7 +12,7 @@ const BookShow = ( {user, match} ) => {
   const [renderPage, setRenderPage] = useState(false)
 
   useEffect(() => {
-    API.getBook(match.params.bookId)
+    API.getBookShowPage(match.params.bookId)
       .then(res => {
         setBook(res.book)
         setUserHasReviewed(checkUserHasReviewed(res.book))
