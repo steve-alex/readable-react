@@ -83,6 +83,10 @@ const search = (query) => {
   }).then(resp => jsonify(resp))
 }
 
+const getShelf = (shelfId) => {
+  return fetch(`${SHELF_URL}/${shelfId}`).then(res => jsonify(res))
+}
+
 const addBookToShelf = (book, shelfId) => {
   return fetch(`${SHELF_URL}/add_book`, {
     method: "POST",
@@ -148,6 +152,23 @@ const followUser = (userId) => {
   .then(res => jsonify(res))
 }
 
+const getUserShelves = (userId) => {
+  return fetch(`${SHELF_URL}/${userId}`).then(res => jsonify(res))
+}
+
+const updateUserDetails = (userId, formData) => {
+  console.log(formData)
+  return fetch(`${USERS_URL}/${userId}`, {
+    'method': "PATCH",
+    'headers': {
+      "Accept": "application/json",
+      'Authorisation': localStorage.getItem("token"),
+    },
+    'body': formData
+  })
+  .then(res => jsonify(res))
+}
+
 const jsonify = (resp) => {
   if (!resp.ok)
     throw resp
@@ -165,6 +186,7 @@ export default {
   login,
   logout,
   getTimeline,
+  getShelf,
   search,
   addBookToShelf,
   findOrCreateBook,
@@ -173,5 +195,7 @@ export default {
   getUserProfile,
   unfollowUser,
   followUser,
+  getUserShelves,
+  updateUserDetails,
   jsonify
 }

@@ -7,20 +7,18 @@ import API from '../adapters/api.js'
 
 const HomeContainer = ( {user, logout} ) => {
   const [timeline, setTimeline] = useState([])
-  const [timelineLoaded, setTimelineLoaded] = useState(false)
-  //The search bar here, filters the users that are in the whole database, by username, email address etc.
-  ///User.find_by(email: params[:search]) \\ User.find_by(username: params[:search])
+  // const [timelineLoaded, setTimelineLoaded] = useState(false)
+
   useEffect(() => {
-    //Fetch from the the users timeline serializer
     API.getTimeline()
       .then(res => setTimeline(res.timeline))
-      .then(() => setTimelineLoaded(true))
+      // .then(() => setTimelineLoaded(true))
   }, [])
   
   return (
     <div>
       <h1>Readable</h1>
-      {timelineLoaded &&
+      {timeline &&
         <TimelineContainer
           timeline={timeline}
         />

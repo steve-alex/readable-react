@@ -9,6 +9,7 @@ import paths from './paths.js';
 
 const App = () => {
   const [user, setUser] = useState(null)
+  const [errors, setErrors] = useState(null)
   const history = useHistory();
 
   useEffect(() => {
@@ -16,7 +17,8 @@ const App = () => {
     .then(resp => {
       setUser(resp.user)
     })
-    .catch(() => {
+    .catch(errors => {
+      setErrors(errors)
       history.push(paths.LOGIN)
     })
   }, [])

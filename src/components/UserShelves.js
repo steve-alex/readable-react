@@ -10,8 +10,7 @@ const UserShelves = ( {shelves} ) => {
           let shelf = shelves[key]
           return <UserShelf
                     shelfName={key}
-                    bookCount={shelf["book_count"]}
-                    imageUrls={shelf["image_urls"]}/>
+                    shelf={shelf}/>
         })
       } 
     </div>

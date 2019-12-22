@@ -6,7 +6,7 @@ import paths from '../paths.js';
 
 
 
-const Login = ({setUser}) => {
+const Login = ( {setUser, setMessage} ) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([])
@@ -15,12 +15,13 @@ const Login = ({setUser}) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     API.login({ email, password })
-      .then(resp => {
-        setUser(resp.data.email)
-        history.push('/home')
+      .then(user => {
+        setUser(user)
+        history.push('/')
       })
       .catch(errors => {
         setErrors(errors)
+        setMessage(errors)
       })
   }
 

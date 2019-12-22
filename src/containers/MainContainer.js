@@ -18,7 +18,7 @@ const MainContainer = ( {user, logout}) => {
     <div>
       {/* <Navbar
         userId={user.data.id}/> */}
-      {/* <Switch>
+      <Switch>
         <Route path='/home'>
           <HomeContainer
             user={user}
@@ -52,14 +52,12 @@ const MainContainer = ( {user, logout}) => {
           path='/'
           render={routerProps => {
             return <MiscellaneousContainer
-              instanceToRender={instanceToRender}
-              setInstanceToRender={setInstanceToRender}
               user={user}
               {...routerProps}
             />
           }}
-        /> */}
-      {/* </Switch> */}
+        />
+      </Switch>
       <a href="http://localhost:3001/search">Search</a>
     </div>
   )
