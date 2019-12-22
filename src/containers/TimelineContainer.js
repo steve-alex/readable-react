@@ -1,58 +1,27 @@
 import React from 'react'
 import { Rating } from 'semantic-ui-react'
+import ReviewContainer from '../containers/ReviewContainer.js'
+import ProgressContainer from '../containers/ProgressContainer.js'
 
 const TimelineContainer = ( {timeline} ) => {
 
-  const renderComments = (post) => {
-    // console.log(post.comments)
-    // post.comments.map(comment => {
-    //   return (
-    //     <>
-    //       <h4>{comment.user.username}</h4>
-    //     </>
-    //   )
-    // })
+  const createPostComponent = (post) => {
+    let postType = Object.keys(post)[0]
+    if (postType === "review") {
+      return <ReviewContainer review={post.review}/>
+    } else {
+      return <ProgressContainer progress={post.progress}/>
+    }
   }
 
   return (
-    <>
-      {
-        timeline.timeline_posts.map(post => {
-        return (
-          <>
-            <p>{post.user.username}</p>
-            <Rating
-              icon="star"
-              defaultRating={post.rating}
-              maxRating={5}
-              disabled
-            />
-            <p>{post.created_at.slice(0, 10)}</p>
-            <h2>{post.book.title}</h2>
-            <h5>{post.book.subtitle}</h5>
-            <img src={post.book.image_url}></img>
-            <p>{post.book.description}</p>
-            <p>Page Count: {post.book.page_count}</p>
-            <p>{post.content}</p>
-            <h2>Comments</h2>
-            {/* {post.comments[0] &&
-              renderComments()} */}
-            {post.comments[0] &&
-              post.comments.map(comment => {
-                return (
-                  <>
-                    <h4>{comment.user.username}</h4>
-                    <h4>{comment.created_at.slice(0, 9)}</h4>
-                    <p>{comment.content}</p>
-                  </>
-                )
-              })
-            }
-          </>
-        )
-      })
+    <div>
+      {timeline.posts &&
+        timeline.posts.map(post => {
+          return createPostComponent(post)
+        })
       }
-    </>
+    </div>
   )
 }
 
