@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react'
 
-const UserShelf = ( {shelfName, bookCount, imageUrls} ) => {
+const UserShelf = ( {shelfName, shelf} ) => {
 
   const renderImages = () => {
-    if (imageUrls) {
-      return imageUrls.map(url => {
-        return <img src={url}></img>
-      })
-    }
+    return shelf.books_to_display.map(book => {
+      return <img src={book.image_url}></img>
+    })
   }
 
   return (
     
     <div>
       <h3>{shelfName}</h3>
-      <h5>Books: {bookCount}</h5>
       {renderImages()}
+      <h5>Books: {shelf.book_count}</h5>
+      <br></br>
     </div>
   )
 }
