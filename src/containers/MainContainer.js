@@ -19,12 +19,12 @@ const MainContainer = ( {user, logout}) => {
       {/* <Navbar
         userId={user.data.id}/> */}
       <Switch>
-        {/* <Route path='/home'>
+        <Route path='/home'>
           <HomeContainer
             user={user}
             logout={logout}
           />
-        </Route> */}
+        </Route>
         <Route path='/search'>
           <SearchPageContainer
             userShelves={user.shelves}
