@@ -83,6 +83,10 @@ const search = (query) => {
   }).then(resp => jsonify(resp))
 }
 
+const getShelf = (shelfId) => {
+  return fetch(`${SHELF_URL}/${shelfId}`).then(res => jsonify(res))
+}
+
 const addBookToShelf = (book, shelfId) => {
   return fetch(`${SHELF_URL}/add_book`, {
     method: "POST",
@@ -182,6 +186,7 @@ export default {
   login,
   logout,
   getTimeline,
+  getShelf,
   search,
   addBookToShelf,
   findOrCreateBook,
