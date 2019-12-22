@@ -152,6 +152,19 @@ const getUserShelves = (userId) => {
   return fetch(`${SHELF_URL}/${userId}`).then(res => jsonify(res))
 }
 
+const updateUserDetails = (userId, formData) => {
+  console.log(formData)
+  return fetch(`${USERS_URL}/${userId}`, {
+    'method': "PATCH",
+    'headers': {
+      "Accept": "application/json",
+      'Authorisation': localStorage.getItem("token"),
+    },
+    'body': formData
+  })
+  .then(res => jsonify(res))
+}
+
 const jsonify = (resp) => {
   if (!resp.ok)
     throw resp
@@ -178,5 +191,6 @@ export default {
   unfollowUser,
   followUser,
   getUserShelves,
+  updateUserDetails,
   jsonify
 }

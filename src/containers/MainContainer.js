@@ -39,7 +39,7 @@ const MainContainer = ( {user, logout}) => {
                       {...routerProps}/>
                     }}
         />
-        {/* <Route
+        <Route
           path='/users'
           render={routerProps => {
             return <UserPageContainer
@@ -52,13 +52,11 @@ const MainContainer = ( {user, logout}) => {
           path='/'
           render={routerProps => {
             return <MiscellaneousContainer
-              instanceToRender={instanceToRender}
-              setInstanceToRender={setInstanceToRender}
               user={user}
               {...routerProps}
             />
           }}
-        /> */}
+        />
       </Switch>
       <a href="http://localhost:3001/search">Search</a>
     </div>

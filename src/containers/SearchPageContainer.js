@@ -3,6 +3,7 @@ import SearchForm from '../forms/SearchForm.js'
 import SearchResultsContainer from './SearchResultsContainer.js'
 import API from '../adapters/api.js'
 import './containers.css'
+import UserUpdateForm from '../forms/UserUpdateForm.js'
 
 const SearchPageContainer = ( {logout, userShelves} ) => {
   const [searchResults, setSearchResults] = useState(undefined)
@@ -17,6 +18,7 @@ const SearchPageContainer = ( {logout, userShelves} ) => {
         userShelves={userShelves}
         searchResults={searchResults}
       />
+      <UserUpdateForm />
     </div>
   )
 }
