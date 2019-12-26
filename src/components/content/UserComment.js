@@ -1,7 +1,7 @@
 import React from 'react'
 import { Comment } from 'semantic-ui-react'
 
-const CommentComponent = ( {comment} ) => {
+export const UserComment = ( {comment} ) => {
 
   return (
     <div>
@@ -22,5 +22,3 @@ const CommentComponent = ( {comment} ) => {
     </div>
   )
 }
-
-export default CommentComponent;

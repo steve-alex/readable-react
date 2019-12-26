@@ -9,6 +9,10 @@ const REVIEWS_URL = `${API_ENDPOINT}/reviews`
 const TIMELINE_URL = `${API_ENDPOINT}/users/timeline`
 const USERS_URL = `${API_ENDPOINT}/users`
 const FOLLOW_URL = `${API_ENDPOINT}/follows`
+const LIKES_URL = `${API_ENDPOINT}/likes`
+const UPDATES_URL = `${API_ENDPOINT}/updates`
+const PROGRESSES_URL = `${API_ENDPOINT}/progresses`
+const COMMENTS_URL = `${API_ENDPOINT}/comments`
 
 const login = ({ email, password }) => {
   return fetch(LOGIN_URL, {
@@ -39,6 +43,14 @@ const validate = () => {
       Authorisation: localStorage.getItem("token")
     }
   }).then(resp => jsonify(resp))
+}
+
+const getUser = (userId) => {
+  return fetch(`${USERS_URL}/${userId}`, {
+    headers: {
+      Authorisation: localStorage.getItem("token")
+    }
+  }).then(res => jsonify(res))
 }
 
 const getTimeline = () => {
@@ -152,12 +164,39 @@ const followUser = (userId) => {
   .then(res => jsonify(res))
 }
 
+const likePost = (postId, postType) => {
+  return fetch(LIKES_URL, {
+    'method': "POST",
+    'headers': {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      'Authorisation': localStorage.getItem("token"),
+    },
+    'body': JSON.stringify({
+      likeable_id: postId,
+      likeable_type: postType
+    })
+  })
+  .then(res => jsonify(res))
+}
+
+const unlikePost = (likeId) => {
+  return fetch(`${LIKES_URL}/${likeId}`, {
+    'method': "DELETE",
+    'headers': {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      'Authorisation': localStorage.getItem("token"),
+    }
+  })
+  .then(res => jsonify(res))
+}
+
 const getUserShelves = (userId) => {
   return fetch(`${SHELF_URL}/${userId}`).then(res => jsonify(res))
 }
 
 const updateUserDetails = (userId, formData) => {
-  console.log(formData)
   return fetch(`${USERS_URL}/${userId}`, {
     'method': "PATCH",
     'headers': {
@@ -165,6 +204,53 @@ const updateUserDetails = (userId, formData) => {
       'Authorisation': localStorage.getItem("token"),
     },
     'body': formData
+  })
+  .then(res => jsonify(res))
+}
+
+const updateProgress = (copyId, pageCount) => {
+  return fetch(`${UPDATES_URL}`, {
+    'method': "POST",
+    'headers': {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      'Authorisation': localStorage.getItem("token"),
+    },
+    'body': JSON.stringify({
+      copy_id: copyId,
+      page_number: pageCount
+    })
+  })
+  .then(res => jsonify(res))
+}
+
+const getPostComments = (post, postType) => {
+  const url = (postType == "Progress") ? PROGRESSES_URL : REVIEWS_URL
+  const id = post.id
+  return fetch(`${url}/${id}/comments`, {
+    'headers': {
+      'Authorisation': localStorage.getItem("token"),
+    }
+  })
+  .then(res => jsonify(res))
+}
+
+const createComment = (content, postType, postId) => {
+  console.log(content)
+  console.log(postType)
+  console.log(postId)
+  return fetch(`${COMMENTS_URL}`, {
+    'method': "POST",
+    'headers': {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      'Authorisation': localStorage.getItem("token"),
+    },
+    'body': JSON.stringify({
+      content: content,
+      commentable_type: postType,
+      commentable_id: postId
+    })
   })
   .then(res => jsonify(res))
 }
@@ -183,6 +269,7 @@ const jsonify = (resp) => {
 
 export default {
   validate,
+  getUser,
   login,
   logout,
   getTimeline,
@@ -197,5 +284,10 @@ export default {
   followUser,
   getUserShelves,
   updateUserDetails,
+  likePost,
+  unlikePost,
+  updateProgress,
+  getPostComments,
+  createComment,
   jsonify
 }
