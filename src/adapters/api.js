@@ -13,6 +13,7 @@ const LIKES_URL = `${API_ENDPOINT}/likes`
 const UPDATES_URL = `${API_ENDPOINT}/updates`
 const PROGRESSES_URL = `${API_ENDPOINT}/progresses`
 const COMMENTS_URL = `${API_ENDPOINT}/comments`
+const COPY_URL = `${API_ENDPOINT}/copies`
 
 const login = ({ email, password }) => {
   return fetch(LOGIN_URL, {
@@ -97,6 +98,10 @@ const search = (query) => {
 
 const getShelf = (shelfId) => {
   return fetch(`${SHELF_URL}/${shelfId}`).then(res => jsonify(res))
+}
+
+const getCopy = (copyId) => {
+  return fetch(`${COPY_URL}/${copyId}`).then(res => jsonify(res))
 }
 
 const addBookToShelf = (book, shelfId) => {
@@ -208,7 +213,7 @@ const updateUserDetails = (userId, formData) => {
   .then(res => jsonify(res))
 }
 
-const updateProgress = (copyId, pageCount) => {
+const createUpdate = (copyId, pageCount) => {
   return fetch(`${UPDATES_URL}`, {
     'method': "POST",
     'headers': {
@@ -236,9 +241,6 @@ const getPostComments = (post, postType) => {
 }
 
 const createComment = (content, postType, postId) => {
-  console.log(content)
-  console.log(postType)
-  console.log(postId)
   return fetch(`${COMMENTS_URL}`, {
     'method': "POST",
     'headers': {
@@ -251,6 +253,47 @@ const createComment = (content, postType, postId) => {
       commentable_type: postType,
       commentable_id: postId
     })
+  })
+  .then(res => jsonify(res))
+}
+
+const createProgress = (content) => {
+  return fetch(`${PROGRESSES_URL}/submit`, {
+    'method': "POST",
+    'headers': {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      'Authorisation': localStorage.getItem("token"),
+    },
+    'body': JSON.stringify({
+      content: content
+    })
+  })
+  .then(res => jsonify(res))
+}
+
+const unlikeComment = (likeId) => {
+  return fetch(`${LIKES_URL}/${likeId}`, {
+    'method': "DELETE",
+    'headers': {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      'Authorisation': localStorage.getItem("token"),
+    }
+  })
+  .then(res => jsonify(res))
+}
+
+const likeComment = (commentId) => {
+  let like = {likeable_id: commentId, likeable_type: "Comment"}
+  return fetch(`${LIKES_URL}`, {
+    'method': "POST",
+    'headers': {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      'Authorisation': localStorage.getItem("token"),
+    },
+    'body': JSON.stringify(like)
   })
   .then(res => jsonify(res))
 }
@@ -281,13 +324,17 @@ export default {
   createReview,
   getUserProfile,
   unfollowUser,
+  getCopy,
   followUser,
   getUserShelves,
   updateUserDetails,
   likePost,
   unlikePost,
-  updateProgress,
+  createUpdate,
   getPostComments,
   createComment,
+  createProgress,
+  unlikeComment,
+  likeComment,
   jsonify
 }

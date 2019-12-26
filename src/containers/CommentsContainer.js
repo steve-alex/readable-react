@@ -6,7 +6,7 @@ import API from '../adapters/api.js'
 
 
 export const CommentsContainer = ( {progress, review} ) => {
-  const [comments, setComments] = useState(undefined)
+  const [comments, setComments] = useState([])
   const post = progress || review
   const postType = progress ? "Progress" : "Review"
 
