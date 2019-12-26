@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import FollowButton from '../buttons/FollowButton.js'
+import FollowButton from './buttons/FollowButton.js'
 
 const UserInformationPanel = ( {user, userFollows, followObject} ) => {
   // const user = profile.user;

@@ -37,4 +37,15 @@
     transform: rotate(360deg);
   }
 }
+/* 
+.menu {
+  padding: 0;
+  z-index: -1;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+} */
 
+.focusRing___1airF.carousel__slide-focus-ring {
+  outline: none;
+}
