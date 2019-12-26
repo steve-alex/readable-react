@@ -6,19 +6,26 @@ import { CommentsContainer } from '../containers/CommentsContainer.js'
 import { Card, Item } from 'semantic-ui-react'
 
 const ProgressContainer = ( {progress} ) => {
-  return (
-    <Card fluid>
-      <ProgressBanner
-        progress={progress}/>
-      <ProgressContentContainer
-        progress={progress}/>
-      <LikesPanel
-        likes={progress.likes} progress={progress}/>
-      <CommentsContainer
-        progress={progress}
-      />
-    </Card>
-  )
+
+  if (progress) {
+    return (
+      <Card fluid>
+        <ProgressBanner
+          progress={progress}/>
+        <ProgressContentContainer
+          progress={progress}/>
+        <LikesPanel
+          likes={progress.likes} progress={progress}/>
+        <CommentsContainer
+          progress={progress}
+        />
+      </Card>
+    )
+  } else {
+    return (
+      <></>
+    )
+  }
 }
 
 export default ProgressContainer;

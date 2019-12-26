@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Input, Form, Button } from 'semantic-ui-react'
 import { usePrevious } from '../hooks/usePrevious';
 
-export const UpdateReadingProgressForm = ( {handleInputUpdate, handleSubmit, setCurrentBookPage, currentBookPage} ) => {
+export const UpdateReadingProgressForm = ( {pageCount, currentBookPage, setCurrentBookPage, handleInputUpdate, createUpdate} ) => {
   const [typing, setTyping] = useState(false)
   const [typingTimeout, setTypingTimeout] = useState(undefined)
 
@@ -11,19 +11,19 @@ export const UpdateReadingProgressForm = ( {handleInputUpdate, handleSubmit, set
     if (typingTimeout) {
       clearTimeout(typingTimeout)
     }
-    
+
     setCurrentBookPage(e.target.value)
     setTyping(true)
     setTypingTimeout(setTimeout(() => {
       handleInputUpdate(e.target.value)
       setTyping(false)
-    }, 500));
+    }, 100));
   }
 
   return (
     <div>
       <Form
-        onSubmit={handleSubmit}>
+        onSubmit={(e) => createUpdate(e, pageCount)}>
         <Form.Field>
         <Input
           value={currentBookPage}

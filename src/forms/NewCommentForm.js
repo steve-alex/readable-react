@@ -3,12 +3,13 @@ import { Form, Button } from 'semantic-ui-react'
 import API from '../adapters/api';
 
 export const NewCommentForm = ( {postType, postId, comments, setComments} ) => {
-  const [content, setContent] = useState("")
+  const [content, setContent] = useState(undefined)
 
   const submitComment = (e) => {
     e.preventDefault()
     API.createComment(content, postType, postId)
       .then(res => setComments([...comments, res.comment]))
+      .then(() => setContent(""))
   }
 
   return(

@@ -3,7 +3,7 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-re
 import { CurrentlyReadingBookPanel } from '../panels/CurrentlyReadingBookPanel.js'
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
-export const CurrentlyReadingCarousel = ( {currentlyReading, setCurrentBook, pageCount, setPageCount, handleInputUpdate, handleSubmit} ) => {
+export const CurrentlyReadingCarousel = ( {currentlyReading, setCurrentBook, currentPage, setCurrentPage, handleInputUpdate, createUpdate} ) => {
   return(
     <div>
       <CarouselProvider
@@ -27,10 +27,10 @@ export const CurrentlyReadingCarousel = ( {currentlyReading, setCurrentBook, pag
                     index={index}
                     book={book}
                     setCurrentBook={setCurrentBook}
-                    setPageCount={setPageCount}
-                    pageCount={pageCount}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
                     handleInputUpdate={handleInputUpdate}
-                    handleSubmit={handleSubmit}
+                    createUpdate={createUpdate}
                   />
                 </Slide>
               )
