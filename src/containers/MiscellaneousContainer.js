@@ -16,15 +16,14 @@ const MiscellaneousContainer = ( {user, match} ) => {
           />
         }}
       />
-
-    <Route
-      path={'/shelves'}
-      render={routerProps => {
-        return <ShelfContainer
-                user={user}
-                {...routerProps}/>
-      }}
-    />
+      <Route
+        path={'/shelves'}
+        render={routerProps => {
+          return <ShelfContainer
+                  user={user}
+                  {...routerProps}/>
+        }}
+      />
     </Switch>
   )
 }

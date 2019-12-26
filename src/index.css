@@ -19,3 +19,16 @@ code {
 .searchButton {
   width: 38%;
 }
+
+.text-hoverable:hover {
+  color: #3366FF;
+  text-shadow: 0 0 5px #ffee10;
+  font-size: 100.4%;
+  cursor: pointer;
+}
+
+.image-hoverable:hover {
+  box-shadow: 0 0 1px #ffee10;
+  text-shadow: 0 0 1px #ffee10;
+  cursor: pointer;
+}

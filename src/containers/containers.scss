@@ -1,10 +1,31 @@
-.searchResults {
-  display: grid;
-  width: 100%;
-  grid-template-columns: 100%;
-  grid-row-gap: 2em;
+.currently-reading {
+  padding-top: 10px;
 }
 
-.focusRing {
-  outline-width: 0px;
+.currently-reading-panel {
+  display: grid;
+  grid-template-columns: 5% 35% 55% 5%;
+  .currently-reading-book-content {
+    display: grid;
+    grid-auto-columns: 90%;
+    padding-left: 20px;
+    h5 {
+      text-align: left;
+    }
+    p {
+      text-align: left;
+    }
+  }
+}
+
+.currently-reading-progress {
+  display: grid;
+  grid-template-columns: 80%;
+  align-content: center;
+
+}
+
+.reading-progress-form {
+  display: flex;
+  flex-direction: column;
 }

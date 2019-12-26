@@ -18,7 +18,6 @@ const HomePageContainer = ( {user, logout} ) => {
   
   return (
     <div>
-      <h1>Readable</h1>
       <HomePageCurrentlyReadingContainer
         userId={user.id}
         forceUpdate={forceUpdate}/>

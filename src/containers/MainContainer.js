@@ -5,10 +5,9 @@ import BookPageContainer from './BookPageContainer.js'
 import UserPageContainer from './UserPageContainer.js'
 import SearchPageContainer from './SearchPageContainer.js'
 import MiscellaneousContainer from './MiscellaneousContainer.js'
-import Navbar from '../components/Navbar.js'
+import Navbar from '../components/banners/Navbar.js'
 
 import { Container, Sticky, Ref } from 'semantic-ui-react'
-
 
 const MainContainer = ( {user, logout}) => {
   const contextRef = createRef()

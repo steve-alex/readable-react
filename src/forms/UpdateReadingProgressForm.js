@@ -21,15 +21,19 @@ export const UpdateReadingProgressForm = ( {pageCount, currentBookPage, setCurre
   }
 
   return (
-    <div>
+    <div
+      class="reading-progress-form">
       <Form
         onSubmit={(e) => createUpdate(e, pageCount)}>
-        <Form.Field>
-        <Input
-          value={currentBookPage}
-          onChange={handleChange}/>
-        </Form.Field>
-        <Button type='submit'>Update</Button>
+        <Form.Group>
+          <Form.Input
+            width={5}
+            value={currentBookPage}
+            onChange={handleChange}/>
+            <Form.Button
+              type='submit'
+              width={3}>Update</Form.Button>
+        </Form.Group>
       </Form>
 
     </div>

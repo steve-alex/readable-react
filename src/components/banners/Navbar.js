@@ -9,8 +9,8 @@ const Navbar = ( {userId} ) => {
 
   const handleItemClick = (e, {name}) => {
     setActiveItem(name)
+    history.push(`/${name}`)
   }
-
 
   return (
     <Menu inverted>

@@ -12,7 +12,7 @@ const UserShelves = ( {shelves} ) => {
                     shelfName={key}
                     shelf={shelf}/>
         })
-      } 
+      }
     </div>
   )
 }
