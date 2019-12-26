@@ -1,16 +1,19 @@
 import React from 'react'
-import BookUpdate from '../components/BookUpdate.js'
+import { Item } from 'semantic-ui-react'
+import { UpdatesForBookPanel } from '../components/panels/UpdatesForBookPanel.js'
 
-const ProgressContentContainer = ( {progress} ) => {
+export const ProgressContentContainer = ( {progress} ) => {
   return (
-    <div>
+    <Item.Group>
       {progress.updates &&
         progress.updates.map(book => {
-          return <BookUpdate book={book}/>
+          return (
+            <Item>
+              <UpdatesForBookPanel book={book}/>
+            </Item>
+          )    
         })
       }
-    </div>
+    </Item.Group>
   )
 }
-
-export default ProgressContentContainer;

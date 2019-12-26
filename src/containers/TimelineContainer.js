@@ -1,5 +1,5 @@
 import React from 'react'
-import { Rating } from 'semantic-ui-react'
+import { Rating, Card } from 'semantic-ui-react'
 import ReviewContainer from '../containers/ReviewContainer.js'
 import ProgressContainer from '../containers/ProgressContainer.js'
 
@@ -15,13 +15,13 @@ const TimelineContainer = ( {timeline} ) => {
   }
 
   return (
-    <div>
+    <Card.Group>
       {timeline.posts &&
         timeline.posts.map(post => {
           return createPostComponent(post)
         })
       }
-    </div>
+    </Card.Group>
   )
 }
 

@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import ReviewBanner from '../components/ReviewBanner.js'
-import ReviewContent from '../components/ReviewContent.js'
-import LikesBanner from '../components/LikesBanner.js'
-import CommentsContainer from '../containers/CommentsContainer.js'
+import { ReviewBanner } from '../components/banners/ReviewBanner.js'
+import { LikesPanel } from '../components/panels/LikesPanel.js'
+import { ReviewContent } from '../components/content/ReviewContent.js'
+import { CommentsContainer } from '../containers/CommentsContainer.js'
+import { Item, Card} from 'semantic-ui-react'
 
 const ReviewContainer = ( {review} ) => {
 
   return (
-    <div>
+    <Card fluid>
       <ReviewBanner
         review={review}/>
       <ReviewContent
         review={review}/>
-      <LikesBanner
-        likes={review.likes}/>
+      <LikesPanel
+        likes={review.likes} review={review}/>
       <CommentsContainer
-        comments={review.comments}
+        review={review}
       />
-    </div>
+    </Card>
   )
 }
 

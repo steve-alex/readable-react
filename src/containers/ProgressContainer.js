@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import ProgressBanner from '../components/ProgressBanner'
-import ProgressContentContainer from './ProgressContentContainer'
-import LikesBanner from '../components/LikesBanner.js'
-import CommentsContainer from '../containers/CommentsContainer.js'
+import { ProgressBanner } from '../components/banners/ProgressBanner'
+import { ProgressContentContainer } from './ProgressContentContainer'
+import { LikesPanel } from '../components/panels/LikesPanel.js'
+import { CommentsContainer } from '../containers/CommentsContainer.js'
+import { Card, Item } from 'semantic-ui-react'
 
 const ProgressContainer = ( {progress} ) => {
   return (
-    <div>
+    <Card fluid>
       <ProgressBanner
         progress={progress}/>
       <ProgressContentContainer
         progress={progress}/>
-      <LikesBanner
-        likes={progress.likes}/>
+      <LikesPanel
+        likes={progress.likes} progress={progress}/>
       <CommentsContainer
-        comments={progress.comments}
+        progress={progress}
       />
-    </div>
+    </Card>
   )
 }
 
