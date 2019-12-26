@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Menu } from 'semantic-ui-react'
-import { useHistory } from "react-router-dom"
+import { useHistory, Redirect} from "react-router-dom"
 
 
 const Navbar = ( {userId} ) => {
@@ -9,16 +9,8 @@ const Navbar = ( {userId} ) => {
 
   const handleItemClick = (e, {name}) => {
     setActiveItem(name)
-    handleRedirect()
   }
 
-  const handleRedirect = () => {
-    if (activeItem === "home" || activeItem === "search") {
-      history.push(`/${activeItem}`)
-    } else {
-      history.push(`/users/${userId}`)
-    }
-  }
 
   return (
     <Menu inverted>
@@ -26,17 +18,26 @@ const Navbar = ( {userId} ) => {
         name='home'
         active={activeItem === 'home'}
         onClick={handleItemClick}
-      />
+      >
+        Home
+        {(activeItem === 'home') && <Redirect to="/home"></Redirect>}
+      </Menu.Item>
       <Menu.Item
         name='search'
         active={activeItem === 'search'}
         onClick={handleItemClick}
-      />
+      >
+        Search
+        {(activeItem === 'search') && <Redirect to="/search"></Redirect>}
+      </Menu.Item>
       <Menu.Item
-        name={`Profile`}
-        active={activeItem === `Profile`}
+        name={`profile`}
+        active={activeItem === `profile`}
         onClick={handleItemClick}
-      />
+      >
+        Profile
+      {(activeItem === 'profile') && <Redirect to={`/users/${userId}`}></Redirect>}
+      </Menu.Item>
     </Menu>
   )
 }
