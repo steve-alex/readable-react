@@ -3,7 +3,6 @@ import { Button, Dropdown, Form } from 'semantic-ui-react'
 
 const AddToShelfDropDown = ( {shelves, setSelectedShelf} ) => {
 
-  
   const shelfNames = () => {
     return Array.from(shelves.map(shelf => {
       return {

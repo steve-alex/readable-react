@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from 'semantic-ui-react'
-import API from '../adapters/api';
+import API from '../../adapters/api';
 
 
 const FollowButton = ({followObject, userId}) => {

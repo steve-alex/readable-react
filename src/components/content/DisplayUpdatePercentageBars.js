@@ -1,12 +1,10 @@
 import React from 'react'
 import { Progress } from 'semantic-ui-react'
-import { match } from 'minimatch';
 
-const DisplayUpdate = ( {update, pageCount} ) => {
+export const DisplayUpdatePercentageBars = ( {update, pageCount} ) => {
   
   return (
     <div>
-
       {update && 
         <div>
           <Progress
@@ -20,5 +18,3 @@ const DisplayUpdate = ( {update, pageCount} ) => {
     </div>
   )
 }
-
-export default DisplayUpdate;

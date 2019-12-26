@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ReviewContent = ( {review} ) => {
+export const ReviewContent = ( {review} ) => {
   return (
     <div>
       <div className="reviewBookImage">
@@ -16,5 +16,3 @@ const ReviewContent = ( {review} ) => {
     </div>
   )
 }
-
-export default ReviewContent;
