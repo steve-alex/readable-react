@@ -1,0 +1,52 @@
+import React, { useEffect, useState } from 'react';
+import { Redirect } from "react-router-dom";
+import API from '../../adapters/api.js';
+import { Card, Image } from 'semantic-ui-react';
+import './panels.scss'
+
+
+const SearchResultBookPanel = ( {book, instanceToRender, setInstanceToRender} ) => {
+  const [clicked, setClicked] = useState(false)
+  const [selectedBookId, setSelectedBookId] = useState(undefined)
+
+  const handleClick = () => {
+    API.findOrCreateBook(book)
+      .then((resp) => setSelectedBookId(resp.book.id))
+      .then(() => setClicked(true))
+  }
+
+  return (
+    <Card.Content>
+      <Image
+        floated='left'
+        size='small'
+        src={book.image_url}
+        className="image-hoverable"
+      />
+      {clicked && <Redirect to={`/books/${selectedBookId}`}/>}
+      <Card.Header>
+        <h2 className="text-hoverable title" onClick={handleClick}>
+          <span>{book.title}</span>
+        </h2>
+        {clicked && <Redirect to={`/books/${selectedBookId}`}/>}
+      </Card.Header>
+      <Card.Header>
+        {book.subtitle && 
+          <p className="subtitle">{book.subtitle}</p>}
+      </Card.Header>
+      <Card.Meta>
+        {book.authors &&
+          <p className="authors">By {book.authors}</p>}
+        {book.page_count &&
+          <p className="pageCount">Page count: {book.page_count}</p>}
+      </Card.Meta>
+      <Card.Content>
+        {book.description &&
+          <p className="description">{book.description}</p>}
+      </Card.Content>
+    </Card.Content>
+  )
+  
+}
+
+export default SearchResultBookPanel;

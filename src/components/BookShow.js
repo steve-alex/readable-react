@@ -5,21 +5,22 @@ import NewReviewForm from '../forms/NewReviewForm.js';
 import UserReview from './userReview.js'
 import FriendActivity from './FriendActivity.js'
 import BookMetrics from './BookMetrics.js'
-import BookShowPanel from './BookShowPanel.js'
+import BookShowPanel from './panels/BookShowPanel.js'
 import BookShowReviewsContainer from '../containers/BookShowReviewsContainer.js'
 
 const BookShow = ( {user, match} ) => {
   const [book, setBook] = useState(undefined)
   const [userHasReviewed, setUserHasReviewed] = useState(false)
   const [renderPage, setRenderPage] = useState(false)
+  const [errors, setErrors] = useState(undefined)
 
   useEffect(() => {
     API.getBook(match.params.bookId)
       .then(res => {
         setBook(res.book)
-        // setUserHasReviewed(checkUserHasReviewed(res.book))
+        setUserHasReviewed(checkUserHasReviewed(res.book))
       })
-      .catch(console.log)
+      .catch(errors => setErrors(errors))
   }, [])
 
   const handleUpdate = () => {
@@ -28,6 +29,7 @@ const BookShow = ( {user, match} ) => {
       setBook(res.book)
       setUserHasReviewed(checkUserHasReviewed(res.book))
     })
+    .catch(errors => setErrors(errors))
   }
 
   const checkUserHasReviewed = (book) => {

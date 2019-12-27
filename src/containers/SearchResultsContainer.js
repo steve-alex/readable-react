@@ -1,10 +1,11 @@
 import React, { } from 'react';
 import SearchResult from '../components/SearchResult.js'
+import { Card } from 'semantic-ui-react'
 
 const SearchResultsContainer = ( {searchResults, userShelves} ) => {
 
   return (
-    <div className="searchResults">
+      <Card.Group>
       {searchResults && 
         searchResults.results.map(book => {
           return (
@@ -16,7 +17,7 @@ const SearchResultsContainer = ( {searchResults, userShelves} ) => {
           )
         })
       }
-    </div>
+      </Card.Group>
   )
 }
 

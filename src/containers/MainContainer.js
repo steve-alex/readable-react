@@ -62,7 +62,6 @@ const MainContainer = ( {user, logout}) => {
             }}
           />
         </Switch>
-        <Link to="/search">Search</Link>
       </Container>
       </Ref>
     </>

@@ -83,7 +83,7 @@ const findOrCreateBook = (book) => {
   }).then(resp => jsonify(resp))
 }
 
-const search = (query) => {
+const search = (query, method) => {
   return fetch(SEARCH_URL, {
     method: "POST",
     headers: {
@@ -91,7 +91,8 @@ const search = (query) => {
       'Accept': 'application/json'
     },
     body: JSON.stringify({
-      query: query
+      query: query,
+      method: method
     })
   }).then(resp => jsonify(resp))
 }
@@ -308,6 +309,10 @@ const jsonify = (resp) => {
       else
         return data
     })
+}
+
+const findUsers = (searchTerm) => {
+  
 }
 
 export default {

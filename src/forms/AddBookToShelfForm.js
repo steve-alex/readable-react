@@ -35,17 +35,16 @@ const AddBookToShelfForm = ( {book, userShelves} ) => {
   return (
     <Form
       onSubmit={handleSubmit}>
-      <Form.Field>
-        <Dropdown
-          placeholder="Add this book to a shelf..."
-          fluid
-          search
-          selection
-          options={shelfNames()}
-          onChange={onChange}
-        />
-      </Form.Field>
-      <Button type='submit'>Submit</Button>
+        <Form.Field className="addToShelfForm">
+          <Dropdown
+            placeholder="Add this book to a shelf..."
+            fluid
+            search
+            selection
+            options={shelfNames()}
+            onChange={onChange}/>
+          <Button type='submit'>Submit</Button>
+        </Form.Field>
     </Form>
   )
 }

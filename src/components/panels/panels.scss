@@ -1,0 +1,30 @@
+.description {
+  text-align: left;
+}
+
+.title {
+  text-align: left;
+  padding-bottom: 7px;
+}
+
+.subtitle {
+  text-align: left;
+  padding-bottom: 7px;
+}
+
+.authors {
+  text-align: left;
+  padding-bottom: 7px;
+}
+
+.pageCount {
+  text-align: left;
+  padding-bottom: 7px;
+}
+
+.bookShowPanel {
+  padding-top: 31px;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  text-align: left;
+}

@@ -16,8 +16,7 @@ const ReviewContainer = ( {review} ) => {
         <LikesPanel
           likes={review.likes} review={review}/>
         <CommentsContainer
-          review={review}
-        />
+          review={review}/>
       </Card>
     )
   } else {
