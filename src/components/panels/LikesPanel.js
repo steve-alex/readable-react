@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'semantic-ui-react'
-
 import API from '../../adapters/api.js'
+import './panels.scss'
 
 export const LikesPanel = ( {likes, progress, review} ) => {
   const [userLikes, setUserLikes] = useState(undefined)
@@ -41,14 +41,21 @@ export const LikesPanel = ( {likes, progress, review} ) => {
   }
 
   return (
-    <div>{likesCount} Likes 
-      {post && 
-        <Button
-          onClick={handleClick}
-          positive={!userLikes}
-          negative={userLikes}>
-          {userLikes ? 'Unlike' : 'Like'}
-        </Button>
+    <div className="likesPanel">
+      {post &&
+        <>
+          <div className="likesPanelContent">
+            <Button
+              className="likeButton"
+              inverted
+              color={userLikes ? "red": "green" }
+              onClick={handleClick}>
+              {userLikes ? 'Unlike' : 'Like'}
+            </Button>
+            <div className="likesCount">{likesCount} Likes </div>
+          </div>
+
+        </>
       }
     </div>
   )
