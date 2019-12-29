@@ -29,3 +29,41 @@
   display: flex;
   flex-direction: column;
 }
+
+.progressContentContainer {
+  padding-bottom: 10px;
+}
+
+.bookUpdatePanel {
+  display: grid;
+  padding-left: 40px;
+  grid-template-columns: 30% 70%;
+  .progressBookImage {
+    justify-self: left;
+    grid-column: 1/2;
+    grid-row: 1/11;
+  }
+  .bookUpdateMeta {
+    justify-self: left;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    h2 {
+      margin: 0;
+    }
+    p {
+      margin: 0;
+      text-align: left;
+    }
+  }
+  .bookUpdateBars {
+    padding-top: 10px;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, 49px);
+  }
+}
+
+.bookShowReviewContent {
+  text-align: left;
+  padding-left: 42px;
+  padding-right: 42px;
+}

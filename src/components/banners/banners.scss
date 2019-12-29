@@ -1,0 +1,27 @@
+.post-header-metadata {
+  padding-top: 14px;
+  display: grid;
+  grid-auto-rows: 70% 30%;
+  grid-auto-columns: 10% 90%;
+  justify-items: start;
+  align-self: center;
+}
+
+.post-header-row-1 {
+  grid-column: 2/3;
+}
+
+.post-username {
+  display: inline-block;
+}
+
+.post-rating {
+  display: inline-block;
+  padding-left: 10px;
+  justify-items: left;
+}
+
+.post-created-at {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}

@@ -25,20 +25,20 @@ const SearchResultBookPanel = ( {book, instanceToRender, setInstanceToRender} ) 
       />
       {clicked && <Redirect to={`/books/${selectedBookId}`}/>}
       <Card.Header>
-        <h2 className="text-hoverable title" onClick={handleClick}>
+        <h2 className="text-hoverable searchResultComponent" onClick={handleClick}>
           <span>{book.title}</span>
         </h2>
         {clicked && <Redirect to={`/books/${selectedBookId}`}/>}
       </Card.Header>
       <Card.Header>
         {book.subtitle && 
-          <p className="subtitle">{book.subtitle}</p>}
+          <p className="searchResultsComponent">{book.subtitle}</p>}
       </Card.Header>
       <Card.Meta>
         {book.authors &&
-          <p className="authors">By {book.authors}</p>}
+          <p className="searchResultsComponent">By {book.authors}</p>}
         {book.page_count &&
-          <p className="pageCount">Page count: {book.page_count}</p>}
+          <p className="searchResultsComponent">Page count: {book.page_count}</p>}
       </Card.Meta>
       <Card.Content>
         {book.description &&
