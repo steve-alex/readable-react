@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Button } from 'semantic-ui-react'
 import API from '../../adapters/api';
 
 export const CommentLikeButton = ( {comment, likesCount, setLikesCount} ) => {
@@ -21,9 +22,12 @@ export const CommentLikeButton = ( {comment, likesCount, setLikesCount} ) => {
 
   return(
     <>
-      <div
-        onClick={handleClick}>
-        {liked ? "unlike": "like"}</div>
+      <Button
+        inverted
+        onClick={handleClick}
+        color={liked ? "red": "green"}>
+        {liked ? "unlike": "like"}
+      </Button>
     </>
   )
 }

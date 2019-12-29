@@ -138,6 +138,17 @@ const createReview = (content, rating, bookId, userId) => {
   }).then(resp => jsonify(resp))
 }
 
+const getReview = (reviewUrl) => {
+  return fetch(`${REVIEWS_URL}/${reviewUrl}`, {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorisation': localStorage.getItem("token")
+    }
+  }).then(res => jsonify(res))
+}
+
 const getUserProfile = (userId) => {
   return fetch(`${USERS_URL}/${userId}/profile`, {
     'headers': {
@@ -233,6 +244,7 @@ const createUpdate = (copyId, pageCount) => {
 const getPostComments = (post, postType) => {
   const url = (postType == "Progress") ? PROGRESSES_URL : REVIEWS_URL
   const id = post.id
+  console.log(url)
   return fetch(`${url}/${id}/comments`, {
     'headers': {
       'Authorisation': localStorage.getItem("token"),
@@ -327,6 +339,7 @@ export default {
   findOrCreateBook,
   getBook,
   createReview,
+  getReview,
   getUserProfile,
   unfollowUser,
   getCopy,

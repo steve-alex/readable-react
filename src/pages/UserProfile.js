@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import API from '../adapters/api.js'
-import UserInformationPanel from '../components/UserInformationPanel.js'
+import UserInformationPanel from '../components/panels/UserInformationPanel.js'
 import UserShelves from '../components/UserShelves.js'
 import UserFavourites from '../components/UserFavourites.js'
 import UserBooksInCommon from '../components/UserBooksInCommon.js'
@@ -10,7 +10,7 @@ const UserPage = ( {match} ) => {
 
   useEffect(() => {
     API.getUserProfile(match.params.userId)
-    .then(resp => setProfile(resp.profile))
+      .then(resp => setProfile(resp.profile))
   }, [])
   
   return (

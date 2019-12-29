@@ -35,7 +35,7 @@ const FollowButton = ({followObject, userId}) => {
   }
 
   return (
-    <div>
+    <div className="followButton">
       <Button
         onClick={handleClick}>{userFollows ? "Unfollow" : "Follow"}</Button>
     </div>
