@@ -14,3 +14,46 @@
   padding-right: 11px;
   padding-bottom: 11px;
 }
+
+.addToShelfModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ui.modal {
+  left: auto;
+}
+
+.form{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .textareaField {
+    padding: 10px 10px 0px 10px;
+  }
+  .ratingField {
+    padding: 10px 10px 0px 10px;
+  }
+  button {
+    width: 100px;
+  }
+}
+
+.newCommentForm {
+  display: grid;
+  padding-left: 40px;
+  padding-right: 30px;
+  grid-template-rows: 55% 45%;
+  grid-template-columns: 100%;
+  height: 150px;
+  .newCommentButton {
+    align-self: left;
+  }
+  button {
+    width: 200px;
+    align-self: left;
+    padding-bottom: 10px;
+  }
+}

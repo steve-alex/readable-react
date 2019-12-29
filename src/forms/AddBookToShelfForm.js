@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Form, Button, Dropdown } from 'semantic-ui-react'
+import { Form, Button, Dropdown, Modal } from 'semantic-ui-react'
 import API from '../adapters/api.js'
+import './forms.scss'
 
-const AddBookToShelfForm = ( {book, userShelves} ) => {
+const AddBookToShelfForm = ( {userShelves, book} ) => {
   const [shelfId, setShelfId] = useState("")
+  const [clicked, setClicked] = useState(false)
 
   const shelfNames = () => {
     return userShelves.map(shelf => {
@@ -18,7 +20,6 @@ const AddBookToShelfForm = ( {book, userShelves} ) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     API.addBookToShelf(book, shelfId)
-      //This could be more dynamic and display something cool when you add a book to a shelf?
   }
 
   const onChange = (e) => {
@@ -29,23 +30,32 @@ const AddBookToShelfForm = ( {book, userShelves} ) => {
       })
       setShelfId(selectedShelf[0].id)
     }
-    //This if statement gets rid of a very annoying error, look properly into what is actually causing it later
   }
 
   return (
-    <Form
-      onSubmit={handleSubmit}>
-        <Form.Field className="addToShelfForm">
-          <Dropdown
-            placeholder="Add this book to a shelf..."
-            fluid
-            search
-            selection
-            options={shelfNames()}
-            onChange={onChange}/>
-          <Button type='submit'>Submit</Button>
-        </Form.Field>
-    </Form>
+    <>
+      <div className="addToShelfModal">
+        <Modal
+          trigger={<Button color="teal"> Add To Shelf </Button>}
+          centred={false}>
+          <Modal.Header>Add {book.title} to a shelf</Modal.Header>
+            <Form
+              onSubmit={handleSubmit}>
+              <Form.Field className="addToShelfForm">
+                <Dropdown
+                  color="blue"
+                  placeholder="Add this book to a shelf..."
+                  fluid
+                  search
+                  selection
+                  options={shelfNames()}
+                  onChange={onChange}/>
+                <Button color="red" type='submit'>Submit</Button>
+              </Form.Field>
+            </Form>
+        </Modal>
+      </div>
+    </>
   )
 }
 
