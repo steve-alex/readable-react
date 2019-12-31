@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useCallback} from 'react'
-import { Input, Container, Form, Button, Modal } from 'semantic-ui-react'
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import { CurrentlyReadingCarousel } from '../components/banners/CurrentlyReadingCarousel.js'
 import { SubmitProgressForm } from '../components/forms/SubmitProgressForm.js'
 import { FinishedReadingPanel } from '../components/panels/FinishedReadingPanel.js'
+import { GetReadingCarousel} from '../components/banners/GetReadingCarousel.js'
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import API from '../adapters/api.js';
 import styles from './containers.scss'
 
-const HomePageCurrentlyReadingContainer = ( {userId} ) => {
+const HomePageCurrentlyReadingContainer = ( {userId, timeline, setTimeline} ) => {
   const [currentlyReading, setCurrentlyReading] = useState(undefined)
   const [bookToUpdate, setBookToUpdate] = useState(undefined)
   const [currentPage, setCurrentPage] = useState(undefined)
@@ -36,6 +35,7 @@ const HomePageCurrentlyReadingContainer = ( {userId} ) => {
   const createProgress = (e, content) => {
     e.preventDefault()
     API.createProgress(content)
+      // .then((res) => setTimeline([{"progress": res.progress}, ...timeline]))
   }
 
   const checkFinishedReading = (pageCount) => {
@@ -48,9 +48,9 @@ const HomePageCurrentlyReadingContainer = ( {userId} ) => {
     return(
       <div>
         <h1 className="currently-reading">Currently Reading</h1>
-        <FinishedReadingPanel
+        {/* <FinishedReadingPanel
           finishedReading={finishedReading}
-          bookToUpdate={bookToUpdate}/>
+          bookToUpdate={bookToUpdate}/> */}
         <CurrentlyReadingCarousel
           currentlyReading={currentlyReading}
           setCurrentBook={setCurrentBook}
@@ -64,7 +64,9 @@ const HomePageCurrentlyReadingContainer = ( {userId} ) => {
     )
   } else {
     return(
-      <></>
+      <div>
+        <GetReadingCarousel />
+      </div>
     )
   }
 }

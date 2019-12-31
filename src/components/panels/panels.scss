@@ -1,0 +1,199 @@
+.description {
+  text-align: left;
+}
+
+.searchResultComponent {
+  text-align: left;
+  padding-bottom: 7px;
+}
+
+.bookShowPanel {
+  padding-top: 4%;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  text-align: left;
+  .bookImage {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    justify-self: center;
+  }
+  .currentlyReadingButton {
+    padding-top: 10px;
+    grid-row: 2/3;
+    grid-column: 1/2;
+    justify-self: center;
+    button {
+      width: 200px;
+      height: 60px;
+    }
+  }
+
+}
+
+.bookShowText {
+  padding-left: 40px;
+  margin-bottom: 0px;
+  justify-items: center;
+  p {
+    margin-bottom: 0px;
+  }
+  h2 {
+    margin-bottom: 0px;
+  }
+  h3 {
+    margin: 0px;
+    padding-bottom: 9px;
+  }
+  h5 {
+    margin: 0px;
+    padding-bottom: 8px;
+  }
+}
+
+
+
+.bookShowDescription {
+  padding-top: 23px;
+  padding-bottom: 23px;
+  padding-left: 40px;
+  padding-right: 10px;
+  text-align: left;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  p {
+    text-align: left;
+  }
+}
+
+.averageRating {
+  padding-top: 8px;
+}
+
+.averageRatingPopupBanner {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.reviewCount {
+  padding-top: 14px;
+}
+
+.bookAction {
+  display: flex;
+  padding-top: 14px;
+  button {
+    width: 140px;
+    height: 45px;
+  }
+}
+
+.likesPanel {
+  padding-top:17px;
+  padding-bottom: 6px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  padding-left: 40px;
+  .likesPanelContent {
+    justify-self: left;
+    .likeButton {
+      width: 160px;
+      display: inline-block;
+      padding-right: 15px;
+    }
+    .likesCount {
+      display: inline-block;
+      padding-left: 15px;
+      font-size: 18px;
+    }
+  }
+}
+
+.userInformationPanel {
+  display: grid;
+  grid-template-columns: 20% 10% 20% 20% 20% 10%;
+  grid-template-rows: repeat(autofill, 10px);
+  padding-bottom: 32px;
+  .username{
+    padding-top: 24px;
+    grid-row: 1/2;
+    grid-column:1/7;
+    justify-self: center;
+  }
+  .followButton {
+    padding-top: 15px;
+    grid-row: 3/4;
+    grid-column: 1/2;
+  }
+  .userAvatar {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    img {
+      align-self: center;
+      max-width:60%;
+      height:auto;
+    }
+  }
+  .followerCount {
+    grid-row: 2/3;
+    grid-column: 3/4;
+    align-self: center;
+  }
+  .followingCount {
+    grid-row: 2/3;
+    grid-column: 4/5;
+    align-self: center;
+  }
+  .bookCount {
+    grid-row: 2/3;
+    grid-column: 5/6;
+    align-self: center;
+  }
+  .userAbout {
+    grid-column: 3/6;
+    grid-row: 3/4;
+  }
+}
+
+.shelfHeader {
+  text-align: left;
+}
+
+.userShelf {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 80% 20%;
+  .userShelfItem {
+    align-self: end;
+  }
+  .userShelfName {
+    grid-row: 2/3;
+    grid-column: 1/5;
+    h3 {
+      padding-top: 19px;
+    }
+    .userShelfButtons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      .carousel__back-button{
+        padding-top: 10px;
+      }
+    }
+  }
+}
+
+.booksInCommonTitle {
+  text-align: left;
+  padding-top: 16px;
+}
+
+.booksInCommonSlide {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.genreMatchHeader {
+  text-align: left;
+  padding-top: 16px;
+}

@@ -17,7 +17,7 @@ const ReviewContainer = ( {review} ) => {
           likes={review.likes} review={review}/>
         <CommentsContainer
           review={review}
-        />
+          visible={true}/>
       </Card>
     )
   } else {

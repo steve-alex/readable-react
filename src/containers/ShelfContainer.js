@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from "react-router-dom"
-import Shelf from '../components/Shelf.js'
+import { UserShelfPage } from '../pages/UserShelfPage.js'
 
 
 const ShelfContainer = ( {user, match} ) => {
@@ -11,7 +11,7 @@ const ShelfContainer = ( {user, match} ) => {
           path={`${match.url}/:shelfId`}
           user={user}
           render={routerProps => {
-            return <Shelf
+            return <UserShelfPage
                       user={user}
                       {...routerProps}/>
           }}

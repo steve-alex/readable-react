@@ -14,11 +14,15 @@ export const NewCommentForm = ( {postType, postId, comments, setComments} ) => {
 
   return(
     <Form reply
+      className="newCommentForm"
       onSubmit={submitComment}>
       <Form.TextArea
         value={content}
+        placeholder="What are your thoughts on this..?"
         onChange={(e) => setContent(e.target.value)}/>
-      <Button type="submit" content='Add Reply' labelPosition='left' icon='edit' primary />
+      <div className="newCommentButton">
+        <Button type="submit" content='Leave Comment' labelPosition='left' icon='edit' primary />
+      </div>
     </Form>
   )
 }

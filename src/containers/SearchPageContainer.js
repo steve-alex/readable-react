@@ -6,18 +6,20 @@ import './containers.scss'
 import UserUpdateForm from '../forms/UserUpdateForm.js'
 
 const SearchPageContainer = ( {logout, userShelves} ) => {
+  const [searchType, setSearchType] = useState("title")
   const [searchResults, setSearchResults] = useState(undefined)
-  const [searchType, setSearchType] = useState(undefined)
+
   return (
     <div>
       <h1>Search</h1>
       <SearchForm
-        setSearchResults={setSearchResults}
-      />
+        searchType={searchType}
+        setSearchType={setSearchType}
+        setSearchResults={setSearchResults}/>
       <SearchResultsContainer
+        searchType={searchType}
         userShelves={userShelves}
-        searchResults={searchResults}
-      />
+        searchResults={searchResults}/>
     </div>
   )
 }

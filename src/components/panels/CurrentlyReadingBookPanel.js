@@ -57,7 +57,6 @@ export const CurrentlyReadingBookPanel = ( {index, book, setCurrentBook, current
             percent={Math.round((parseInt(currentBookPage) * 100 / parseInt(book.page_count)))}
             indicating
             progress/>
-          
           <UpdateReadingProgressForm
             pageCount={book.page_count}
             currentBookPage={currentBookPage}
@@ -67,7 +66,7 @@ export const CurrentlyReadingBookPanel = ( {index, book, setCurrentBook, current
         </div>
         <ButtonNext onClick={() => handleNextClick()}>Next</ButtonNext>
         {clicked &&
-          <Redirect to={`books/${book.copy_id}`} />}
+          <Redirect to={`books/${book.book_id}`} />}
       </div>
       </>
     )

@@ -1,22 +1,31 @@
 import React, { } from 'react';
-import SearchResult from '../components/SearchResult.js'
+import { BookSearchResult } from '../components/BookSearchResult.js'
+import { UserSearchResult } from '../components/UserSearchResult.js'
+import { Card } from 'semantic-ui-react'
 
-const SearchResultsContainer = ( {searchResults, userShelves} ) => {
+const SearchResultsContainer = ( {searchType, searchResults, userShelves} ) => {
 
   return (
-    <div className="searchResults">
+      <Card.Group>
       {searchResults && 
-        searchResults.results.map(book => {
-          return (
-            <SearchResult
-              key={book.google_id}
-              book={book}
-              userShelves={userShelves}
-            />
-          )
+        searchResults.results.map(result => {
+          if (searchType === "user") {
+            return (
+              <UserSearchResult
+                user={result}/>
+            )
+          } else {
+            return (
+              <BookSearchResult
+                key={result.google_id}
+                book={result}
+                userShelves={userShelves}
+              />
+            )
+          }
         })
       }
-    </div>
+      </Card.Group>
   )
 }
 

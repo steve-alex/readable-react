@@ -8,8 +8,6 @@ import API from '../adapters/api.js'
 
 const HomePageContainer = ( {user, logout} ) => {
   const [timeline, setTimeline] = useState([])
-  const [, updateState] = React.useState();
-  const forceUpdate = useCallback(() => updateState({}), []);
 
   useEffect(() => {
     API.getTimeline()
@@ -20,12 +18,12 @@ const HomePageContainer = ( {user, logout} ) => {
     <div>
       <HomePageCurrentlyReadingContainer
         userId={user.id}
-        forceUpdate={forceUpdate}/>
+        timeline={timeline.posts}
+        setTimeline={setTimeline}/>
       {timeline &&
         <TimelineContainer
           timeline={timeline}
         />
-
       }
       <button onClick={logout}>log out</button>
     </div>

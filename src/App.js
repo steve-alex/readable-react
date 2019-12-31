@@ -4,7 +4,6 @@ import { Route, useHistory } from "react-router-dom"
 import API from './adapters/api.js';
 import MainContainer from './containers/MainContainer.js';
 import WelcomeContainer from './containers/WelcomeContainer.js';
-
 import paths from './paths.js';
 
 const App = () => {
