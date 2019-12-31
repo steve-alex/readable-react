@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
-import { BooksInCommonSlide } from './BooksInCommonSlide.js'
+import { BookDisplaySlide } from './BookDisplaySlide.js'
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import './panels.scss'
 
@@ -45,7 +45,7 @@ export const UserBooksInCommonPanel = ( {booksInCommon}) => {
                   {booksToDisplay.map((slide, index) => {
                     return(
                       <Slide index={index}>
-                        <BooksInCommonSlide
+                        <BookDisplaySlide
                           slide={slide}/>
                       </Slide>
                     )

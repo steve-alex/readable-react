@@ -5,7 +5,7 @@ import { LikesPanel } from '../components/panels/LikesPanel.js'
 import { CommentsContainer } from '../containers/CommentsContainer.js'
 import { Card, Item } from 'semantic-ui-react'
 
-const ProgressContainer = ( {progress} ) => {
+const ProgressContainer = ( {progress, commentsHidden} ) => {
 
   if (progress) {
     return (
@@ -17,6 +17,7 @@ const ProgressContainer = ( {progress} ) => {
         <LikesPanel
           likes={progress.likes} progress={progress}/>
         <CommentsContainer
+          commentsHidden={commentsHidden}
           progress={progress}
         />
       </Card>

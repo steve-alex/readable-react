@@ -10,6 +10,7 @@ export const SubmitProgressForm = ( {createProgress} ) => {
         onSubmit={(e) => createProgress(e, content)}>
         <Form.Field>
         <Input
+          placeholder="Share your progress..."
           value={content}
           onChange={(e) => setContent(e.target.value)}/>
         </Form.Field>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom'
+import { Route, Switch, Link } from 'react-router-dom'
 import Login from '../pages/Login.js'
+import { Signup } from '../pages/Signup.js'
 
 const WelcomeContainer = ( {user, setUser}) => {
   const [message, setMessage] = useState(undefined)
@@ -15,11 +16,19 @@ const WelcomeContainer = ( {user, setUser}) => {
               setMessage={setMessage}
             />
           </Route>
+          <Route path="/signup">
+            <Signup
+              setUser={setUser}
+              setMessage={setMessage}
+            />
+          </Route>
         </Switch>
-        <a href="#">Register a new account</a>
         {message && 
           <p>{message}</p>
         }
+        <Link to="welcome/signup">
+          <p>Register a new account</p>
+        </Link>
       </div>
   )
 }

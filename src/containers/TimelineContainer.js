@@ -3,14 +3,14 @@ import { Rating, Card } from 'semantic-ui-react'
 import ReviewContainer from '../containers/ReviewContainer.js'
 import ProgressContainer from '../containers/ProgressContainer.js'
 
-const TimelineContainer = ( {timeline} ) => {
+const TimelineContainer = ( {timeline, commentsHidden} ) => {
 
   const createPostComponent = (post) => {
     let postType = Object.keys(post)[0]
     if (postType === "review") {
-      return <ReviewContainer review={post.review}/>
+      return <ReviewContainer review={post.review} commentsHidden={commentsHidden}/>
     } else {
-      return <ProgressContainer progress={post.progress}/>
+      return <ProgressContainer progress={post.progress} commentsHidden={commentsHidden}/>
     }
   }
 
