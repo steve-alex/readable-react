@@ -13,7 +13,8 @@ const Navbar = ( {userId} ) => {
   }
 
   return (
-    <Menu inverted>
+    <Menu
+      inverted>
       <Menu.Item
         name='home'
         active={activeItem === 'home'}

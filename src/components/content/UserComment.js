@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Comment, Button} from 'semantic-ui-react'
 import { CommentLikeButton } from '../buttons/CommentLikeButton.js'
+import { parseDate } from '../../hooks/datetime.js'
 import './content.scss'
 
 export const UserComment = ( {comment} ) => {

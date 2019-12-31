@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Rating, Card, Image } from 'semantic-ui-react'
 import { Redirect, useHistory } from 'react-router-dom'
+import { parseDate } from '../../hooks/datetime.js'
 import './banners.scss'
 
 export const ReviewBanner = ( {review} ) => {
@@ -40,7 +41,7 @@ export const ReviewBanner = ( {review} ) => {
                 </div>
               </div>
               <div className="post-created-at">
-                {review.created_at.slice(0, 10)}
+                {parseDate(review.created_at)}
               </div>
             </div>
           </Card.Header>

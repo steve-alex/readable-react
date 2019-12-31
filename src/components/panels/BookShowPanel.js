@@ -3,7 +3,7 @@ import RatingDistribution from '../RatingDistribution.js'
 import './panels.scss'
 import { Popup, Button, Rating } from 'semantic-ui-react'
 import { NewReviewForm } from '../NewReviewForm.js'
-// import { NewReviewForm } from '../components/forms/NewReviewForm.js'
+import { CurrentlyReadingButton } from '../buttons/CurrentlyReadingButton.js'
 import AddBookToShelfForm from '../../forms/AddBookToShelfForm.js';
 
 const BookShowPanel = ( {book, user, setUserHasReviewed, submitReview} ) => {
@@ -54,20 +54,25 @@ const BookShowPanel = ( {book, user, setUserHasReviewed, submitReview} ) => {
   return (
     <>
       <div class="bookShowPanel">
-        <img src={`${book.image_url}`}></img>
+        <div className="bookImage">
+          <img src={`${book.image_url}`}></img>
+
+        </div>
+        <CurrentlyReadingButton
+            copy={book.copy}
+            userId={user.id}/>
         <div class="bookShowText">
           <h2 class="bookShowPanelTitle">{book.title}</h2>
           <h3>{book.subtitle}</h3>
           <h5>By {book.authors}</h5>
           {book.categories && 
             renderCategories()}
-
           <div class="averageRating">
               <Popup
                 wide='very'
                 trigger={<div>
                           <Rating
-                            defaultRating={getAverageRating()}
+                            defaultRating={Math.round((getSumOfRatings() / getNumberOfReviews())* 100) / 100}
                             maxRating={5}
                             disabled />
                           {getNumberOfReviews()} reviews

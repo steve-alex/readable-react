@@ -57,7 +57,6 @@ export const CurrentlyReadingBookPanel = ( {index, book, setCurrentBook, current
             percent={Math.round((parseInt(currentBookPage) * 100 / parseInt(book.page_count)))}
             indicating
             progress/>
-          
           <UpdateReadingProgressForm
             pageCount={book.page_count}
             currentBookPage={currentBookPage}

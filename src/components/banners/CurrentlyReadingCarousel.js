@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import React, { } from 'react'
+import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
 import { CurrentlyReadingBookPanel } from '../panels/CurrentlyReadingBookPanel.js'
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
@@ -8,8 +8,8 @@ export const CurrentlyReadingCarousel = ( {currentlyReading, setCurrentBook, cur
     <div>
       <CarouselProvider
         naturalSlideWidth={100}
-        naturalSlideHeight={45}
-        totalSlides={currentlyReading.length}
+        naturalSlideHeight={32}
+        totalSlides={currentlyReading.length || 1}
       >
         <Slider
           onClick={e => {
@@ -21,8 +21,7 @@ export const CurrentlyReadingCarousel = ( {currentlyReading, setCurrentBook, cur
           {currentlyReading && 
             currentlyReading.map((book, index) => {
               return (
-                <Slide
-                  index={index}>
+                <Slide index={index}>
                   <CurrentlyReadingBookPanel
                     index={index}
                     book={book}

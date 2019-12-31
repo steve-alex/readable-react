@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Card, Image } from 'semantic-ui-react'
 import { Redirect, useHistory } from 'react-router-dom'
+import { parseDate } from '../../hooks/datetime.js'
 import './banners.scss'
 
 export const ProgressBanner = ( {progress} ) => {
@@ -11,7 +12,6 @@ export const ProgressBanner = ( {progress} ) => {
   const handleUserClick = () => {
     setUserClicked(true)
     history.push(`/users/${user.id}`)
-
   }
 
   return (
@@ -34,7 +34,7 @@ export const ProgressBanner = ( {progress} ) => {
             </div>
             <div></div>
             <div className="post-created-at">
-              {progress.created_at.slice(0, 10)}
+              {parseDate(progress.created_at)}
             </div>
           </div>
       </Card.Header>
@@ -42,5 +42,4 @@ export const ProgressBanner = ( {progress} ) => {
             <Redirect to={`/users/${user.id}`} />}
     </Card.Content>
   )
-
 }
