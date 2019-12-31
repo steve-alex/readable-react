@@ -3,9 +3,8 @@ import API from '../adapters/api.js'
 import { Form, Button, Menu, Icon, Input } from 'semantic-ui-react'
 import './forms.scss'
 
-const SearchForm = ( {setSearchResults}) => {
+const SearchForm = ( {setSearchResults, searchType, setSearchType}) => {
   const [searchTerm, setSearchTerm] = useState("")
-  const [searchType, setSearchType] = useState("title")
 
   const handleSubmit = (e) => {
     e.preventDefault()

@@ -5,7 +5,7 @@ import './forms.scss'
 
 const AddBookToShelfForm = ( {userShelves, book} ) => {
   const [shelfId, setShelfId] = useState("")
-  const [clicked, setClicked] = useState(false)
+  const [messages, setMessages] = useState("")
 
   const shelfNames = () => {
     return userShelves.map(shelf => {
@@ -20,6 +20,8 @@ const AddBookToShelfForm = ( {userShelves, book} ) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     API.addBookToShelf(book, shelfId)
+      .then(res => setMessages(res.message))
+      .catch(errors => setMessages(errors))
   }
 
   const onChange = (e) => {
@@ -39,20 +41,23 @@ const AddBookToShelfForm = ( {userShelves, book} ) => {
           trigger={<Button color="teal"> Add To Shelf </Button>}
           centred={false}>
           <Modal.Header>Add {book.title} to a shelf</Modal.Header>
-            <Form
-              onSubmit={handleSubmit}>
-              <Form.Field className="addToShelfForm">
-                <Dropdown
-                  color="blue"
-                  placeholder="Add this book to a shelf..."
-                  fluid
-                  search
-                  selection
-                  options={shelfNames()}
-                  onChange={onChange}/>
-                <Button color="red" type='submit'>Submit</Button>
-              </Form.Field>
-            </Form>
+            <Modal.Content>
+              <Form
+                onSubmit={handleSubmit}>
+                <Form.Field className="addToShelfForm">
+                  <Dropdown
+                    color="blue"
+                    placeholder="Add this book to a shelf..."
+                    fluid
+                    search
+                    selection
+                    options={shelfNames()}
+                    onChange={onChange}/>
+                  <Button color="red" type='submit'>Submit</Button>
+                </Form.Field>
+              </Form>
+              {messages}
+            </Modal.Content>
         </Modal>
       </div>
     </>
