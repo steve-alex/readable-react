@@ -1,5 +1,5 @@
 import React, { useState, createRef } from 'react';
-import { Route, Switch, Link } from "react-router-dom"
+import { Route, Switch, Redirect } from "react-router-dom"
 import HomePageContainer from './HomePageContainer.js'
 import BookPageContainer from './BookPageContainer.js'
 import UserPageContainer from './UserPageContainer.js'
@@ -19,15 +19,13 @@ const MainContainer = ( {user, logout}) => {
           sticky
           userId={user.id}/>
       </Sticky>
-      
       <Ref innerRef={contextRef}>
       <Container>
         <Switch>
           <Route path='/home'>
             <HomePageContainer
               user={user}
-              logout={logout}
-            />
+              logout={logout}/>
           </Route>
           <Route path='/search'>
             <SearchPageContainer

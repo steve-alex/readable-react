@@ -65,8 +65,10 @@ const getTimeline = () => {
 const getBook = (bookid) => {
   return fetch(`${BOOKS_URL}/${bookid}`, {
     headers: {
-      Authorisation: localStorage.getItem("token")
-    }
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorisation': localStorage.getItem("token")
+    },
   }).then(res => jsonify(res))
 }
 
@@ -74,8 +76,9 @@ const findOrCreateBook = (book) => {
   return fetch(`${BOOKS_URL}/find_or_create`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorisation': localStorage.getItem("token")
     },
     body: JSON.stringify({
       book: book
@@ -98,7 +101,15 @@ const search = (query, method) => {
 }
 
 const getShelf = (shelfId) => {
-  return fetch(`${SHELF_URL}/${shelfId}`).then(res => jsonify(res))
+  return fetch(`${SHELF_URL}/${shelfId}`, {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorisation': localStorage.getItem("token")
+    }
+  })
+  .then(res => jsonify(res))
 }
 
 const getCopy = (copyId) => {
@@ -106,11 +117,14 @@ const getCopy = (copyId) => {
 }
 
 const addBookToShelf = (book, shelfId) => {
+  console.log(book)
+  console.log(shelfId)
   return fetch(`${SHELF_URL}/add_book`, {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json'
+      'Accept': 'application/json',
+      'Authorisation': localStorage.getItem("token")
     },
     body: JSON.stringify({
       book: book,
@@ -324,8 +338,51 @@ const jsonify = (resp) => {
 }
 
 const findUsers = (searchTerm) => {
-  
+  return fetch(`${USERS_URL}/search`, {
+    'method': "POST",
+    'headers': {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      'Authorisation': localStorage.getItem("token"),
+    },
+    'body': JSON.stringify({
+      search_term: searchTerm
+    })
+  })
+  .then(res => jsonify(res))
 }
+
+const stopReadingBook = (copyId) => {
+  return fetch(`${COPY_URL}/${copyId}`, {
+    'method': "PATCH",
+    'headers': {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      'Authorisation': localStorage.getItem("token"),
+    },
+    'body': JSON.stringify({
+      currently_reading: false
+    })
+  })
+  .then(res => jsonify(res))
+}
+
+const startReadingBook = (copyId) => {
+  return fetch(`${COPY_URL}/${copyId}`, {
+    'method': "PATCH",
+    'headers': {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      'Authorisation': localStorage.getItem("token"),
+    },
+    'body': JSON.stringify({
+      currently_reading: true
+    })
+  })
+  .then(res => jsonify(res))
+}
+
+
 
 export default {
   validate,
@@ -354,5 +411,8 @@ export default {
   createProgress,
   unlikeComment,
   likeComment,
+  findUsers,
+  stopReadingBook,
+  startReadingBook,
   jsonify
 }

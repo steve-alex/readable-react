@@ -1,0 +1,14 @@
+.userShelfPage {
+  display: grid;
+  grid-template-rows: 10% 90%;
+  .shelfHeader {
+    grid-row: 1/2;
+    justify-self: center;
+    padding-top: 21px;
+  }
+} 
+
+.shelfBooks {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
