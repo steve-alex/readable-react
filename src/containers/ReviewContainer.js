@@ -5,7 +5,7 @@ import { ReviewContent } from '../components/content/ReviewContent.js'
 import { CommentsContainer } from '../containers/CommentsContainer.js'
 import { Item, Card} from 'semantic-ui-react'
 
-const ReviewContainer = ( {review} ) => {
+const ReviewContainer = ( {review, commentsVisible} ) => {
   if (review) {
     return (
       <Card fluid>
@@ -17,7 +17,7 @@ const ReviewContainer = ( {review} ) => {
           likes={review.likes} review={review}/>
         <CommentsContainer
           review={review}
-          visible={true}/>
+          visible={commentsVisible}/>
       </Card>
     )
   } else {
