@@ -3,6 +3,13 @@ import FollowButton from '../../components/buttons/FollowButton.js'
 import { Card } from 'semantic-ui-react'
 
 const UserInformationPanel = ( {user, userFollows, followObject} ) => {
+  const [followerCount, setFollowerCount] = useState(undefined)
+  const [followingCount, setFollowingCount] = useState(undefined)
+  
+  useEffect(() => {
+    setFollowerCount(user.follower_count)
+    setFollowingCount(user.following_count)
+  }, [])
 
   return(
     <div className="userInformationPanel">
@@ -12,14 +19,16 @@ const UserInformationPanel = ( {user, userFollows, followObject} ) => {
       </div>
       <FollowButton
         followObject={followObject}
-        userId={user.id}/>
+        userId={user.id}
+        followerCount={followerCount}
+        setFollowerCount={setFollowerCount}/>
       <div className="followerCount">
         <p>Followers</p>
-        <p>{user.follower_count}</p>
+        <p>{followerCount}</p>
       </div>
       <div className="followingCount">
         <p>Following</p>
-        <p>{user.following_count}</p>
+        <p>{followingCount}</p>
       </div>
       <div className="bookCount">
         <p>Books</p>
@@ -28,8 +37,7 @@ const UserInformationPanel = ( {user, userFollows, followObject} ) => {
       <div className="userAbout">
         <p>{user.about}</p>
       </div>
-      <h2>{user.city}</h2>
-      
+      <h2>{user.city}</h2>      
     </div>
   )
 }
