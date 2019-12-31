@@ -35,7 +35,7 @@ const HomePageCurrentlyReadingContainer = ( {userId, timeline, setTimeline} ) =>
   const createProgress = (e, content) => {
     e.preventDefault()
     API.createProgress(content)
-      // .then((res) => setTimeline([{"progress": res.progress}, ...timeline]))
+      // .then((res) => setTimeline([{"progress": res.progress.progress}, ...timeline]))
   }
 
   const checkFinishedReading = (pageCount) => {

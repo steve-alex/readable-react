@@ -1,13 +1,14 @@
 import React, {} from 'react'
+import './panels.scss';
 
-export const BooksInCommonSlide = ( {slide} ) => {
+export const BookDisplaySlide = ( {slide} ) => {
 
   return (
-    <div className="booksInCommonSlide">
+    <div className="bookDisplaySlide">
       {slide &&
         slide.map(book => {
           return (
-            <div className="bookInCommon">
+            <div className="bookDisplayImage">
               <img src={book.image_url}></img>
             </div>
           )

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { UserShelfSlide} from './UserShelfSlide.js'
+import { UserShelfPreviewSlide} from './UserShelfPreviewSlide.js'
 import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import './panels.scss'
 
-export const UserShelvesPanel = ( {shelves} ) => {
+export const UserShelvesPreviewPanel = ( {shelves} ) => {
   const [totalSlides, setTotalSlides] = useState(undefined)
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export const UserShelvesPanel = ( {shelves} ) => {
               let shelf = shelves[key]
               return (
                 <Slide index={index}>
-                  <UserShelfSlide
+                  <UserShelfPreviewSlide
                     shelfName={key}
                     shelf={shelf}/>
                 </Slide>

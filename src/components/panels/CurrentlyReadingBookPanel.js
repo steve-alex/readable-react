@@ -20,12 +20,12 @@ export const CurrentlyReadingBookPanel = ( {index, book, setCurrentBook, current
 
   const handleNextClick = () => {
     setCurrentPage(currentBookPage)
-    setCurrentBook(index + 1)
+    setCurrentBook(index += 1)
   }
 
   const handleBackClick = () => {
     setCurrentPage(currentBookPage)
-    setCurrentBook(index - 1)
+    setCurrentBook(index -= 1)
   }
 
   const handleClick = (e) => {
