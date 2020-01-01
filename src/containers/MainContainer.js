@@ -16,6 +16,7 @@ const MainContainer = ( {user, logout}) => {
     <>
       <Sticky context={contextRef}>
         <Navbar
+          logout={logout}
           sticky
           userId={user.id}/>
       </Sticky>

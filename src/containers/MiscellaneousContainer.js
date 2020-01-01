@@ -2,18 +2,18 @@ import React, { useState } from 'react'
 import { Route, Switch } from "react-router-dom"
 import UserUpdateForm from '../forms/UserUpdateForm.js'
 import ShelfContainer from '../containers/ShelfContainer.js'
+import { SettingsContainer } from '../containers/SettingsContainer.js'
 
 const MiscellaneousContainer = ( {user, match} ) => {
 
   return(
     <Switch>
       <Route
-        path={`/update`}
+        path={`/settings`}
         render={routerProps => {
-          return <UserUpdateForm
+          return <SettingsContainer
             user={user}
-            {...routerProps}
-          />
+            {...routerProps}/>
         }}
       />
       <Route

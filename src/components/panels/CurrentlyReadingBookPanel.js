@@ -25,7 +25,7 @@ export const CurrentlyReadingBookPanel = ( {index, book, totalSlides, currentSli
     } else {
       index += 1
       setCurrentBook(index)
-      setPageToUpdate(currentlyReading[index].updates[0].page_number)
+      setPageToUpdate(getPageToUpdate(index))
       setCurrentSlide(currentSlide + 1)
     }
   }
@@ -37,7 +37,7 @@ export const CurrentlyReadingBookPanel = ( {index, book, totalSlides, currentSli
     } else {
       index -= 1
       setCurrentBook(index)
-      setPageToUpdate(currentlyReading[index].updates[0].page_number)
+      setPageToUpdate(getPageToUpdate(index))
       setCurrentSlide(currentSlide - 1)
     }
 
@@ -46,6 +46,14 @@ export const CurrentlyReadingBookPanel = ( {index, book, totalSlides, currentSli
   const handleClick = (e) => {
     e.preventDefault()
     setClicked(true)
+  }
+
+  const getPageToUpdate = (index) => {
+    if (currentlyReading[index].updates[0]) {
+      return currentlyReading[index].updates[0].page_number
+    } else {
+      return 0
+    }
   }
 
   if (book) {

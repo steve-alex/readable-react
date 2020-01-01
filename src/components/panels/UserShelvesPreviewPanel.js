@@ -31,6 +31,7 @@ export const UserShelvesPreviewPanel = ( {shelves} ) => {
               return (
                 <Slide index={index}>
                   <UserShelfPreviewSlide
+                    key={key}
                     currentSlide={currentSlide}
                     setCurrentSlide={setCurrentSlide}
                     totalSlides={totalSlides}

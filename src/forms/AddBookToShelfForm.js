@@ -3,7 +3,7 @@ import { Form, Button, Dropdown, Modal } from 'semantic-ui-react'
 import API from '../adapters/api.js'
 import './forms.scss'
 
-const AddBookToShelfForm = ( {userShelves, book} ) => {
+const AddBookToShelfForm = ( {book, userShelves, setCopy} ) => {
   const [shelfId, setShelfId] = useState("")
   const [messages, setMessages] = useState("")
 
@@ -20,7 +20,10 @@ const AddBookToShelfForm = ( {userShelves, book} ) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     API.addBookToShelf(book, shelfId)
-      .then(res => setMessages(res.message))
+      .then(res => {
+        setMessages(res.messages)
+        setCopy(res.shelf.latest_copy)
+      })
       .catch(errors => setMessages(errors))
   }
 

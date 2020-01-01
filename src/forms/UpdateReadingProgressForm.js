@@ -29,7 +29,8 @@ export const UpdateReadingProgressForm = ( {pageCount, currentBookPage, setCurre
   }
 
   const handleSubmit = (e) => {
-    createUpdate(e, pageCount, currentProgress)
+    e.preventDefault()
+    createUpdate(pageCount)
     handleOpen()
   }
 
