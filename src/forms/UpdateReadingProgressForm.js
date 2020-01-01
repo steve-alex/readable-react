@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { Input, Form, Button } from 'semantic-ui-react'
+import { Input, Form, Button, Popup } from 'semantic-ui-react'
 import { usePrevious } from '../hooks/usePrevious';
+import './../components/panels/panels.scss'
 
-export const UpdateReadingProgressForm = ( {pageCount, currentBookPage, setCurrentBookPage, handleInputUpdate, createUpdate} ) => {
+export const UpdateReadingProgressForm = ( {pageCount, currentBookPage, setCurrentBookPage, setPageToUpdate, createUpdate} ) => {
   const [typing, setTyping] = useState(false)
   const [typingTimeout, setTypingTimeout] = useState(undefined)
+  const [currentProgress, setCurrentProgress] = useState(undefined)
+  const [popupOpen, setPopupOpen] = useState(false)
+  const [popupTimeout, setPopupTimeout] = useState(undefined)
+
+  useEffect(() => {
+    setCurrentProgress(currentBookPage)
+  }, [])
 
   const handleChange = (e) => {
     e.persist()
@@ -15,24 +23,53 @@ export const UpdateReadingProgressForm = ( {pageCount, currentBookPage, setCurre
     setCurrentBookPage(e.target.value)
     setTyping(true)
     setTypingTimeout(setTimeout(() => {
-      handleInputUpdate(e.target.value)
+      setPageToUpdate(e.target.value)
       setTyping(false)
-    }, 100));
+    }, 1000));
+  }
+
+  const handleSubmit = (e) => {
+    createUpdate(e, pageCount, currentProgress)
+    handleOpen()
+  }
+
+  const handleOpen = () => {
+    setPopupOpen(true)
+    setPopupTimeout(setTimeout(() => {
+      setPopupOpen(false)
+    }, 2500))
+  }
+
+  const handleClose = () => {
+    setPopupOpen(false)
+    clearTimeout(popupTimeout)
   }
 
   return (
     <div
       class="reading-progress-form">
       <Form
-        onSubmit={(e) => createUpdate(e, pageCount)}>
+        onSubmit={(e) => handleSubmit(e)}>
         <Form.Group>
           <Form.Input
-            width={5}
+            width={4}
             value={currentBookPage}
             onChange={handleChange}/>
-            <Form.Button
-              type='submit'
-              width={3}>Update</Form.Button>
+            <Popup
+              trigger={
+                <Button
+                className="readingProgressButton"
+                type='submit'
+                color="green"
+                inverted>Update Progress</Button>
+              }
+              on="click"
+              content="Your progress has been updated!"
+              open={popupOpen}
+              onClose={handleClose}
+              onOpen={handleOpen}
+            />
+
         </Form.Group>
       </Form>
 
