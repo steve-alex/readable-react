@@ -17,15 +17,17 @@ export const ProgressContentContainer = ( {progress} ) => {
           return (
             <div class="bookUpdatePanel" key={book.id}>
               <div class="progressBookImage">
-                <Link to={`books/${book.id}`}>
-                <img
-                  className="image-hoverable"
-                  src={book.image_url}></img>
+                <Link to={`books/${book.book_id}`}>
+                  <img
+                    className="image-hoverable"
+                    src={book.image_url}></img>
                 </Link>
               </div>
               <div class="bookUpdateMeta">
-                <h2
-                  className="text-hoverable"><span>{book.title}</span></h2>
+                <Link to={`books/${book.book_id}`}>
+                  <h2
+                    className="text-hoverable"><span>{book.title}</span></h2>
+                </Link>
                 <p>By {book.authors}</p>
                 <p>Page Count: {book.page_count}</p>
               </div>

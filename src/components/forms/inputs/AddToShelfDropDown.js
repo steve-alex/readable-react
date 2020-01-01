@@ -18,10 +18,10 @@ const AddToShelfDropDown = ( {shelves, setSelectedShelf} ) => {
     <Form>
       <Form.Field>
         <Dropdown
-        placeholder="Select Shelf"
-        fluid
-        selection
-        options={shelfNames()}
+          placeholder="Select Shelf"
+          fluid
+          selection
+          options={shelfNames()}
       />
       </Form.Field>
       <Button type='submit'>Submit</Button>

@@ -25,6 +25,10 @@ code {
   cursor: pointer;
 }
 
+.text-hoverable span {
+  color: black;
+}
+
 .image-hoverable:hover {
   box-shadow: 0 0 4px #3366FF;
   text-shadow: 0 0 4px #3366FF;
