@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { Item } from 'semantic-ui-react'
 import { UpdatesForBookPanel } from '../components/panels/UpdatesForBookPanel.js'
 import { DisplayUpdatePercentageBars } from '../components/content/DisplayUpdatePercentageBars'
@@ -7,26 +7,25 @@ import './containers.scss';
 export const ProgressContentContainer = ( {progress} ) => {
   const [bookClicked, setBookClicked] = useState(false)
 
-  const handleClick = (e) => {
-    setBookClicked(true)    
-  }
-
   return (
     <div className="progressContentContainer">
+      <div className="progressContent">
+        <p>{progress.content}</p>
+      </div>
       {progress.updates &&
         progress.updates.map(book => {
           return (
-            <div class="bookUpdatePanel">
+            <div class="bookUpdatePanel" key={book.id}>
               <div class="progressBookImage">
+                <Link to={`books/${book.id}`}>
                 <img
                   className="image-hoverable"
-                  src={book.image_url}
-                  onClick={(e) => handleClick(e)}></img>
+                  src={book.image_url}></img>
+                </Link>
               </div>
               <div class="bookUpdateMeta">
                 <h2
-                  className="text-hoverable"
-                  onClick={(e) => handleClick(e)}><span>{book.title}</span></h2>
+                  className="text-hoverable"><span>{book.title}</span></h2>
                 <p>By {book.authors}</p>
                 <p>Page Count: {book.page_count}</p>
               </div>
@@ -34,13 +33,15 @@ export const ProgressContentContainer = ( {progress} ) => {
                 {book.updates && 
                   book.updates.map(update => {
                     return <DisplayUpdatePercentageBars
+                              key={update.id}
                               update={update}
-                              pageCount={parseInt(book.page_count)}/>
+                              pageCount={parseInt(book.page_count)}
+                              timeSinceUpload={update.time_since_upload}/>
                   })
                 }
               </div>
-              {bookClicked &&
-                <Redirect to={`books/${book.book_id}`} />}
+              {/* {bookClicked &&
+                <Redirect to={`books/${bookClicked}`} />} */}
             </div>
           )    
         })

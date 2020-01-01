@@ -41,7 +41,7 @@ export const ReviewBanner = ( {review} ) => {
                 </div>
               </div>
               <div className="post-created-at">
-                {parseDate(review.created_at)}
+                {review.time_since_upload}
               </div>
             </div>
           </Card.Header>

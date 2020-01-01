@@ -9,8 +9,6 @@ import styles from './containers.scss'
 
 const HomePageCurrentlyReadingContainer = ( {userId, timeline, setTimeline} ) => {
   const [currentlyReading, setCurrentlyReading] = useState(undefined)
-  const [bookToUpdate, setBookToUpdate] = useState(undefined)
-  const [currentPage, setCurrentPage] = useState(undefined)
   const [finishedReading, setFinishedReading] = useState(false)
 
   useEffect(() => {
@@ -18,31 +16,18 @@ const HomePageCurrentlyReadingContainer = ( {userId, timeline, setTimeline} ) =>
     .then(res => setCurrentlyReading(res.user.updates_by_copy))
   }, [])
 
-  const setCurrentBook = (index) => {
-    let copy_id = currentlyReading[index].copy_id
-    setBookToUpdate(copy_id)
-  }
-
-  const handleInputUpdate = (update) => {
-    setCurrentPage(update)
-  }
-
-  const createUpdate = (e, pageCount) => {
-    API.createUpdate(bookToUpdate, currentPage)
-      .then(() => checkFinishedReading(pageCount))
-  }
-
   const createProgress = (e, content) => {
     e.preventDefault()
     API.createProgress(content)
       // .then((res) => setTimeline([{"progress": res.progress.progress}, ...timeline]))
   }
 
-  const checkFinishedReading = (pageCount) => {
-    if (currentPage >= pageCount) {
-      setFinishedReading(true)
-    } 
-  }
+  // const checkFinishedReading = (pageCount) => {
+  //   // 
+  //   if (currentPage >= pageCount) {
+  //     setFinishedReading(true)
+  //   } 
+  // }
 
   if (currentlyReading) {
     return(
@@ -52,12 +37,7 @@ const HomePageCurrentlyReadingContainer = ( {userId, timeline, setTimeline} ) =>
           finishedReading={finishedReading}
           bookToUpdate={bookToUpdate}/> */}
         <CurrentlyReadingCarousel
-          currentlyReading={currentlyReading}
-          setCurrentBook={setCurrentBook}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          handleInputUpdate={handleInputUpdate}
-          createUpdate={createUpdate}/>
+          currentlyReading={currentlyReading}/>
         <SubmitProgressForm
           createProgress={createProgress}/>
       </div>

@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import { Form, Input, Button } from 'semantic-ui-react'
+import { Form, Input, Button, TextArea} from 'semantic-ui-react'
+import '../../forms/forms.scss'
 
 export const SubmitProgressForm = ( {createProgress} ) => {
   const [content, setContent] = useState("")
 
   return(
-    <>
+    <div>
       <Form
+        className="submitProgressForm"
         onSubmit={(e) => createProgress(e, content)}>
         <Form.Field>
-        <Input
-          placeholder="Share your progress..."
+        <TextArea
+          className="progressInput"
+          placeholder="Share your latest progress..."
           value={content}
           onChange={(e) => setContent(e.target.value)}/>
         </Form.Field>
-        <Button type="submit">Submit</Button>
+        <Button className="progressButton" type="submit">Submit</Button>
       </Form>
-    </>
+    </div>
   )
 }

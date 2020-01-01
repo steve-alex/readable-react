@@ -2,7 +2,7 @@ import React from 'react'
 import { Progress } from 'semantic-ui-react'
 import "./content.scss"
 
-export const DisplayUpdatePercentageBars = ( {update, pageCount} ) => {
+export const DisplayUpdatePercentageBars = ( {update, pageCount, timeSinceUpload} ) => {
   
   const display = ((update.page_number > pageCount) ? pageCount : update.page_number)
 
@@ -16,7 +16,7 @@ export const DisplayUpdatePercentageBars = ( {update, pageCount} ) => {
             color='blue'
             progress="value"/>
           <div className="progressTime">
-            <h5>{update.created_at.slice(0, 10)}</h5>
+            <h5>{timeSinceUpload}</h5>
           </div>
         </div>
       }
