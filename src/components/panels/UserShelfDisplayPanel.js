@@ -7,6 +7,7 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 export const UserShelfDisplayPanel = ( {shelfName, shelfId, books} ) => {
   const [booksToDisplay, setBooksToDisplay] = useState(undefined)
   const [clicked, setClicked] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
 
   useEffect(() => {
     if (books) {
@@ -30,6 +31,14 @@ export const UserShelfDisplayPanel = ( {shelfName, shelfId, books} ) => {
     setBooksToDisplay(booksToDisplay)
   }
 
+  const getTotalSlides = () => {
+    if (Math.floor(books.length/4) % 1 != 0) {
+      return Math.floor(books.length/4)
+    } else {
+      return Math.floor(books.length/4) + 1
+    }
+  }
+
   return(
     <div className="userShelfDisplayPanel">
       <h1 className="booksInCommonTitle text-hoverable">
@@ -37,14 +46,19 @@ export const UserShelfDisplayPanel = ( {shelfName, shelfId, books} ) => {
       </h1>
       <CarouselProvider
         naturalSlideWidth={100}
-        naturalSlideHeight={25}
-        totalSlides={Math.floor(books.length/4)+1}>
+        naturalSlideHeight={23}
+        currentSlide={currentSlide}
+        totalSlides={getTotalSlides()}>
         <Slider>
           {booksToDisplay &&
             booksToDisplay.map(slide => {
               return(
                 <Slide>
-                  <BookDisplaySlide slide={slide}/>
+                  <BookDisplaySlide
+                    totalSlides={Math.floor(books.length/4)+1}
+                    currentSlide={currentSlide}
+                    setCurrentSlide={setCurrentSlide}
+                    slide={slide}/>
                 </Slide>
               )
             })

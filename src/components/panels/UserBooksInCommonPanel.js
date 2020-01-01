@@ -7,6 +7,7 @@ import './panels.scss'
 export const UserBooksInCommonPanel = ( {booksInCommon}) => {
   const [currentUser, setCurrentUser] = useState(false)
   const [booksToDisplay, setBooksToDisplay] = useState(undefined)
+  const [currentSlide, setCurrentSlide] = useState(0)
 
   useEffect(() => {
     if (booksInCommon === "Current User") {
@@ -40,13 +41,17 @@ export const UserBooksInCommonPanel = ( {booksInCommon}) => {
             <CarouselProvider
               naturalSlideWidth={100}
               naturalSlideHeight={40}
+              currentSlide={currentSlide}
               totalSlides={Math.floor(booksInCommon.length/4)+1}>
                 <Slider>
                   {booksToDisplay.map((slide, index) => {
                     return(
                       <Slide index={index}>
                         <BookDisplaySlide
-                          slide={slide}/>
+                          currentSlide={currentSlide}
+                          setCurrentSlide={setCurrentSlide}
+                          slide={slide}
+                          totalSlides={Math.floor(booksInCommon.length/4)+1}/>
                       </Slide>
                     )
                   })}

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { UserShelfPreviewSlide} from './UserShelfPreviewSlide.js'
-import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
+import { CarouselProvider, Slider, Slide,  } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import './panels.scss'
 
 export const UserShelvesPreviewPanel = ( {shelves} ) => {
   const [totalSlides, setTotalSlides] = useState(undefined)
+  const [currentSlide, setCurrentSlide] = useState(0)
 
   useEffect(() => {
     if (shelves) {
@@ -21,7 +22,8 @@ export const UserShelvesPreviewPanel = ( {shelves} ) => {
       {<CarouselProvider
           naturalSlideWidth={100}
           naturalSlideHeight={25}
-          totalSlides={totalSlides}>
+          totalSlides={totalSlides}
+          currentSlide={currentSlide}>
           <Slider>
             {shelves &&
               Object.keys(shelves).map((key, index) => {
@@ -29,6 +31,9 @@ export const UserShelvesPreviewPanel = ( {shelves} ) => {
               return (
                 <Slide index={index}>
                   <UserShelfPreviewSlide
+                    currentSlide={currentSlide}
+                    setCurrentSlide={setCurrentSlide}
+                    totalSlides={totalSlides}
                     shelfName={key}
                     shelf={shelf}/>
                 </Slide>
