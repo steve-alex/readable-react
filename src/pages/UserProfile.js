@@ -64,8 +64,7 @@ const UserPage = ( {match} ) => {
           {(selectedTab === "posts") && 
             <TimelineContainer
               timeline={profile.posts}
-              commentsHidden={true}/>
-          }
+              commentsHidden={true}/>}
           {(selectedTab === "shelves") &&
             <UserShelvesContainer
               shelves={profile.shelves}/>}

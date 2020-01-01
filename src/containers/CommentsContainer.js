@@ -34,7 +34,7 @@ export const CommentsContainer = ( {progress, review, commentsHidden} ) => {
           <Comment.Group>
             {comments && 
               comments.map(comment => {
-                return <UserComment comment={comment}/>
+                return <UserComment key={comment.id} comment={comment}/>
               })
             }
           </Comment.Group>

@@ -21,7 +21,7 @@ export const UserComment = ( {comment} ) => {
                 <div class="commentAuthor">{comment.username}</div>
               </Comment.Author>
               <Comment.Metadata>
-                <span>{comment.created_at.slice(0, 10)}</span>
+                <span>{comment.time_since_upload}</span>
               </Comment.Metadata>
             </div>
           </div>

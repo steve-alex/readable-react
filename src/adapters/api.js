@@ -258,7 +258,6 @@ const createUpdate = (copyId, pageCount) => {
 const getPostComments = (post, postType) => {
   const url = (postType == "Progress") ? PROGRESSES_URL : REVIEWS_URL
   const id = post.id
-  console.log(url)
   return fetch(`${url}/${id}/comments`, {
     'headers': {
       'Authorisation': localStorage.getItem("token"),

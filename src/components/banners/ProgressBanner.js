@@ -34,7 +34,7 @@ export const ProgressBanner = ( {progress} ) => {
             </div>
             <div></div>
             <div className="post-created-at">
-              {parseDate(progress.created_at)}
+              {progress.time_since_upload}
             </div>
           </div>
       </Card.Header>
