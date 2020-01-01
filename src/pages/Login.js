@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Route, useHistory } from 'react-router-dom'
+import { Route, useHistory, Link } from 'react-router-dom'
 import { Form, Button } from 'semantic-ui-react'
 import API from '../adapters/api.js';
 import paths from '../paths.js';
@@ -47,6 +47,9 @@ const Login = ( {setUser, setMessage} ) => {
         </Form.Field>
         <Button type='submit'>Submit</Button>
       </Form>
+      <Link to="/welcome/signup">
+        <p>Register a new account</p>
+      </Link>
     </>
   )
 }
