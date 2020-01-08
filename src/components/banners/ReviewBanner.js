@@ -11,7 +11,8 @@ export const ReviewBanner = ( {review} ) => {
 
   const handleUserClick = () => {
     setUserClicked(true)
-    history.push(`/users/${user.id}`)
+    console.log(user.id)
+    // history.push(`/users/${user.id}`)
   }
 
   return (
@@ -27,7 +28,7 @@ export const ReviewBanner = ( {review} ) => {
               <div></div>
               <div className="post-header-row-1">
                 <div className="post-username">
-                  <p className="text-hoverable"><span onClick={(e) => handleUserClick()}>
+                  <p className="text-hoverable"><span onClick={() => handleUserClick()}>
                     {user.username}
                   </span> rated it</p>
                 </div>

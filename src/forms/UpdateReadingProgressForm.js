@@ -20,10 +20,11 @@ export const UpdateReadingProgressForm = ( {pageCount, currentBookPage, setCurre
       clearTimeout(typingTimeout)
     }
 
+    setPageToUpdate(e.target.value)
     setCurrentBookPage(e.target.value)
+
     setTyping(true)
     setTypingTimeout(setTimeout(() => {
-      setPageToUpdate(e.target.value)
       setTyping(false)
     }, 1000));
   }

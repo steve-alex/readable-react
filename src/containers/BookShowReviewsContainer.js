@@ -25,7 +25,7 @@ const BookShowReviewsContainer = ( {book, userHasReviewed} ) => {
     <div>
       <h1>Follower's Activity</h1>
       {reviews &&
-        reviews.map(item => {
+        reviews.reverse().map(item => {
           return <BookShowReviewContainer
             review={item.review}/>
         })

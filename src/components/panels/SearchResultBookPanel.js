@@ -28,7 +28,6 @@ const SearchResultBookPanel = ( {book, instanceToRender, setInstanceToRender} ) 
         <h2 className="text-hoverable searchResultComponent" onClick={handleClick}>
           <span>{book.title}</span>
         </h2>
-        {clicked && <Redirect to={`/books/${selectedBookId}`}/>}
       </Card.Header>
       <Card.Header>
         {book.subtitle && 

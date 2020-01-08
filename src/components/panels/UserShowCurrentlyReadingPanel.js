@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-export const UserShowCurrentlyReadingPanel = ( {userId} ) => {
+export const UserShowCurrentlyReadingPanel = ( {currentlyReading, userId} ) => {
   return (
     <div></div>
   )

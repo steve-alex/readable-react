@@ -44,7 +44,7 @@ const MainContainer = ( {user, logout}) => {
           />
           <Route
             path='/users'
-            render={routerProps => {
+            component={routerProps => {
               return <UserPageContainer
                         user={user}
                         {...routerProps}

@@ -27,7 +27,6 @@ const HomePageCurrentlyReadingContainer = ( {userId, createNewPost, timeline, se
   const createAndSetNewTimeline = (res) => {
     const newTimeline = timeline
     newTimeline.posts = [{"progress": res.progress}, ...timeline.posts]
-    console.log(newTimeline)
     // newTimeline.posts.unshift({"progress": res.progress})
     setTimeline(newTimeline)
   }
@@ -47,10 +46,10 @@ const HomePageCurrentlyReadingContainer = ( {userId, createNewPost, timeline, se
     return(
       <div>
         <h1 className="currently-reading">Currently Reading</h1>
-        <FinishedReadingPanel
+        {/* <FinishedReadingPanel
           finishedBook={finishedReadingBook}
           finishedReading={finishedReading}
-          setFinishedReading={setFinishedReading}/>
+          setFinishedReading={setFinishedReading}/> */}
         <CurrentlyReadingCarousel
           currentlyReading={currentlyReading}
           checkFinishedReading={checkFinishedReading}/>

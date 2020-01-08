@@ -27,7 +27,7 @@ export const ReviewContent = ( {review} ) => {
         <p>{review.content}</p>
       </div>
       {bookClicked &&
-        <Redirect to={`books/${review.book.id}`}/>}
+        <Redirect to={`/books/${review.book.id}`}/>}
     </div>
   )
   

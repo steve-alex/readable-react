@@ -65,8 +65,8 @@ export const UserShelfDisplayPanel = ( {shelfName, shelfId, books} ) => {
           }
         </Slider>
       </CarouselProvider>
-      {/* {clicked &&
-        <Redirect to={`shelves/${shelfId}`} />} */}
+      {clicked &&
+        <Redirect to={`/shelves/${shelfId}`} />}
     </div>
   )
 }

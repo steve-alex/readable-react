@@ -8,7 +8,7 @@ import { Item, Card} from 'semantic-ui-react'
 const ReviewContainer = ( {review, commentsVisible} ) => {
   if (review) {
     return (
-      <Card fluid>
+      <Card fluid color="teal">
         <ReviewBanner
           review={review}/>
         <ReviewContent

@@ -36,20 +36,20 @@ const Navbar = ( {userId, logout} ) => {
         Profile
       {(activeItem === 'profile') && <Redirect to={`/users/${userId}`}></Redirect>}
       </Menu.Item>
-      <Menu.Item
+      {/* <Menu.Item
         name='settings'
         active={activeItem === 'settings'}
         onClick={handleItemClick}>
         Settings
         {(activeItem === 'settings') && <Redirect to="/settings"></Redirect>}
-      </Menu.Item>
-      <Menu.Item
+      </Menu.Item> */}
+      {/* <Menu.Item
         name='logout'
         active={activeItem === 'logout'}
         onClick={logout}>
         Log out
         {(activeItem === 'logout')}
-      </Menu.Item>
+      </Menu.Item> */}
     </Menu>
   )
 }
