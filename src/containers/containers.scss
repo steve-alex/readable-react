@@ -13,6 +13,7 @@
 .bookUpdatePanel {
   display: grid;
   padding-left: 40px;
+  padding-bottom: 15px;
   grid-template-columns: 30% 70%;
   .progressBookImage {
     justify-self: left;
