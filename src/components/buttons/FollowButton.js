@@ -72,8 +72,7 @@ const FollowButton = ({followObject, userId, followerCount, setFollowerCount}) =
           animated="fade"
           onClick={handleClick}
           onMouseOver={(e) => handleMouseOver(e)}
-          onMouseLeave={(e) => handleMouseLeave(e)}
-          >
+          onMouseLeave={(e) => handleMouseLeave(e)}>
             <Button.Content visible>Following</Button.Content>
             <Button.Content hidden>Unfollow</Button.Content>
         </Button>
