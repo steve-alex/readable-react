@@ -9,6 +9,11 @@ export const CurrentlyReadingCarousel = ( {currentlyReading, checkFinishedReadin
   const [pageToUpdate, setPageToUpdate] = useState(undefined)
   const [currentSlide, setCurrentSlide] = useState(0)
 
+  useEffect(() => {
+    setBookToUpdate(currentlyReading[0].copy_id)
+    //Check if this is most optimal way of doing it
+  }, [])
+
   const createUpdate = (pageCount) => {
     API.createUpdate(bookToUpdate, pageToUpdate)
       .then(checkFinishedReading(bookToUpdate, pageCount, pageToUpdate))
