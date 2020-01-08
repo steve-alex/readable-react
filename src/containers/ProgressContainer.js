@@ -9,7 +9,7 @@ const ProgressContainer = ( {progress, commentsHidden} ) => {
 
   if (progress) {
     return (
-      <Card fluid>
+      <Card fluid color="teal">
         <ProgressBanner
           progress={progress}/>
         <ProgressContentContainer

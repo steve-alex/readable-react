@@ -46,8 +46,8 @@ const BookShow = ( {user, match} ) => {
             book={book}
             setUserHasReviewed={setUserHasReviewed}
             submitReview={submitReview}/>
-          <FollowersWithBookPanel
-            book={book}/>
+          {/* <FollowersWithBookPanel
+            book={book}/> */}
           <BookShowReviewsContainer
             book={book}
             userHasReviewed={userHasReviewed}/>

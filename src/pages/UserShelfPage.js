@@ -5,17 +5,12 @@ import './pages.scss'
 
 export const UserShelfPage = ( {user, match} ) => {
   const [shelf, setShelf] = useState("")
-  const [clickedId, setClickedId] = useState(false)
   
   useEffect(() => {
     API.getShelf(match.params.shelfId)
       .then(res => setShelf(res.shelf))
       .catch(console.log)
   }, [])
-
-  const handleClick = (bookId) => {
-    setClickedId(bookId)
-  }
 
   return (
     <div className="userShelfPage">
@@ -24,17 +19,13 @@ export const UserShelfPage = ( {user, match} ) => {
         {shelf.books && 
           shelf.books.map(book => {
             return(
-              <div class="bookOnShelf">
-                <img
-                  onClick={() => handleClick(book.id)}
-                  className="image-hoverable" src={book.image_url}></img>
-                <h5
-                  className="text-hoverable"
-                  onClick={(e) => handleClick(book.id)}>
-                  <span>{book.title}</span></h5>
-                  {clickedId && 
-                    <Redirect to={`books/${clickedId}`} />}
-
+              <div className="bookOnShelf">
+                <Link to={`/books/${book.id}`}>
+                  <img className="image-hoverable" src={book.image_url}></img>
+                </Link>
+                <Link to={`/books/${book.id}`}>
+                  <h5 className="text-hoverable"><span>{book.title}</span></h5>
+                </Link>
               </div>
             )
           })

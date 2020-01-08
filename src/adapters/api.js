@@ -34,6 +34,29 @@ const login = ({ email, password }) => {
   })
 }
 
+const signup = ( {fullname, username, email, password, passwordConfirmation} ) => {
+  console.log(fullname, username, email, password, passwordConfirmation)
+  return fetch(USERS_URL, {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      fullname: fullname,
+      username: username,
+      email: email,
+      password: password,
+      password_confirmation: passwordConfirmation
+    })
+  })
+  .then(resp => jsonify(resp))
+  .then(data => {
+    localStorage.setItem("token", data.token)
+    return data.user;
+  })
+}
+
 const logout = () => {
   localStorage.removeItem("token");
 };
@@ -112,13 +135,39 @@ const getShelf = (shelfId) => {
   .then(res => jsonify(res))
 }
 
+const createShelf = (shelfName, userId) => {
+  return fetch(`${SHELF_URL}`, {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorisation': localStorage.getItem("token")
+    },
+    body: JSON.stringify({
+      name: shelfName,
+      user_id: userId
+    })
+  })
+  .then(res => jsonify(res))
+} 
+
+const deleteShelf = (shelfId) => {
+  return fetch(`${SHELF_URL}/${shelfId}`, {
+    method: "DELETE",
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorisation': localStorage.getItem("token")
+    }
+  })
+  .then(res => jsonify(res))
+}
+
 const getCopy = (copyId) => {
   return fetch(`${COPY_URL}/${copyId}`).then(res => jsonify(res))
 }
 
 const addBookToShelf = (book, shelfId) => {
-  console.log(book)
-  console.log(shelfId)
   return fetch(`${SHELF_URL}/add_book`, {
     method: "POST",
     headers: {
@@ -222,6 +271,21 @@ const unlikePost = (likeId) => {
   })
   .then(res => jsonify(res))
 }
+
+const removeBookFromCurrentlyReading = (copyId) => {
+  return fetch(`${COPY_URL}/${copyId}`, {
+    'method': "PATCH",
+    'headers': {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      'Authorisation': localStorage.getItem("token"),
+    },
+    'body': JSON.stringify({
+      currently_reading: false
+    })
+  })
+  .then(res => jsonify(res))
+} 
 
 const getUserShelves = (userId) => {
   return fetch(`${SHELF_URL}/${userId}`).then(res => jsonify(res))
@@ -387,9 +451,12 @@ export default {
   validate,
   getUser,
   login,
+  signup,
   logout,
   getTimeline,
   getShelf,
+  createShelf,
+  deleteShelf,
   search,
   addBookToShelf,
   findOrCreateBook,
@@ -411,6 +478,7 @@ export default {
   unlikeComment,
   likeComment,
   findUsers,
+  removeBookFromCurrentlyReading,
   stopReadingBook,
   startReadingBook,
   jsonify

@@ -8,18 +8,19 @@
     padding-bottom: 30px;
     align-self: center;
   }
+  .shelfBooks {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
   .bookOnShelf {
     padding-bottom: 35px;
     display: grid;
     grid-template-rows: 80% 20%;
     justify-items: center;
-    img {
+    a {
+      justify-content: end;
       align-self: end;
     }
   }  
 } 
 
-.shelfBooks {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}

@@ -4,21 +4,27 @@ import TimelineContainer from './TimelineContainer.js'
 import HomePageCurrentlyReadingContainer from './HomePageCurrentlyReadingContainer.js'
 import API from '../adapters/api.js'
 
-
-
 const HomePageContainer = ( {user, logout} ) => {
   const [timeline, setTimeline] = useState([])
 
   useEffect(() => {
     API.getTimeline()
       .then(res => setTimeline(res.timeline))
+    
+    console.log(timeline[0])
   }, [])
+
+  const createNewPost = () => {
+    API.getTimeline()
+    . then(res => setTimeline(res.timeline))
+  }
   
   return (
     <div>
       <HomePageCurrentlyReadingContainer
         userId={user.id}
-        timeline={timeline.posts}
+        createNewPost={createNewPost}
+        timeline={timeline}
         setTimeline={setTimeline}/>
       {timeline &&
         <TimelineContainer

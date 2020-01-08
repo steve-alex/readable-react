@@ -58,8 +58,11 @@ const UserPage = ( {match} ) => {
               shelves={profile.shelves}/>
             <UserBooksInCommonPanel
               booksInCommon={profile.books_in_common}/>
-            <UserShowCurrentlyReadingPanel
+            {/* {profile.updates_by_copy && 
+              <UserShowCurrentlyReadingPanel
+              currentlyReading={profile.updates_by_copy}
               userId={profile.user.id}/>
+            } */}
             </div>}
           {(selectedTab === "posts") && 
             <TimelineContainer

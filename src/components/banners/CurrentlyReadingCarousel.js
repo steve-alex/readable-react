@@ -4,14 +4,19 @@ import { CurrentlyReadingBookPanel } from '../panels/CurrentlyReadingBookPanel.j
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import API from '../../adapters/api.js'
 
-export const CurrentlyReadingCarousel = ( {currentlyReading} ) => {
+export const CurrentlyReadingCarousel = ( {currentlyReading, checkFinishedReading} ) => {
   const [bookToUpdate, setBookToUpdate] = useState(undefined)
   const [pageToUpdate, setPageToUpdate] = useState(undefined)
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  const createUpdate = () => {
+  useEffect(() => {
+    setBookToUpdate(currentlyReading[0].copy_id)
+    //Check if this is most optimal way of doing it
+  }, [])
+
+  const createUpdate = (pageCount) => {
     API.createUpdate(bookToUpdate, pageToUpdate)
-      // .then(() => checkFinishedReading(pageCount))
+      .then(checkFinishedReading(bookToUpdate, pageCount, pageToUpdate))
   }
 
   const setCurrentBook = (index) => {

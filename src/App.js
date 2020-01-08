@@ -18,7 +18,7 @@ const App = () => {
     })
     .catch(errors => {
       setErrors(errors)
-      history.push(paths.LOGIN)
+      // history.push(paths.LOGIN)
     })
   }, [])
 
@@ -38,8 +38,12 @@ const App = () => {
       />
       ) : (
         <Route path='/welcome'
-        render={() => {
-          return <WelcomeContainer user={user} setUser={setUser} logout={logout}/>
+        render={routerProps => {
+          return <WelcomeContainer
+                    {...routerProps}
+                    user={user}
+                    setUser={setUser}
+                    logout={logout}/>
         }}
       />
       )}

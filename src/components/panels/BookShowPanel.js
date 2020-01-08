@@ -7,7 +7,14 @@ import { CurrentlyReadingButton } from '../buttons/CurrentlyReadingButton.js'
 import AddBookToShelfForm from '../../forms/AddBookToShelfForm.js';
 
 const BookShowPanel = ( {book, user, setUserHasReviewed, submitReview} ) => {
+  const [copy, setCopy] = useState()
   const metrics = book.metrics
+
+  useEffect(() => {
+    if (book.copy) {
+      setCopy(book.copy[0])
+    }
+  }, [])
 
   const getAverageRating = () => {
     let numberOfReviews = getNumberOfReviews()
@@ -58,9 +65,18 @@ const BookShowPanel = ( {book, user, setUserHasReviewed, submitReview} ) => {
           <img src={`${book.image_url}`}></img>
 
         </div>
-        <CurrentlyReadingButton
-            copy={book.copy}
-            userId={user.id}/>
+            {copy &&
+              <CurrentlyReadingButton
+                copy={copy}
+                setCopy={setCopy}
+                userId={user.id}/>
+            }
+            {!copy &&
+              <CurrentlyReadingButton
+                copy={copy}
+                setCopy={setCopy}
+                userId={user.id}/>
+            }
         <div class="bookShowText">
           <h2 class="bookShowPanelTitle">{book.title}</h2>
           <h3>{book.subtitle}</h3>
@@ -88,6 +104,7 @@ const BookShowPanel = ( {book, user, setUserHasReviewed, submitReview} ) => {
           <div className="bookAction">
             <AddBookToShelfForm
               className="addBookToShelfForm"
+              setCopy={setCopy}
               book={book}
               userShelves={user.shelves}
             />

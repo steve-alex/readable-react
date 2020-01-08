@@ -16,6 +16,7 @@ const MainContainer = ( {user, logout}) => {
     <>
       <Sticky context={contextRef}>
         <Navbar
+          logout={logout}
           sticky
           userId={user.id}/>
       </Sticky>
@@ -43,7 +44,7 @@ const MainContainer = ( {user, logout}) => {
           />
           <Route
             path='/users'
-            render={routerProps => {
+            component={routerProps => {
               return <UserPageContainer
                         user={user}
                         {...routerProps}

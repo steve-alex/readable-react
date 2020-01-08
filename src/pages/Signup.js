@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Button } from 'semantic-ui-react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import API from '../adapters/api.js'
 
 
@@ -45,7 +45,7 @@ export const Signup = ( {setUser, setMessage} ) => {
             type='text'
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder='Fullname'/>
+            placeholder='Username'/>
         </Form.Field>
         <Form.Field>
           <label>E-mail</label>
@@ -53,7 +53,7 @@ export const Signup = ( {setUser, setMessage} ) => {
             type='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder='Username' />
+            placeholder='e-mail' />
         </Form.Field>
         <Form.Field>
           <label>Password</label>
@@ -73,6 +73,9 @@ export const Signup = ( {setUser, setMessage} ) => {
         </Form.Field>
         <Button type='submit'>Submit</Button>
       </Form>
+      <Link to="/welcome/login">
+        <p>Sign in with an account</p>
+      </Link>
     </>
   )
 }

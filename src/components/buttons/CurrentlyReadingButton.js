@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Button, Popup } from 'semantic-ui-react';
 import API from '../../adapters/api.js'
 
-export const CurrentlyReadingButton = ( {copy} ) => {
+export const CurrentlyReadingButton = ( {copy, setCopy, userId} ) => {
   const [currentlyReading, setCurrentlyReading] = useState(undefined)
   const [onShelf, setOnShelf] = useState(undefined)
 
   useEffect(() => {
-    if (copy[0]) {
-      setCurrentlyReading(copy[0].currently_reading)
+    if (!!copy) {
+      setCurrentlyReading(copy.currently_reading)
       setOnShelf(true)
     } else {
       setCurrentlyReading(false)
@@ -18,14 +18,14 @@ export const CurrentlyReadingButton = ( {copy} ) => {
 
   const handleStopReading = (e) => {
     e.preventDefault()
-    API.stopReadingBook(copy[0].id)
+    API.stopReadingBook(copy.id)
       .then(setCurrentlyReading(false))
   }
 
   const handleAddCurrentlyReading = (e) => {
     e.preventDefault()
     if (onShelf) {
-      API.startReadingBook(copy[0].id)
+      API.startReadingBook(copy.id)
         .then(setCurrentlyReading(true))
     }
   }

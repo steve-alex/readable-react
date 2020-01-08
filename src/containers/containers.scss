@@ -13,6 +13,7 @@
 .bookUpdatePanel {
   display: grid;
   padding-left: 40px;
+  padding-bottom: 15px;
   grid-template-columns: 30% 70%;
   .progressBookImage {
     justify-self: left;
@@ -51,5 +52,22 @@
   p {
     text-align: left;
     font-size: 16px;
+  }
+}
+
+.settingsContainer {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  .settingsMenu{
+    align-self: start;
+  }
+  .shelfUpdateFormContainer {
+    padding-top: 50px;
+    .shelvesToUpdate {
+      .shelfInstance {
+        display: flex;
+
+      }
+    }
   }
 }
