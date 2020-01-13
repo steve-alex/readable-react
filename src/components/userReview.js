@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Rating } from 'semantic-ui-react'
+import React from "react";
+import { Rating } from "semantic-ui-react";
 
-
-const userReview = ( {review} ) => {
-  
+export const userReview = ({ review }) => {
   return (
     <div>
       <p>{review.content}</p>
@@ -16,7 +14,5 @@ const userReview = ( {review} ) => {
       />
       <br></br>
     </div>
-  )
-}
-
-export default userReview;
+  );
+};

@@ -1,7 +1,6 @@
-import React from 'react'
-import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
-import { CurrentlyReadingBookPanel } from '../panels/CurrentlyReadingBookPanel.js'
-import 'pure-react-carousel/dist/react-carousel.es.css';
+import React from "react";
+import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
+import "pure-react-carousel/dist/react-carousel.es.css";
 
 export const GetReadingCarousel = () => {
   return (
@@ -14,7 +13,7 @@ export const GetReadingCarousel = () => {
         <Slider
           onClick={e => {
             if (e.target.tagName === "INPUT") {
-              e.target.focus()
+              e.target.focus();
             }
           }}
         >
@@ -36,5 +35,5 @@ export const GetReadingCarousel = () => {
         </Slider>
       </CarouselProvider>
     </div>
-  )
-}
+  );
+};

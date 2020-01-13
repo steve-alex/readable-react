@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import SearchForm from '../forms/SearchForm.js'
-import SearchResultsContainer from './SearchResultsContainer.js'
-import API from '../adapters/api.js'
-import './containers.scss'
-import UserUpdateForm from '../forms/UserUpdateForm.js'
+import React, { useState } from "react";
+import { SearchForm } from "../forms/SearchForm.js";
+import { SearchResultsContainer } from "./SearchResultsContainer.js";
+import "./containers.scss";
 
-const SearchPageContainer = ( {logout, userShelves} ) => {
-  const [searchType, setSearchType] = useState("title")
-  const [searchResults, setSearchResults] = useState(undefined)
+export const SearchPageContainer = ({ userShelves }) => {
+  const [searchType, setSearchType] = useState("title");
+  const [searchResults, setSearchResults] = useState(undefined);
 
   return (
     <div>
@@ -15,13 +13,13 @@ const SearchPageContainer = ( {logout, userShelves} ) => {
       <SearchForm
         searchType={searchType}
         setSearchType={setSearchType}
-        setSearchResults={setSearchResults}/>
+        setSearchResults={setSearchResults}
+      />
       <SearchResultsContainer
         searchType={searchType}
         userShelves={userShelves}
-        searchResults={searchResults}/>
+        searchResults={searchResults}
+      />
     </div>
-  )
-}
-
-export default SearchPageContainer;
+  );
+};

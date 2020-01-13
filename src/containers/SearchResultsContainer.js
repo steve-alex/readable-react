@@ -1,19 +1,15 @@
-import React, { } from 'react';
-import { BookSearchResult } from '../components/BookSearchResult.js'
-import { UserSearchResult } from '../components/UserSearchResult.js'
-import { Card } from 'semantic-ui-react'
+import React from "react";
+import { BookSearchResult } from "../components/BookSearchResult.js";
+import { UserSearchResult } from "../components/UserSearchResult.js";
+import { Card } from "semantic-ui-react";
 
-const SearchResultsContainer = ( {searchType, searchResults, userShelves} ) => {
-
+export const SearchResultsContainer = ( {searchType,searchResults,userShelves} ) => {
   return (
-      <Card.Group>
-      {searchResults && 
+    <Card.Group>
+      {searchResults &&
         searchResults.results.map(result => {
           if (searchType === "user") {
-            return (
-              <UserSearchResult
-                user={result}/>
-            )
+            return <UserSearchResult user={result} />;
           } else {
             return (
               <BookSearchResult
@@ -21,12 +17,9 @@ const SearchResultsContainer = ( {searchType, searchResults, userShelves} ) => {
                 book={result}
                 userShelves={userShelves}
               />
-            )
+            );
           }
-        })
-      }
-      </Card.Group>
-  )
-}
-
-export default SearchResultsContainer;
+        })}
+    </Card.Group>
+  );
+};

@@ -1,31 +1,23 @@
-import React, { useState } from 'react'
-import { Route, Switch } from "react-router-dom"
-import UserUpdateForm from '../forms/UserUpdateForm.js'
-import ShelfContainer from '../containers/ShelfContainer.js'
-import { SettingsContainer } from '../containers/SettingsContainer.js'
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import { SettingsContainer } from "../containers/SettingsContainer.js";
+import { ShelfContainer }  from "../containers/ShelfContainer.js";
 
-const MiscellaneousContainer = ( {user, match} ) => {
-
-  return(
+export const MiscellaneousContainer = ({ user, match }) => {
+  return (
     <Switch>
       <Route
         path={`/settings`}
         render={routerProps => {
-          return <SettingsContainer
-            user={user}
-            {...routerProps}/>
+          return <SettingsContainer user={user} {...routerProps} />;
         }}
       />
       <Route
-        path={'/shelves'}
+        path={"/shelves"}
         render={routerProps => {
-          return <ShelfContainer
-                  user={user}
-                  {...routerProps}/>
+          return <ShelfContainer user={user} {...routerProps} />;
         }}
       />
     </Switch>
-  )
-}
-
-export default MiscellaneousContainer;
+  );
+};

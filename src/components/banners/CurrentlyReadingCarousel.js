@@ -1,46 +1,49 @@
-import React, { useState, useEffect } from 'react'
-import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
-import { CurrentlyReadingBookPanel } from '../panels/CurrentlyReadingBookPanel.js'
-import 'pure-react-carousel/dist/react-carousel.es.css';
-import API from '../../adapters/api.js'
+import React, { useState, useEffect } from "react";
+import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
+import { CurrentlyReadingBookPanel } from "../panels/CurrentlyReadingBookPanel.js";
+import "pure-react-carousel/dist/react-carousel.es.css";
+import API from "../../adapters/api.js";
 
 export const CurrentlyReadingCarousel = ( {currentlyReading, checkFinishedReading} ) => {
-  const [bookToUpdate, setBookToUpdate] = useState(undefined)
-  const [pageToUpdate, setPageToUpdate] = useState(undefined)
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const [bookToUpdate, setBookToUpdate] = useState(undefined);
+  const [pageToUpdate, setPageToUpdate] = useState(undefined);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
-    setBookToUpdate(currentlyReading[0].copy_id)
+    setBookToUpdate(currentlyReading[0].copy_id);
     //Check if this is most optimal way of doing it
-  }, [])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const createUpdate = (pageCount) => {
-    API.createUpdate(bookToUpdate, pageToUpdate)
-      .then(checkFinishedReading(bookToUpdate, pageCount, pageToUpdate))
-  }
+  const createUpdate = pageCount => {
+    API.createUpdate(bookToUpdate, pageToUpdate).then(
+      checkFinishedReading(bookToUpdate, pageCount, pageToUpdate)
+    );
+  };
 
-  const setCurrentBook = (index) => {
-    let copy_id = currentlyReading[index].copy_id
-    setBookToUpdate(copy_id)
-  }
-  
+  const setCurrentBook = index => {
+    let copy_id = currentlyReading[index].copy_id;
+    setBookToUpdate(copy_id);
+  };
+
   const totalSlides = currentlyReading.length || 1;
 
-  return(
+  return (
     <div>
       <CarouselProvider
         naturalSlideWidth={100}
         naturalSlideHeight={29}
         currentSlide={currentSlide}
-        totalSlides={totalSlides}>
+        totalSlides={totalSlides}
+      >
         <Slider
           onClick={e => {
             if (e.target.tagName === "INPUT") {
-              e.target.focus()
+              e.target.focus();
             }
           }}
         >
-          {currentlyReading && 
+          {currentlyReading &&
             currentlyReading.map((book, index) => {
               return (
                 <Slide index={index}>
@@ -54,13 +57,13 @@ export const CurrentlyReadingCarousel = ( {currentlyReading, checkFinishedReadin
                     pageToUpdate={pageToUpdate}
                     setPageToUpdate={setPageToUpdate}
                     setCurrentBook={setCurrentBook}
-                    createUpdate={createUpdate}/>
+                    createUpdate={createUpdate}
+                  />
                 </Slide>
-              )
-            })
-          }
+              );
+            })}
         </Slider>
       </CarouselProvider>
     </div>
-  )
-}
+  );
+};

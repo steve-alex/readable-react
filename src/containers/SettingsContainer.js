@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Menu } from 'semantic-ui-react'
-import UserUpdateForm from '../forms/UserUpdateForm.js';
+import { UserUpdateForm }from '../forms/UserUpdateForm.js';
 import { ShelfUpdateForm } from '../forms/ShelfUpdateForm.js'
 
 export const SettingsContainer = ( {user, match} ) => {

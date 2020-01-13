@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import FollowButton from '../../components/buttons/FollowButton.js'
-import { Card } from 'semantic-ui-react'
+import React, { useEffect, useState } from "react";
+import { FollowButton } from "../../components/buttons/FollowButton.js";
+// import { Card } from "semantic-ui-react";
 
-const UserInformationPanel = ( {user, userFollows, followObject} ) => {
-  const [followerCount, setFollowerCount] = useState(undefined)
-  const [followingCount, setFollowingCount] = useState(undefined)
-  
+export const UserInformationPanel = ({ user, userFollows, followObject }) => {
+  const [followerCount, setFollowerCount] = useState(undefined);
+  const [followingCount, setFollowingCount] = useState(undefined);
+
   useEffect(() => {
-    setFollowerCount(user.follower_count)
-    setFollowingCount(user.following_count)
-  }, [])
+    setFollowerCount(user.follower_count);
+    setFollowingCount(user.following_count);
+  }, []);
 
-  return(
+  return (
     <div className="userInformationPanel">
       <h1 className="username">{user.username}</h1>
       <div className="userAvatar">
@@ -21,7 +21,8 @@ const UserInformationPanel = ( {user, userFollows, followObject} ) => {
         followObject={followObject}
         userId={user.id}
         followerCount={followerCount}
-        setFollowerCount={setFollowerCount}/>
+        setFollowerCount={setFollowerCount}
+      />
       <div className="followerCount">
         <p>Followers</p>
         <p>{followerCount}</p>
@@ -37,9 +38,7 @@ const UserInformationPanel = ( {user, userFollows, followObject} ) => {
       <div className="userAbout">
         <p>{user.about}</p>
       </div>
-      <h2>{user.city}</h2>      
+      <h2>{user.city}</h2>
     </div>
-  )
-}
-
-export default UserInformationPanel;
+  );
+};

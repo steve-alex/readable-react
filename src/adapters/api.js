@@ -61,7 +61,7 @@ const logout = () => {
   localStorage.removeItem("token");
 };
 
-const validate = () => {
+const validateUser = () => {
   return fetch(VALIDATE_URL, {
     headers: {
       Authorisation: localStorage.getItem("token")
@@ -448,7 +448,7 @@ const startReadingBook = (copyId) => {
 
 
 export default {
-  validate,
+  validateUser,
   getUser,
   login,
   signup,

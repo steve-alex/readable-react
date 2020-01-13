@@ -1,39 +1,31 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import SearchBar from '../components/SearchBar.js'
-import TimelineContainer from './TimelineContainer.js'
-import HomePageCurrentlyReadingContainer from './HomePageCurrentlyReadingContainer.js'
-import API from '../adapters/api.js'
+import React, { useEffect, useState } from "react";
+import { TimelineContainer } from "./TimelineContainer.js";
+import { HomePageCurrentlyReadingContainer } from "./HomePageCurrentlyReadingContainer.js";
+import API from "../adapters/api.js";
 
-const HomePageContainer = ( {user, logout} ) => {
-  const [timeline, setTimeline] = useState([])
+export const HomePageContainer = ({ user, logout }) => {
+  const [timeline, setTimeline] = useState([]);
 
   useEffect(() => {
-    API.getTimeline()
-      .then(res => setTimeline(res.timeline))
-    
-    console.log(timeline[0])
-  }, [])
+    API.getTimeline().then(res => setTimeline(res.timeline));
+  }, []);
 
   const createNewPost = () => {
-    API.getTimeline()
-    . then(res => setTimeline(res.timeline))
-  }
-  
+    API.getTimeline().then(res => setTimeline(res.timeline));
+  };
+
   return (
     <div>
       <HomePageCurrentlyReadingContainer
         userId={user.id}
         createNewPost={createNewPost}
         timeline={timeline}
-        setTimeline={setTimeline}/>
-      {timeline &&
-        <TimelineContainer
-          timeline={timeline}
-        />
-      }
+        setTimeline={setTimeline}
+      />
+      {timeline && <TimelineContainer timeline={timeline} />}
       <button onClick={logout}>log out</button>
     </div>
-  )
-}
+  );
+};
 
 export default HomePageContainer;
