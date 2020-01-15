@@ -46,11 +46,11 @@ export const HomePageCurrentlyReadingContainer = ( {userId, createNewPost, timel
     return (
       <div>
         <h1 className="currently-reading">Currently Reading</h1>
-        <FinishedReadingPanel
+        {/* <FinishedReadingPanel
           finishedBook={finishedReadingBook}
           finishedReading={finishedReading}
           setFinishedReading={setFinishedReading}
-        />
+        /> */}
         <CurrentlyReadingCarousel
           currentlyReading={currentlyReading}
           checkFinishedReading={checkFinishedReading}

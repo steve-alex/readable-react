@@ -1,0 +1,48 @@
+.currentlyReadingCarousel {
+  display: grid;
+  grid-template-columns: 6% 88% 6%;
+  padding-bottom: 21px;
+  .currentlyReadingPanel {
+    display:grid;
+    grid-template-columns: 35% 65%;
+    grid-template-rows: 10% 90%;
+    padding-top: 4px;
+    .currentlyReadingBookTitle {
+      grid-row: 1/2;
+      grid-column: 1/4;
+      justify-self: left;
+      padding-left: 15px;
+    }
+    .currentlyReadingBookContent {
+      grid-row: 2/3;
+      grid-column: 1/2;
+      text-align: left;
+      h5 {
+        padding-left: 15px;
+        text-align: left;
+      }
+      img {
+        padding-left: 16px;
+        text-align: left;
+      }
+
+    }
+    .currentlyReadingProgress {
+      display: grid;
+      grid-template-columns: 80%;
+      align-content: center;
+      .totalPages {
+        justify-content: center;
+        text-align: left;
+        margin: 0;
+      }
+      .lastRead {
+        padding-top: 3px;
+        text-align: left;
+      }
+      .readingProgressButton {
+        width: 150px;
+      }
+    }
+  }
+}
