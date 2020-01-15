@@ -8,6 +8,7 @@ import { UserBooksInCommonPanel } from "../components/panels/UserBooksInCommonPa
 // import { UserShowCurrentlyReadingPanel } from "../components/panels/UserShowCurrentlyReadingPanel.js";
 import { UserShelvesContainer } from "../containers/UserShelvesContainer.js";
 import { TimelineContainer } from "../containers/TimelineContainer";
+import './userProfile.scss'
 
 export const UserPage = ({ match }) => {
   const [profile, setProfile] = useState(undefined);
@@ -54,7 +55,7 @@ export const UserPage = ({ match }) => {
             favouriteAuthors={profile.favourite_authors}/> */}
           {selectedTab === "profile" && (
             <div>
-              {/* <UserGenreMatch genreMatch={profile.genre_match} /> */}
+              <UserGenreMatch genreMatch={profile.genre_match} />
               <UserShelvesPreviewPanel shelves={profile.shelves} />
               <UserBooksInCommonPanel booksInCommon={profile.books_in_common} />
               {/* {profile.updates_by_copy && 

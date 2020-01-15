@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { Card, Image } from "semantic-ui-react";
 import API from "../../adapters/api.js";
-import "./panels.scss";
+import "../../pages/searchPage.scss";
 
-export const SearchResultBookPanel = ( {book, instanceToRender, setInstanceToRender} ) => {
+export const SearchResultBookPanel = ({ book }) => {
   const [clicked, setClicked] = useState(false);
   const [selectedBookId, setSelectedBookId] = useState(undefined);
 
@@ -21,22 +21,18 @@ export const SearchResultBookPanel = ( {book, instanceToRender, setInstanceToRen
         size="small"
         src={book.image_url}
         className="image-hoverable"
+        onClick={() => handleClick()}
       />
-      {clicked && <Redirect to={`/books/${selectedBookId}`} />}
-      <Card.Header>
+      <div className="bookSearchResultContent">
         <h2
           className="text-hoverable searchResultComponent"
           onClick={handleClick}
         >
-          <span>{book.title}</span>
+          <span onClick={() => handleClick()}>{book.title}</span>
         </h2>
-      </Card.Header>
-      <Card.Header>
         {book.subtitle && (
-          <p className="searchResultsComponent">{book.subtitle}</p>
+          <h4 className="searchResultsComponent">{book.subtitle}</h4>
         )}
-      </Card.Header>
-      <Card.Meta>
         {book.authors && (
           <p className="searchResultsComponent">By {book.authors}</p>
         )}
@@ -45,10 +41,9 @@ export const SearchResultBookPanel = ( {book, instanceToRender, setInstanceToRen
             Page count: {book.page_count}
           </p>
         )}
-      </Card.Meta>
-      <Card.Content>
         {book.description && <p className="description">{book.description}</p>}
-      </Card.Content>
+      </div>
+      {clicked && <Redirect to={`books/${selectedBookId}`} />}
     </Card.Content>
   );
 };

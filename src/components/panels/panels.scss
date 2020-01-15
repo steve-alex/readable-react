@@ -2,10 +2,7 @@
   text-align: left;
 }
 
-.searchResultComponent {
-  text-align: left;
-  padding-bottom: 7px;
-}
+
 
 .bookShowPanel {
   padding-top: 4%;
@@ -158,38 +155,38 @@
   text-align: left;
 }
 
-.userShelf {
-  display: grid;
-  grid-template-columns: 5% 1fr 1fr 1fr 1fr 5%;
-  grid-template-rows: 80% 20%;
-  .userShelfItem {
-    align-self: end;
-  }
-  .backButton {
-    grid-column: 1/2;
-    width: 38px;
-  }
-  .nextButton {
-    grid-column: 6/7;
-    width: 38px;
-  }
-  .userShelfName {
-    grid-row: 2/3;
-    grid-column: 1/7;
-    h3 {
-      padding-top: 19px;
-    }
-    .userShelfButtons {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      .carousel__back-button{
-        padding-top: 10px;
-      }
-    }
-  }
-}
+// .userShelf {
+//   display: grid;
+//   grid-template-columns: 5% 1fr 1fr 1fr 1fr 5%;
+//   grid-template-rows: 80% 20%;
+//   .userShelfItem {
+//     align-self: end;
+//   }
+//   .backButton {
+//     grid-column: 1/2;
+//     width: 38px;
+//   }
+//   .nextButton {
+//     grid-column: 6/7;
+//     width: 38px;
+//   }
+//   .userShelfName {
+//     grid-row: 2/3;
+//     grid-column: 1/7;
+//     h3 {
+//       padding-top: 19px;
+//     }
+//     .userShelfButtons {
+//       display: flex;
+//       flex-direction: row;
+//       align-items: center;
+//       justify-content: center;
+//       .carousel__back-button{
+//         padding-top: 10px;
+//       }
+//     }
+//   }
+// }
 
 .booksInCommonTitle {
   text-align: left;

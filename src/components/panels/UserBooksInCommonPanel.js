@@ -32,7 +32,7 @@ export const UserBooksInCommonPanel = ({ booksInCommon }) => {
 
   if (booksInCommon !== "Current User") {
     return (
-      <div>
+      <div className="booksInCommonPanel">
         <h1 className="booksInCommonTitle">Books in Common</h1>
         {booksToDisplay && (
           <div className="booksInCommon">
