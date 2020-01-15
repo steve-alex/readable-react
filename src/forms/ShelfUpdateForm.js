@@ -3,15 +3,24 @@ import { Form, Input, Button } from "semantic-ui-react";
 import API from "../adapters/api";
 
 export const ShelfUpdateForm = ({ user, match }) => {
+  const [shelves, setShelves] = useState(undefined);
   const [shelfName, setShelfName] = useState(undefined);
 
+  useEffect(() => {
+    setShelves(user.shelves);
+  }, []);
+
   const handleSubmit = () => {
-    API.createShelf(shelfName, user.id).then(console.log);
+    API.createShelf(shelfName, user.id)
+      .then(res => setShelves([...shelves, res.shelf]))
+      .catch(console.log);
   };
 
   const deleteShelf = (e, shelfId) => {
     e.preventDefault();
-    API.deleteShelf(shelfId);
+    API.deleteShelf(shelfId)
+      .then(setShelves(shelves.filter(shelf => shelf.id !== shelfId)))
+      .catch(console.log);
   };
 
   return (
@@ -30,8 +39,8 @@ export const ShelfUpdateForm = ({ user, match }) => {
         </Form>
       </div>
       <div className="shelvesToUpdate">
-        {user.shelves &&
-          user.shelves.map(shelf => {
+        {shelves &&
+          shelves.map(shelf => {
             return (
               <div class="shelfInstance">
                 <h1>{shelf.name}</h1>
