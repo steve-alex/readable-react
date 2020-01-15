@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import { Rating, Card, Image } from "semantic-ui-react";
-import { Redirect, useHistory } from "react-router-dom";
-import { parseDate } from "../../hooks/datetime.js";
+import { useHistory } from "react-router-dom";
 import "./banners.scss";
 
 export const ReviewBanner = ({ review }) => {
-  const [userClicked, setUserClicked] = useState(false);
   const history = useHistory();
   const user = review.user;
 
   const handleUserClick = () => {
-    setUserClicked(true);
-    console.log(user.id);
-    // history.push(`/users/${user.id}`)
+    history.push(`/users/${user.id}`)
   };
 
   return (
@@ -47,7 +43,6 @@ export const ReviewBanner = ({ review }) => {
           <div className="post-created-at">{review.time_since_upload}</div>
         </div>
       </Card.Header>
-      {userClicked && <Redirect to={`/users/${user.id}`} />}
     </Card.Content>
   );
 };
