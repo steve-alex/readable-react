@@ -1,34 +1,86 @@
-.userShelfDisplayPanel {
+.shelvesPreviewPanel {
+  display: grid;
+  grid-template-columns: 5% 90% 5%;
+  .shelfHeader {
+    grid-row: 1/2;
+    grid-column: 1/4;
+    padding-bottom: 6px;
+    align-self: start;
+  }
+  .backButton {
+    align-self: start;
+    justify-self: center;
+    height: 245px;
+  }
+  .nextButton {
+    align-self: start;
+    justify-self: center;
+    height: 245px;
+  }
   .userShelf {
     display: grid;
-    grid-template-columns: 5% 1fr 1fr 1fr 1fr 5%;
-    grid-template-rows: 80% 20%;
-    .userShelfItem {
-      align-self: end;
-    }
-    .backButton {
-      grid-column: 1/2;
-      width: 38px;
-    }
-    .nextButton {
-      grid-column: 6/7;
-      width: 38px;
-    }
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: end;
     .userShelfName {
-      grid-row: 2/3;
-      grid-column: 1/7;
-      h3 {
-        padding-top: 19px;
-      }
-      .userShelfButtons {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        .carousel__back-button{
-          padding-top: 10px;
-        }
-      }
+      grid-row: 1/2;
+      grid-column: 1/5;
+      align-self: center;
+      justify-self: center;
     }
+  }
+}
+
+.booksInCommonPanel {
+  display: grid;
+  grid-template-rows: 15% 85%;
+  grid-template-columns: 5% 90% 5%;
+  .booksInCommonTitle {
+    grid-column: 1/4;
+    grid-row: 1/2;
+    padding-bottom: 6px;
+    align-self: center;
+  }
+  .backButton {
+    align-self: start;
+    justify-self: center;
+    height: 210px;
+  }
+  .bookDisplaySlide {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: end;
+
+  }
+  .nextButton {
+    align-self: start;
+    justify-self: center;
+    height: 210px;
+  }
+}
+
+.userShelfDisplayPanel {
+  display: grid;
+  grid-template-rows: 20% 80%;
+  grid-template-columns: 5% 90% 5%;
+  .booksInCommonTitle {
+    grid-column: 1/4;
+    grid-row: 1/2;
+    padding-bottom: 6px;
+    align-self: center;
+  }
+  .backButton {
+    align-self: start;
+    justify-self: center;
+    height: 210px;
+  }
+  .nextButton {
+    align-self: start;
+    justify-self: center;
+    height: 210px;
+  }
+  .bookDisplaySlide {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: end;
   }
 }

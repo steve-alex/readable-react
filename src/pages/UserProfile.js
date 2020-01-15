@@ -66,7 +66,7 @@ export const UserPage = ({ match }) => {
             </div>
           )}
           {selectedTab === "posts" && (
-            <TimelineContainer timeline={profile.posts} commentsHidden={true} />
+            <TimelineContainer timeline={profile.posts} />
           )}
           {selectedTab === "shelves" && (
             <UserShelvesContainer shelves={profile.shelves} />

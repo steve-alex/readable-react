@@ -11,19 +11,59 @@ export const UserGenreMatch = ({ genreMatch }) => {
           {genreMatch &&
             genreMatch[0].map((genre, index) => {
               if (index === 0) {
-                return <Button disabled inverted color="green" content={genre} />;
+                return (
+                  <Button
+                    content={genre}
+                    key={genre}
+                    disabled
+                    inverted
+                    color="green"
+
+                  />
+                );
               } else if (index === 1 || index === 2) {
-                return <Button disabled inverted color="olive" content={genre} />;
+                return (
+                  <Button
+                    content={genre}
+                    key={genre}
+                    disabled
+                    inverted
+                    color="olive"
+                  />
+                );
               } else if (index === 3) {
-                return <Button disabled inverted color="yellow" content={genre} />;
+                return (
+                  <Button
+                    disabled
+                    inverted
+                    color="yellow"
+                    content={genre}
+                    key={genre}
+                  />
+                );
               }
             })}
           {genreMatch &&
             genreMatch[1].map((genre, index) => {
               if (index === 0 || index === 1) {
-                return <Button disabled inverted color="orange" content={genre} />;
+                return (
+                  <Button
+                    disabled
+                    inverted
+                    color="orange"
+                    content={genre}
+                    key={genre}
+                  />
+                );
               } else if (index === 2 || index === 3) {
-                return <Button disabled invertedcolor="red" content={genre} />;
+                return (
+                  <Button
+                    disabled
+                    invertedcolor="red"
+                    content={genre}
+                    key={genre}
+                  />
+                );
               }
             })}
         </div>
