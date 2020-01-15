@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Modal, Button, Icon } from "semantic-ui-react";
 import API from "../../adapters/api.js";
 
-export const FinishedReadingPanel = ( {finishedBook,finishedReading,setFinishedReading} ) => {
+export const FinishedReadingPanel = ( {finishedBook, finishedReading, setFinishedReading} ) => {
   const [book, setBook] = useState(undefined);
 
   useEffect(() => {

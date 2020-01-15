@@ -8,11 +8,11 @@ export const TimelineContainer = ({ timeline, commentsHidden }) => {
     let postType = Object.keys(post)[0];
     if (postType === "review") {
       return (
-        <ReviewContainer review={post.review} commentsHidden={commentsHidden} />
+        <ReviewContainer key={post.review.created_at} review={post.review} commentsHidden={commentsHidden} />
       );
     } else {
       return (
-        <ProgressContainer progress={post.progress} commentsHidden={commentsHidden} />
+        <ProgressContainer key={post.progress.created_at} progress={post.progress} commentsHidden={commentsHidden} />
       );
     }
   };

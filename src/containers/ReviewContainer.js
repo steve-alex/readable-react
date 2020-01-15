@@ -6,6 +6,9 @@ import { CommentsContainer } from "../containers/CommentsContainer.js";
 import { Card } from "semantic-ui-react";
 
 export const ReviewContainer = ({ review, commentsVisible }) => {
+  
+
+
     return (
       <Card fluid color="teal">
         <ReviewBanner review={review} />

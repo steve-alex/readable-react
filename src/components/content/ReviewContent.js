@@ -17,7 +17,7 @@ export const ReviewContent = ({ review }) => {
         </Link>
 
       </div>
-      <div class="review-book-information">
+      <div className="review-book-information">
         <Link to={`books/${review.book.id}`}>
           <h2 className="text-hoverable">
             <span>{review.book.title}</span>
@@ -25,7 +25,7 @@ export const ReviewContent = ({ review }) => {
         </Link>
         <p>By {review.book.authors}</p>
       </div>
-      <div class="review-book-content">
+      <div className="review-book-content">
         <p>{review.content}</p>
       </div>
     </div>

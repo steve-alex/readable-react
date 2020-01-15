@@ -18,8 +18,6 @@ export const UserShelfDisplayPanel = ( {shelfName, shelfId, books} ) => {
   const createBooksDisplayArray = () => {
     let booksToDisplay = []
     Array.from(books).forEach((book, i) => {
-      console.log(book)
-      console.log(i)
       let index = Math.floor(i / 4)
       if (booksToDisplay[index]) {
         booksToDisplay[index].push(book)

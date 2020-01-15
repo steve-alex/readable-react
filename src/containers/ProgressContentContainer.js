@@ -4,7 +4,6 @@ import { DisplayUpdatePercentageBars } from "../components/content/DisplayUpdate
 import "./containers.scss";
 
 export const ProgressContentContainer = ({ progress }) => {
-
   return (
     <div className="progressContentContainer">
       <div className="progressContent">
@@ -13,8 +12,8 @@ export const ProgressContentContainer = ({ progress }) => {
       {progress.updates &&
         progress.updates.map(book => {
           return (
-            <div class="bookUpdatePanel" key={book.id}>
-              <div class="progressBookImage">
+            <div className="bookUpdatePanel" key={book.title}>
+              <div className="progressBookImage">
                 <Link to={`books/${book.book_id}`}>
                   <img
                     alt={book.title}
@@ -23,7 +22,7 @@ export const ProgressContentContainer = ({ progress }) => {
                   ></img>
                 </Link>
               </div>
-              <div class="bookUpdateMeta">
+              <div className="bookUpdateMeta">
                 <Link to={`books/${book.book_id}`}>
                   <h2 className="text-hoverable">
                     <span>{book.title}</span>
@@ -32,7 +31,7 @@ export const ProgressContentContainer = ({ progress }) => {
                 <p>By {book.authors}</p>
                 <p>Page Count: {book.page_count}</p>
               </div>
-              <div class="bookUpdateBars">
+              <div className="bookUpdateBars">
                 {book.updates &&
                   book.updates.map(update => {
                     return (

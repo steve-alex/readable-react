@@ -20,7 +20,7 @@ const App = () => {
         setErrors(errors);
         history.push(paths.LOGIN);
       });
-  }, [history]);
+  }, []);
 
   const logout = () => {
     API.logout();
@@ -40,7 +40,7 @@ const App = () => {
       ) : (
         <Route
           path="/welcome"
-          render={routerProps => {
+          component={routerProps => {
             return (
               <WelcomeContainer
                 {...routerProps}

@@ -54,7 +54,7 @@ export const UserPage = ({ match }) => {
             favouriteAuthors={profile.favourite_authors}/> */}
           {selectedTab === "profile" && (
             <div>
-              <UserGenreMatch genreMatch={profile.genre_match} />
+              {/* <UserGenreMatch genreMatch={profile.genre_match} /> */}
               <UserShelvesPreviewPanel shelves={profile.shelves} />
               <UserBooksInCommonPanel booksInCommon={profile.books_in_common} />
               {/* {profile.updates_by_copy && 

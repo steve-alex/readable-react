@@ -5,13 +5,18 @@ import API from "../adapters/api.js";
 
 export const HomePageContainer = ({ user, logout }) => {
   const [timeline, setTimeline] = useState([]);
+  const [errors, setErrors] = useState(undefined);
 
   useEffect(() => {
-    API.getTimeline().then(res => setTimeline(res.timeline));
+    API.getTimeline()
+      .then(res => setTimeline(res.timeline))
+      .catch(res => setErrors("Unable to fetch timeline"));
   }, []);
 
   const createNewPost = () => {
-    API.getTimeline().then(res => setTimeline(res.timeline));
+    API.getTimeline()
+      .then(res => setTimeline(res.timeline))
+      .catch(res => setErrors("Unable to create progress"));
   };
 
   return (
@@ -22,8 +27,10 @@ export const HomePageContainer = ({ user, logout }) => {
         timeline={timeline}
         setTimeline={setTimeline}
       />
-      {timeline && <TimelineContainer timeline={timeline} />}
-      <button onClick={logout}>log out</button>
+      {errors && <h2>{errors}</h2>}
+      {timeline && (
+        <TimelineContainer timeline={timeline} commentsHidden={false} />
+      )}
     </div>
   );
 };

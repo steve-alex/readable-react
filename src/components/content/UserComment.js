@@ -34,7 +34,7 @@ export const UserComment = ({ comment }) => {
         </div>
         <Comment.Content className="commentContent">
           <Comment.Text>{comment.content}</Comment.Text>
-          <div class="commentLikes">
+          <div className="commentLikes">
             <CommentLikeButton
               comment={comment}
               likesCount={likesCount}

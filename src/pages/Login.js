@@ -17,7 +17,7 @@ const Login = ( {setUser, setMessage} ) => {
     API.login({ email, password })
       .then(user => {
         setUser(user)
-        history.push('/')
+        history.push(paths.HOME)
       })
       .catch(errors => {
         setErrors(errors)
