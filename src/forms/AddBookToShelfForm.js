@@ -21,8 +21,10 @@ export const AddBookToShelfForm = ({ book, userShelves, setCopy }) => {
     e.preventDefault();
     API.addBookToShelf(book, shelfId)
       .then(res => {
-        setMessages(res.messages);
-        setCopy(res.shelf.latest_copy);
+        setMessages(res.message);
+        if (setCopy) {
+          setCopy(res.shelf.latest_copy);
+        }
       })
       .catch(errors => setMessages(errors));
   };

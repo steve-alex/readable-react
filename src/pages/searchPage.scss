@@ -1,0 +1,23 @@
+.searchBar {
+  display: flex;
+  flex-direction: row;
+}
+
+.searchForm {
+  padding-bottom: 18px;
+}
+
+.bookSearchResultContent {
+  display: grid;
+  align-items: left;
+  justify-items: left;
+  padding-left: 10px;
+  h2 {
+    margin: 0;
+  }
+  h4 {
+    text-align: left;
+    padding-bottom: 5px;
+    margin: 0;
+  }
+}

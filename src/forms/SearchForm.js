@@ -3,7 +3,7 @@ import { Form, Button, Menu, Input } from "semantic-ui-react";
 import API from "../adapters/api.js";
 import "./forms.scss";
 
-export const SearchForm = ({ setSearchResults, searchType, setSearchType }) => {
+export const SearchForm = ({ setSearchResults, searchType, handleSearchTypeChange }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSubmit = e => {
@@ -46,28 +46,28 @@ export const SearchForm = ({ setSearchResults, searchType, setSearchType }) => {
           <Menu.Item
             name="title"
             active={searchType === "title"}
-            onClick={() => setSearchType("title")}
+            onClick={() => handleSearchTypeChange("title")}
           >
             Title
           </Menu.Item>
           <Menu.Item
             name="author"
             active={searchType === "author"}
-            onClick={() => setSearchType("author")}
+            onClick={() => handleSearchTypeChange("author")}
           >
             Author
           </Menu.Item>
           <Menu.Item
             name="subject"
             active={searchType === "subject"}
-            onClick={() => setSearchType("subject")}
+            onClick={() => handleSearchTypeChange("subject")}
           >
             Subject
           </Menu.Item>
           <Menu.Item
             name="user"
             active={searchType === "user"}
-            onClick={() => setSearchType("user")}
+            onClick={() => handleSearchTypeChange("user")}
           >
             User
           </Menu.Item>
