@@ -55,7 +55,7 @@ export const UpdateReadingProgressForm = ({
   };
 
   return (
-    <div class="reading-progress-form">
+    <div className="reading-progress-form">
       <Form onSubmit={e => handleSubmit(e)}>
         <Form.Group>
           <Form.Input

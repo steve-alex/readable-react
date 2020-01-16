@@ -6,7 +6,12 @@ import { NewReviewForm } from "../NewReviewForm.js";
 import { Popup, Button, Rating } from "semantic-ui-react";
 import "./panels.scss";
 
-export const BookShowPanel = ( {book, user, setUserHasReviewed, submitReview} ) => {
+export const BookShowPanel = ({
+  book,
+  user,
+  setUserHasReviewed,
+  submitReview
+}) => {
   const [copy, setCopy] = useState();
   const metrics = book.metrics;
 
@@ -22,7 +27,8 @@ export const BookShowPanel = ( {book, user, setUserHasReviewed, submitReview} ) 
     if (numberOfReviews === 0) {
       return "This book has not been reviewed yet";
     } else {
-      let averageRating = Math.round((sumOfRatings / numberOfReviews) * 100) / 100;
+      let averageRating =
+        Math.round((sumOfRatings / numberOfReviews) * 100) / 100;
       return `Average: ${averageRating} out of 5`;
     }
   };
@@ -38,14 +44,17 @@ export const BookShowPanel = ( {book, user, setUserHasReviewed, submitReview} ) 
   };
 
   const getNumberOfReviews = () => {
-    return Object.values(metrics.review_distribution).reduce((a, b) => a + b, 0);
+    return Object.values(metrics.review_distribution).reduce(
+      (a, b) => a + b,
+      0
+    );
   };
 
   const renderCategories = () => {
     return book.categories.split(" ").map(category => {
       if (category !== "&") {
         return (
-          <Button basic color={pickAColour()}>
+          <Button basic key={category} color={pickAColour()}>
             {category}
           </Button>
         );
@@ -73,9 +82,9 @@ export const BookShowPanel = ( {book, user, setUserHasReviewed, submitReview} ) 
 
   return (
     <>
-      <div class="bookShowPanel">
+      <div className="bookShowPanel">
         <div className="bookImage">
-          <img src={`${book.image_url}`}></img>
+          <img src={`${book.image_url}`} alt={`${book.title}`}></img>
         </div>
         {copy && (
           <CurrentlyReadingButton
@@ -91,12 +100,12 @@ export const BookShowPanel = ( {book, user, setUserHasReviewed, submitReview} ) 
             userId={user.id}
           />
         )}
-        <div class="bookShowText">
-          <h2 class="bookShowPanelTitle">{book.title}</h2>
+        <div className="bookShowText">
+          <h2 className="bookShowPanelTitle">{book.title}</h2>
           <h3>{book.subtitle}</h3>
           <h5>By {book.authors}</h5>
           {book.categories && renderCategories()}
-          <div class="averageRating">
+          <div className="averageRating">
             <Popup
               wide="very"
               trigger={
@@ -139,7 +148,7 @@ export const BookShowPanel = ( {book, user, setUserHasReviewed, submitReview} ) 
             />
           </div>
         </div>
-        <div class="bookShowDescription">
+        <div className="bookShowDescription">
           <p>{book.description}</p>
         </div>
       </div>

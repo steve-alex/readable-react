@@ -19,9 +19,13 @@ export const UserShelfPage = ({ user, match }) => {
         {shelf.books &&
           shelf.books.map(book => {
             return (
-              <div className="bookOnShelf">
+              <div className="bookOnShelf" key={book.title}>
                 <Link to={`/books/${book.id}`}>
-                  <img className="image-hoverable" src={book.image_url}></img>
+                  <img
+                    className="image-hoverable"
+                    src={book.image_url}
+                    alt={book.title}
+                  ></img>
                 </Link>
                 <Link to={`/books/${book.id}`}>
                   <h5 className="text-hoverable">

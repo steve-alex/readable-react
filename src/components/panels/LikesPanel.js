@@ -32,7 +32,9 @@ export const LikesPanel = ({ likes, progress, review }) => {
   };
 
   const handleResponse = res => {
-    res.errors ? setErrors(res.errors) : setUserLikes(!userLikes);
+    res.errors
+      ? setErrors(res.errors).then(console.log(errors))
+      : setUserLikes(!userLikes);
     setLikeId(res.like ? res.like.id : undefined);
   };
 

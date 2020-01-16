@@ -3,16 +3,16 @@ import { Card } from "semantic-ui-react";
 import { ReviewContainer } from "../containers/ReviewContainer.js";
 import { ProgressContainer } from "../containers/ProgressContainer.js";
 
-export const TimelineContainer = ({ timeline}) => {
+export const TimelineContainer = ({ timeline, commentsHidden} ) => {
   const createPostComponent = post => {
     let postType = Object.keys(post)[0];
     if (postType === "review") {
       return (
-        <ReviewContainer key={post.review.created_at} review={post.review} commentsHidden={true} />
+        <ReviewContainer key={post.review.created_at} review={post.review} commentsHidden={commentsHidden} />
       );
     } else {
       return (
-        <ProgressContainer key={post.progress.created_at} progress={post.progress} commentsHidden={true} />
+        <ProgressContainer key={post.progress.created_at} progress={post.progress} commentsHidden={commentsHidden} />
       );
     }
   };

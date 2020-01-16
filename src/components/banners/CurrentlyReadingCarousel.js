@@ -2,14 +2,11 @@ import React, { useState, useEffect } from "react";
 import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
 import { CurrentlyReadingBookPanel } from "../panels/CurrentlyReadingBookPanel.js";
 import { Button } from "semantic-ui-react";
-import "pure-react-carousel/dist/react-carousel.es.css";
 import API from "../../adapters/api.js";
+import "pure-react-carousel/dist/react-carousel.es.css";
 import "../../pages/homePage.scss";
 
-export const CurrentlyReadingCarousel = ({
-  currentlyReading,
-  checkFinishedReading
-}) => {
+export const CurrentlyReadingCarousel = ( {currentlyReading, checkFinishedReading} ) => {
   const [bookToUpdate, setBookToUpdate] = useState(undefined);
   const [pageToUpdate, setPageToUpdate] = useState(undefined);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -21,6 +18,8 @@ export const CurrentlyReadingCarousel = ({
   }, []);
 
   const createUpdate = pageCount => {
+    console.log(bookToUpdate)
+    console.log(pageToUpdate)
     API.createUpdate(bookToUpdate, pageToUpdate).then(
       checkFinishedReading(bookToUpdate, pageCount, pageToUpdate)
     );
@@ -34,12 +33,12 @@ export const CurrentlyReadingCarousel = ({
     }
   };
 
-  const setCurrentBook = (index) => {
+  const setCurrentBook = index => {
     let copy_id = currentlyReading[index].copy_id;
     setBookToUpdate(copy_id);
   };
 
-  const getPageToUpdate = (index) => {
+  const getPageToUpdate = index => {
     if (currentlyReading[index].updates[0]) {
       return currentlyReading[index].updates[0].page_number;
     } else {
@@ -52,12 +51,9 @@ export const CurrentlyReadingCarousel = ({
     if (currentSlide === 0) {
       setCurrentSlide(0);
     } else {
-      setCurrentSlide(currentSlide - 1)
+      setCurrentSlide(currentSlide - 1);
       setCurrentBook(currentSlide - 1);
       setPageToUpdate(getPageToUpdate(currentSlide - 1));
-        // .then(setCurrentBook(currentSlide))
-        // .then(setPageToUpdate(getPageToUpdate()))
-
     }
   };
 
@@ -66,14 +62,11 @@ export const CurrentlyReadingCarousel = ({
     if (currentSlide === totalSlides - 1) {
       setCurrentSlide(currentSlide);
     } else {
-      setCurrentSlide(currentSlide + 1)    
-        // .then(setCurrentBook(currentSlide))
-        // .then(setPageToUpdate(getPageToUpdate()));
+      setCurrentSlide(currentSlide + 1);
       setCurrentBook(currentSlide + 1);
       setPageToUpdate(getPageToUpdate(currentSlide + 1));
     }
   };
-
 
   return (
     <div className="currentlyReadingCarousel">
@@ -100,15 +93,10 @@ export const CurrentlyReadingCarousel = ({
           {currentlyReading &&
             currentlyReading.map((book, index) => {
               return (
-                <Slide index={index}>
+                <Slide index={index} key={book.title}>
                   <CurrentlyReadingBookPanel
                     index={index}
                     book={book}
-                    totalSlides={totalSlides}
-                    currentSlide={currentSlide}
-                    setCurrentSlide={setCurrentSlide}
-                    currentlyReading={currentlyReading}
-                    pageToUpdate={pageToUpdate}
                     setPageToUpdate={setPageToUpdate}
                     setCurrentBook={setCurrentBook}
                     createUpdate={createUpdate}

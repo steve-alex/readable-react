@@ -7,10 +7,6 @@ import "./panels.scss";
 export const CurrentlyReadingBookPanel = ({
   index,
   book,
-  totalSlides,
-  currentSlide,
-  setCurrentSlide,
-  currentlyReading,
   setCurrentBook,
   setPageToUpdate,
   createUpdate

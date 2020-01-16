@@ -292,13 +292,14 @@ const getUserShelves = (userId) => {
 }
 
 const updateUserDetails = (userId, formData) => {
+  console.log(formData)
   return fetch(`${USERS_URL}/${userId}`, {
     'method': "PATCH",
     'headers': {
       "Accept": "application/json",
       'Authorisation': localStorage.getItem("token"),
     },
-    'body': formData
+    'body':formData
   })
   .then(res => jsonify(res))
 }

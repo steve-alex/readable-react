@@ -68,9 +68,8 @@ export const UserShelvesPreviewPanel = ({ shelves }) => {
               let shelf = shelves[key];
               if (!!shelf.books_to_display[0]) {
                 return (
-                  <Slide index={index}>
+                  <Slide index={index} key={key}>
                     <UserShelfPreviewSlide
-                      key={key}
                       currentSlide={currentSlide}
                       setCurrentSlide={setCurrentSlide}
                       totalSlides={totalSlides}
