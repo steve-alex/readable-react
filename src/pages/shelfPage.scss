@@ -1,0 +1,31 @@
+.userShelfPage {
+  display: grid;
+  grid-template-rows: 10% 80% 10%;
+  .shelfHeader {
+    grid-row: 1/2;
+    justify-self: center;
+    padding-top: 39px;
+    padding-bottom: 30px;
+    align-self: center;
+  }
+  .editShelf {
+    justify-self: start; 
+
+  }
+  .shelfBooks {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .bookOnShelf {
+    padding-bottom: 65px;
+    display: grid;
+    grid-template-rows: 80% 10% 10%;
+    justify-items: start;
+    a {
+      justify-content: end;
+      align-self: end;
+      padding-bottom: 10px;
+    }
+  }
+
+}

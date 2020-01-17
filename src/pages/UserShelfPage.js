@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import API from "../adapters/api.js";
-import "./pages.scss";
+import "./shelfPage.scss";
 
 export const UserShelfPage = ({ user, match }) => {
   const [shelf, setShelf] = useState("");
+  const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
     API.getShelf(match.params.shelfId)
@@ -32,9 +34,21 @@ export const UserShelfPage = ({ user, match }) => {
                     <span>{book.title}</span>
                   </h5>
                 </Link>
+                <div>
+                  {editMode && <Button inverted color="red">x</Button>}
+                </div>
               </div>
             );
           })}
+      </div>
+      <div className="editShelf">
+        <Button
+          inverted
+          onClick={() => setEditMode(!editMode)}
+          color={editMode ? "orange" : "green"}
+        >
+          {editMode ? "Finish Editing" : "Edit Shelf"}
+        </Button>
       </div>
     </div>
   );
