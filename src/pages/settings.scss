@@ -1,0 +1,47 @@
+.settingsContainer {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 76px 1fr;
+  .shelfHeader {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    align-self: center;
+    justify-self: center;
+  }
+  .settingsMenu{
+    align-self: start;
+    grid-row: 2/3;
+    grid-column: 1/2;
+  }
+  .settingsDisplay {
+    grid-row: 2/3;
+    grid-column: 2/3;    
+  }
+}
+
+.shelvesToUpdate {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  .shelfInstance {
+    display: grid;
+    grid-template-columns: 62% 38%;
+    padding-bottom: 10px;
+    h3 {
+      align-self: center;
+      padding-top: 3px;
+    }
+    button {
+      width: 150px;
+      height: 45px;
+    }
+  }
+}
+
+.newShelfForm {
+  button {
+    width: 190px;
+    height: 45px;
+  }
+}
+

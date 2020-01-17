@@ -54,20 +54,3 @@
     font-size: 16px;
   }
 }
-
-.settingsContainer {
-  display: grid;
-  grid-template-columns: 70% 30%;
-  .settingsMenu{
-    align-self: start;
-  }
-  .shelfUpdateFormContainer {
-    padding-top: 50px;
-    .shelvesToUpdate {
-      .shelfInstance {
-        display: flex;
-
-      }
-    }
-  }
-}

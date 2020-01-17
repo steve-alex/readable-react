@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import API from "../adapters/api.js";
 import { Menu } from "semantic-ui-react";
 import { UserInformationPanel } from "../components/panels/UserInformationPanel.js";
-import { UserShelvesPreviewPanel } from "../components/panels/UserShelvesPreviewPanel.js";
 import { UserGenreMatch } from "../components/panels/UserGenreMatch.js";
+import { UserShowCurrentlyReadingPanel } from "../components/panels/UserShowCurrentlyReadingPanel.js";
 import { UserBooksInCommonPanel } from "../components/panels/UserBooksInCommonPanel.js";
-// import { UserShowCurrentlyReadingPanel } from "../components/panels/UserShowCurrentlyReadingPanel.js";
-import { UserShelvesContainer } from "../containers/UserShelvesContainer.js";
+import { UserShelvesPreviewPanel } from "../components/panels/UserShelvesPreviewPanel.js";
 import { TimelineContainer } from "../containers/TimelineContainer";
-import './userProfile.scss'
+import { UserShelvesContainer } from "../containers/UserShelvesContainer.js";
+import API from "../adapters/api.js";
+import "./userProfile.scss";
 
 export const UserPage = ({ match }) => {
   const [profile, setProfile] = useState(undefined);
@@ -50,23 +50,21 @@ export const UserPage = ({ match }) => {
               onClick={handleItemClick}
             />
           </Menu>
-          {/* <UserFavourites
-            favouriteGenres={profile.favourite_genres}
-            favouriteAuthors={profile.favourite_authors}/> */}
           {selectedTab === "profile" && (
             <div>
               <UserGenreMatch genreMatch={profile.genre_match} />
-              <UserShelvesPreviewPanel shelves={profile.shelves} />
+              {profile.updates_by_copy && (
+                <UserShowCurrentlyReadingPanel
+                  currentlyReading={profile.updates_by_copy}
+                  userId={profile.user.id}
+                />
+              )}
               <UserBooksInCommonPanel booksInCommon={profile.books_in_common} />
-              {/* {profile.updates_by_copy && 
-              <UserShowCurrentlyReadingPanel
-              currentlyReading={profile.updates_by_copy}
-              userId={profile.user.id}/>
-            } */}
+              <UserShelvesPreviewPanel shelves={profile.shelves} />
             </div>
           )}
           {selectedTab === "posts" && (
-            <TimelineContainer timeline={profile.posts} commentsHidden={true}/>
+            <TimelineContainer timeline={profile.posts} commentsHidden={true} />
           )}
           {selectedTab === "shelves" && (
             <UserShelvesContainer shelves={profile.shelves} />
