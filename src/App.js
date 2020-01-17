@@ -8,6 +8,7 @@ import "./App.css";
 
 const App = () => {
   const [user, setUser] = useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [errors, setErrors] = useState(null);
   const history = useHistory();
 

@@ -17,10 +17,8 @@ export const CurrentlyReadingCarousel = ( {currentlyReading, checkFinishedReadin
     setPageToUpdate(getCurrentPage());
   }, []);
 
-  const createUpdate = pageCount => {
-    console.log(bookToUpdate)
-    console.log(pageToUpdate)
-    API.createUpdate(bookToUpdate, pageToUpdate).then(
+  const createUpdate = (currentBookPage, pageCount) => {
+    API.createUpdate(bookToUpdate, currentBookPage).then(
       checkFinishedReading(bookToUpdate, pageCount, pageToUpdate)
     );
   };

@@ -5,23 +5,11 @@ import { Redirect } from "react-router-dom";
 import "./panels.scss";
 
 export const CurrentlyReadingBookPanel = ({
-  index,
   book,
-  setCurrentBook,
   setPageToUpdate,
   createUpdate
 }) => {
-  const [currentBookPage, setCurrentBookPage] = useState(undefined);
   const [clicked, setClicked] = useState(false);
-
-  useEffect(() => {
-    if (book.updates[0]) {
-      setCurrentBookPage(book.updates[0].page_number);
-    } else {
-      setCurrentBookPage(0);
-    }
-    setCurrentBook(index);
-  }, []);
 
   const handleClick = e => {
     e.preventDefault();
@@ -44,22 +32,14 @@ export const CurrentlyReadingBookPanel = ({
             className="image-hoverable"
             onClick={e => handleClick(e)}
           ></img>
-
         </div>
 
         <div className="currentlyReadingProgress">
           <h5 className="totalPages">Total pages: {book.page_count}</h5>
-          <Progress
-            percent={Math.round(
-              (parseInt(currentBookPage) * 100) / parseInt(book.page_count)
-            )}
-            indicating
-            progress
-          />
+
           <UpdateReadingProgressForm
             pageCount={book.page_count}
-            currentBookPage={currentBookPage}
-            setCurrentBookPage={setCurrentBookPage}
+            book={book}
             setPageToUpdate={setPageToUpdate}
             createUpdate={createUpdate}
           />
