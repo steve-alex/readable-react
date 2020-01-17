@@ -321,7 +321,7 @@ const createUpdate = (copyId, pageCount) => {
 }
 
 const getPostComments = (post, postType) => {
-  const url = (postType == "Progress") ? PROGRESSES_URL : REVIEWS_URL
+  const url = (postType === "Progress") ? PROGRESSES_URL : REVIEWS_URL
   const id = post.id
   return fetch(`${url}/${id}/comments`, {
     'headers': {
@@ -446,6 +446,30 @@ const startReadingBook = (copyId) => {
   .then(res => jsonify(res))
 }
 
+const deleteProgress = (progressId) => {
+  return fetch(`${PROGRESSES_URL}/${progressId}`, {
+    'method': "DELETE",
+    'headers': {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      'Authorisation': localStorage.getItem("token"),
+    }
+  })
+  .then(res => jsonify(res))
+}
+
+const deleteReview = (reviewId) => {
+  return fetch(`${REVIEWS_URL}/${reviewId}`, {
+    'method': "DELETE",
+    'headers': {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      'Authorisation': localStorage.getItem("token"),
+    }
+  })
+  .then(res => jsonify(res))
+}
+
 
 
 export default {
@@ -482,5 +506,7 @@ export default {
   removeBookFromCurrentlyReading,
   stopReadingBook,
   startReadingBook,
-  jsonify
+  jsonify,
+  deleteProgress,
+  deleteReview
 }
