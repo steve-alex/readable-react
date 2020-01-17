@@ -7,6 +7,7 @@ export const CommentLikeButton = ( {comment, likesCount, setLikesCount} ) => {
 
   useEffect(() => {
     setLiked(comment.current_user_likes)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleClick = () => {

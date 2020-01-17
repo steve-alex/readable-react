@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { ReviewContainer } from "./ReviewContainer.js";
 import { BookShowReviewContainer } from "../containers/BookShowReviewContainer";
 import API from "../adapters/api.js";
+import '../pages/bookShow.scss'
 
 export const BookShowReviewsContainer = ({ book, userHasReviewed }) => {
   const [reviews, setReviews] = useState([]);
@@ -21,8 +21,10 @@ export const BookShowReviewsContainer = ({ book, userHasReviewed }) => {
   }
 
   return (
-    <div>
-      <h1>Follower's Activity</h1>
+    <div className="bookShowReviewsContainer">
+      {reviews[0] &&
+        <h1>Follower's Activity</h1>
+      }
       {reviews &&
         reviews.reverse().map(item => {
           return <BookShowReviewContainer review={item.review} />;

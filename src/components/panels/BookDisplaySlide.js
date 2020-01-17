@@ -7,7 +7,7 @@ export const BookDisplaySlide = ( {slide} ) => {
       {slide &&
         slide.map(book => {
           return (
-            <div className="bookDisplayImage">
+            <div key={book.title} className="bookDisplayImage">
               <img src={book.image_url} alt={book.title}></img>
             </div>
           )

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Icon } from 'semantic-ui-react'
 import { useHistory, Redirect} from "react-router-dom"
 
 
@@ -14,42 +14,44 @@ export const Navbar = ( {userId, logout} ) => {
 
   return (
     <Menu
-      inverted>
+      size="large"
+      >
       <Menu.Item
         name='home'
         active={activeItem === 'home'}
-        onClick={handleItemClick}>
-        Home
+        onClick={handleItemClick}
+      >
+        <Icon name="home" />
         {(activeItem === 'home') && <Redirect to="/home"></Redirect>}
       </Menu.Item>
       <Menu.Item
         name='search'
         active={activeItem === 'search'}
         onClick={handleItemClick}>
-        Search
+        <Icon name="search" />
         {(activeItem === 'search') && <Redirect to="/search"></Redirect>}
       </Menu.Item>
       <Menu.Item
-        name={`profile`}
+        name="profile"
         active={activeItem === `profile`}
         onClick={handleItemClick}>
-        Profile
+        <Icon name="user outline" />
       {(activeItem === 'profile') && <Redirect to={`/users/${userId}`}></Redirect>}
       </Menu.Item>
       <Menu.Item
         name='settings'
         active={activeItem === 'settings'}
         onClick={handleItemClick}>
-        Settings
+        <Icon name="setting" />
         {(activeItem === 'settings') && <Redirect to="/settings"></Redirect>}
       </Menu.Item>
-      <Menu.Item
+      {/* <Menu.Item
         name='logout'
         active={activeItem === 'logout'}
         onClick={logout}>
         Log out
         {(activeItem === 'logout')}
-      </Menu.Item>
+      </Menu.Item> */}
     </Menu>
   )
 }

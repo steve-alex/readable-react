@@ -9,6 +9,7 @@ export const UserGenreMatch = ({ genreMatch }) => {
         <div>
           <h1 className="genreMatchHeader">Genre Match</h1>
           {genreMatch &&
+            // eslint-disable-next-line array-callback-return
             genreMatch[0].map((genre, index) => {
               if (index === 0) {
                 return (
@@ -44,11 +45,12 @@ export const UserGenreMatch = ({ genreMatch }) => {
               }
             })}
           {genreMatch &&
+            // eslint-disable-next-line array-callback-return
             genreMatch[1].map((genre, index) => {
               if (index === 0 || index === 1) {
                 return (
                   <Button
-                    disabled
+                    disabled 
                     inverted
                     color="orange"
                     content={genre}

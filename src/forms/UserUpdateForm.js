@@ -10,13 +10,6 @@ export const UserUpdateForm = ({ user, match }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    API.updateUserDetails(userId, file)
-      .then(console.log)
-      .catch(console.log);
-  };
-
-  const handleFile = e => {
-    e.preventDefault();
     const formData = new FormData();
     formData.append("file", file);
     formData.append("fullname", fullname);
@@ -29,9 +22,14 @@ export const UserUpdateForm = ({ user, match }) => {
 
   return (
     <div>
-      <h1> Look a wild update form! </h1>
-      <img src={user.avatar}></img>
-      <Form onSubmit={handleFile}>
+      <img src={user.avatar} alt={user.username}></img>
+      <input
+        type="file"
+        onChange={e => setFile(e.target.files[0])}
+        placeholder="Upload a profile picture"
+      />
+      <Form onSubmit={handleSubmit}>
+        <Form.Field></Form.Field>
         <Form.Field>
           <input
             value={fullname}
@@ -46,13 +44,7 @@ export const UserUpdateForm = ({ user, match }) => {
             placeholder="Username"
           />
         </Form.Field>
-        <Form.Field>
-          <input
-            type="file"
-            onChange={e => setFile(e.target.files[0])}
-            placeholder="Upload a profile picture"
-          />
-        </Form.Field>
+
         <Button type="submit">Submit</Button>
       </Form>
     </div>

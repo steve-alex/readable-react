@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { CurrentlyReadingButton } from "../buttons/CurrentlyReadingButton.js";
-import { RatingDistribution } from "../RatingDistribution.js";
+import { RatingDistribution } from "../content/RatingDistribution.js";
 import { AddBookToShelfForm } from "../../forms/AddBookToShelfForm.js";
-import { NewReviewForm } from "../NewReviewForm.js";
+import { NewReviewForm } from "../../forms/NewReviewForm.js";
 import { Popup, Button, Rating } from "semantic-ui-react";
 import "./panels.scss";
 

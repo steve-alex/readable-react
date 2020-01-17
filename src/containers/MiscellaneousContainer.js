@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { SettingsContainer } from "../containers/SettingsContainer.js";
+import { SettingsContainer } from "../pages/SettingsContainer.js";
 import { ShelfContainer }  from "../containers/ShelfContainer.js";
 
 export const MiscellaneousContainer = ({ user, match }) => {

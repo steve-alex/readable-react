@@ -25,8 +25,18 @@ export const ShelfUpdateForm = ({ user, match }) => {
 
   return (
     <div className="shelfUpdateFormContainer">
+      <div className="shelvesToUpdate">
+        {shelves &&
+          shelves.map(shelf => {
+            return (
+              <div className="shelfInstance">
+                <h3>{shelf.name}</h3>
+                <Button color="orange" inverted onClick={e => deleteShelf(e, shelf.id)}>Delete</Button>
+              </div>
+            );
+          })}
+      </div>
       <div className="newShelfForm">
-        <h1>Create a new shelf</h1>
         <Form onSubmit={handleSubmit}>
           <Form.Field>
             <Input
@@ -35,19 +45,8 @@ export const ShelfUpdateForm = ({ user, match }) => {
               placeholder="Shelf name"
             />
           </Form.Field>
-          <Button type="submit">Submit</Button>
+          <Button inverted color="olive" type="submit">Create New Shelf</Button>
         </Form>
-      </div>
-      <div className="shelvesToUpdate">
-        {shelves &&
-          shelves.map(shelf => {
-            return (
-              <div class="shelfInstance">
-                <h1>{shelf.name}</h1>
-                <Button onClick={e => deleteShelf(e, shelf.id)}>Remove</Button>
-              </div>
-            );
-          })}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { BookShow } from "../components/BookShow.js";
+import { BookShow } from "../pages/BookShow.js";
 
 export const BookPageContainer = ({ user, match }) => {
   return (
