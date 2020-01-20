@@ -1,0 +1,17 @@
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr 1fr;
+  background: white;
+  border-bottom: 2px solid brown;
+  .image {
+    padding-top: 12px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+  }
+  .menu {
+    padding-bottom: 10px;
+  }
+  img {
+    width: 230px;
+  }
+}
