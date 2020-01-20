@@ -60,7 +60,9 @@ export const UserPage = ({ match }) => {
                 />
               )}
               <UserBooksInCommonPanel booksInCommon={profile.books_in_common} />
-              <UserShelvesPreviewPanel shelves={profile.shelves} />
+              {!!Object.keys(profile.shelves).length &&
+                <UserShelvesPreviewPanel shelves={profile.shelves} />
+              }
             </div>
           )}
           {selectedTab === "posts" && (

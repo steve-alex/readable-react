@@ -71,7 +71,7 @@ export const UserBooksInCommonPanel = ({ booksInCommon }) => {
             {booksToDisplay && 
               booksToDisplay.map((slide, index) => {
                 return (
-                  <Slide index={index}>
+                  <Slide key={index} index={index}>
                     <BookDisplaySlide slide={slide} />
                   </Slide>
                 );

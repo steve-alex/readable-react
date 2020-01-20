@@ -9,7 +9,7 @@ export const UserShelvesPreviewPanel = ({ shelves }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
-    if (shelves) {
+    if (!!Object.keys(shelves).length) {
       setTotalSlides(getTotalSlides());
     } else {
       setTotalSlides(1);

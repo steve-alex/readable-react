@@ -16,10 +16,8 @@ export const UserGenreMatch = ({ genreMatch }) => {
                   <Button
                     content={genre}
                     key={genre}
-                    disabled
                     inverted
                     color="green"
-
                   />
                 );
               } else if (index === 1 || index === 2) {
@@ -27,15 +25,13 @@ export const UserGenreMatch = ({ genreMatch }) => {
                   <Button
                     content={genre}
                     key={genre}
-                    disabled
                     inverted
                     color="olive"
                   />
                 );
-              } else if (index === 3) {
+              } else if (index === 3 || index === 4) {
                 return (
                   <Button
-                    disabled
                     inverted
                     color="yellow"
                     content={genre}
@@ -50,7 +46,6 @@ export const UserGenreMatch = ({ genreMatch }) => {
               if (index === 0 || index === 1) {
                 return (
                   <Button
-                    disabled 
                     inverted
                     color="orange"
                     content={genre}
@@ -60,8 +55,8 @@ export const UserGenreMatch = ({ genreMatch }) => {
               } else if (index === 2 || index === 3) {
                 return (
                   <Button
-                    disabled
-                    invertedcolor="red"
+                    inverted
+                    color="red"
                     content={genre}
                     key={genre}
                   />

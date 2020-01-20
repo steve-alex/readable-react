@@ -15,7 +15,7 @@ export const UserInformationPanel = ({ user, userFollows, followObject }) => {
     <div className="userInformationPanel">
       <h1 className="username">{user.username}</h1>
       <div className="userAvatar">
-        <img src={`${user.avatar}`}></img>
+        <img alt={user.username} src={`${user.avatar}`}></img>
       </div>
       <FollowButton
         followObject={followObject}
@@ -23,13 +23,17 @@ export const UserInformationPanel = ({ user, userFollows, followObject }) => {
         followerCount={followerCount}
         setFollowerCount={setFollowerCount}
       />
-      <div className="followerCount">
-        <p>Followers</p>
-        <p>{followerCount}</p>
+      <div className="followerCount text-hoverable">
+        <span>
+          <p>Followers</p>
+          <p>{user.followers.length}</p>
+        </span>
       </div>
-      <div className="followingCount">
-        <p>Following</p>
-        <p>{followingCount}</p>
+      <div className="followingCount text-hoverable">
+        <span>
+          <p>Following</p>
+          <p>{user.following.length}</p>
+        </span>
       </div>
       <div className="bookCount">
         <p>Books</p>
