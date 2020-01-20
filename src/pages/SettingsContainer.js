@@ -13,11 +13,6 @@ export const SettingsContainer = ({ user, match }) => {
 
   return (
     <div className="settingsContainer">
-      {/* {activeItem === "shelves" ? (
-        <h1 className="shelfHeader">Create or delete shelf</h1>
-      ) : (
-        <h1 className="shelfHeader">Update user details</h1>
-      )} */}
       <Menu className="settingsMenu" fluid vertical tabular>
         <Menu.Item
           name="Update Shelves"

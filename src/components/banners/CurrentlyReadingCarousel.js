@@ -6,7 +6,10 @@ import API from "../../adapters/api.js";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import "../../pages/homePage.scss";
 
-export const CurrentlyReadingCarousel = ( {currentlyReading, checkFinishedReading} ) => {
+export const CurrentlyReadingCarousel = ({
+  currentlyReading,
+  checkFinishedReading
+}) => {
   const [bookToUpdate, setBookToUpdate] = useState(undefined);
   const [pageToUpdate, setPageToUpdate] = useState(undefined);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -66,6 +69,7 @@ export const CurrentlyReadingCarousel = ( {currentlyReading, checkFinishedReadin
     }
   };
 
+
   return (
     <div className="currentlyReadingCarousel">
       <Button
@@ -107,6 +111,7 @@ export const CurrentlyReadingCarousel = ( {currentlyReading, checkFinishedReadin
       <Button
         color="blue"
         inverted
+        icon="right chevron"
         className="nextButton"
         icon="right chevron"
         onClick={e => handleNextClick(e)}
