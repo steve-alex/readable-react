@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Progress, Button } from "semantic-ui-react";
 import { UpdateReadingProgressForm } from "../../forms/UpdateReadingProgressForm";
 import { Redirect } from "react-router-dom";
-import "./panels.scss";
 
 export const CurrentlyReadingBookPanel = ({
   book,
@@ -23,9 +22,11 @@ export const CurrentlyReadingBookPanel = ({
           <h3 className="text-hoverable" onClick={e => handleClick(e)}>
             {book.title}
           </h3>
+          <h5>
+            {book.authors}
+          </h5>
         </div>
         <div className="currentlyReadingBookContent">
-          <h5>By {book.authors}</h5>
           <img
             src={book.image_url}
             alt={book.title}

@@ -2,14 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Modal, Button, Icon } from "semantic-ui-react";
 import API from "../../adapters/api.js";
 
-export const FinishedReadingPanel = ( {finishedBook, finishedReading, setFinishedReading} ) => {
+export const FinishedReadingPanel = ({
+  finishedBook,
+  finishedReading,
+  setFinishedReading,
+  removeBookFromCarousel
+}) => {
   const [book, setBook] = useState(undefined);
 
   useEffect(() => {
     if (finishedReading) {
       API.getCopy(book).then(res => setBook(res));
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClose = () => {
@@ -17,7 +22,8 @@ export const FinishedReadingPanel = ( {finishedBook, finishedReading, setFinishe
   };
 
   const removeBookFromCurrentlyReading = () => {
-    API.removeBookFromCurrentlyReading(finishedBook).then(() => handleClose());
+    API.removeBookFromCurrentlyReading(finishedBook)
+      .then(() => handleClose())
   };
 
   return (

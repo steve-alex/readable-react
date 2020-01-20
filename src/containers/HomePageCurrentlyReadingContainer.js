@@ -6,7 +6,12 @@ import { GetReadingCarousel } from "../components/banners/GetReadingCarousel.js"
 import "pure-react-carousel/dist/react-carousel.es.css";
 import API from "../adapters/api.js";
 
-export const HomePageCurrentlyReadingContainer = ( {userId, createNewPost, timeline, setTimeline} ) => {
+export const HomePageCurrentlyReadingContainer = ({
+  userId,
+  createNewPost,
+  timeline,
+  setTimeline
+}) => {
   const [currentlyReading, setCurrentlyReading] = useState(undefined);
   const [finishedReading, setFinishedReading] = useState(false);
   const [finishedReadingBook, setFinishedReadingBook] = useState(false);
@@ -19,10 +24,10 @@ export const HomePageCurrentlyReadingContainer = ( {userId, createNewPost, timel
 
   const createProgress = (e, content) => {
     e.preventDefault();
-    API.createProgress(content)
-      .then(() => createNewPost());
-      // .then((res) => createAndSetNewTimeline(res))
+    API.createProgress(content).then(() => createNewPost());
+    // .then((res) => createAndSetNewTimeline(res))
   };
+
 
   // const createAndSetNewTimeline = res => {
   //   console.log(res)
@@ -35,10 +40,9 @@ export const HomePageCurrentlyReadingContainer = ( {userId, createNewPost, timel
   // };
 
   const checkFinishedReading = (bookToUpdate, pageCount, pageToUpdate) => {
-    if (pageToUpdate >= pageCount) {
+    if (parseInt(pageToUpdate) >= parseInt(pageCount)) {
       setFinishedReading(true);
       setFinishedReadingBook(bookToUpdate);
-      console.log("Finished reading");
     }
   };
 
@@ -46,11 +50,11 @@ export const HomePageCurrentlyReadingContainer = ( {userId, createNewPost, timel
     return (
       <div>
         <h1 className="currently-reading">Currently Reading</h1>
-        {/* <FinishedReadingPanel
+        <FinishedReadingPanel
           finishedBook={finishedReadingBook}
           finishedReading={finishedReading}
           setFinishedReading={setFinishedReading}
-        /> */}
+        />
         <CurrentlyReadingCarousel
           currentlyReading={currentlyReading}
           checkFinishedReading={checkFinishedReading}
