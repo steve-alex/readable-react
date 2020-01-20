@@ -3,3 +3,33 @@
     text-align: left;
   }
 }
+
+.bookUpdatePanel {
+  display: grid;
+  padding-left: 15px;
+  padding-bottom: 10px;
+  grid-template-columns: 150px 1fr;
+  .progressBookImage {
+    justify-self: left;
+    grid-column: 1/2;
+    grid-row: 1/11;
+  }
+  .bookUpdateMeta {
+    justify-self: left;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    h2 {
+      margin: 0;
+      text-align: left;
+    }
+    p {
+      margin: 0;
+      text-align: left;
+    }
+  }
+  .bookUpdateBars {
+    padding-top: 10px;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, 49px);
+  }
+}

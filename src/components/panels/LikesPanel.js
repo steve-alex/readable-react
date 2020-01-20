@@ -51,7 +51,7 @@ export const LikesPanel = ({ likes, progress, review }) => {
             >
               {userLikes ? "Unlike" : "Like"}
             </Button>
-            <div className="likesCount">{likesCount} Likes </div>
+            <div className="likesCount">{likesCount} {(likesCount === 1) ? "Like": "Likes"} </div>
           </div>
         </>
       )}

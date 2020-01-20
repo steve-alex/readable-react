@@ -10,6 +10,7 @@
   }
   .editShelf {
     justify-self: start; 
+    padding-top: 20px;
 
   }
   .shelfBooks {
@@ -17,15 +18,23 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
   .bookOnShelf {
-    padding-bottom: 65px;
     display: grid;
-    grid-template-rows: 80% 10% 10%;
+    grid-template-rows: 80% 50px;
     justify-items: start;
     a {
       justify-content: end;
       align-self: end;
       padding-bottom: 10px;
     }
+    .bookOnShelfImage {
+      grid-row: 1/2;
+    }
+    .deleteBookButton {
+      grid-row: 2/3;
+      button {
+        width: 52px;
+        height: 36px;
+      }
+    }
   }
-
 }

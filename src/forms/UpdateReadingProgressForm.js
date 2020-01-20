@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Progress, Form, Button, Popup } from "semantic-ui-react";
-import { usePrevious } from "../hooks/usePrevious";
-import "./../components/panels/panels.scss";
 
 export const UpdateReadingProgressForm = ({
   pageCount,
@@ -94,7 +92,7 @@ export const UpdateReadingProgressForm = ({
   };
 
   return (
-    <div className="reading-progress-form">
+    <div className="readingProgressForm">
       <Progress
         percent={Math.round(
           (parseInt(bookPageDisplay) * 100) / parseInt(book.page_count)

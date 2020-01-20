@@ -4,6 +4,7 @@ import { ProgressContentContainer } from "./ProgressContentContainer";
 import { LikesPanel } from "../components/panels/LikesPanel.js";
 import { CommentsContainer } from "../containers/CommentsContainer.js";
 import { Card } from "semantic-ui-react";
+import './progress.scss'
 
 export const ProgressContainer = ({ progress, commentsHidden, removePostFromTimeline }) => {
   return (

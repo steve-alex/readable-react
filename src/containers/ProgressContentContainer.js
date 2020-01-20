@@ -14,7 +14,7 @@ export const ProgressContentContainer = ({ progress }) => {
           return (
             <div className="bookUpdatePanel" key={book.title}>
               <div className="progressBookImage">
-                <Link to={`books/${book.book_id}`}>
+                <Link to={`/books/${book.book_id}`}>
                   <img
                     alt={book.title}
                     className="image-hoverable"
@@ -23,7 +23,7 @@ export const ProgressContentContainer = ({ progress }) => {
                 </Link>
               </div>
               <div className="bookUpdateMeta">
-                <Link to={`books/${book.book_id}`}>
+                <Link to={`/books/${book.book_id}`}>
                   <h2 className="text-hoverable">
                     <span>{book.title}</span>
                   </h2>

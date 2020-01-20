@@ -32,16 +32,32 @@
       padding-top: 3px;
     }
     button {
-      width: 150px;
+      width: 97px;
       height: 45px;
     }
   }
 }
 
 .newShelfForm {
+  display: grid;
+  grid-template-columns: 76% 24%;
+  grid-template-rows: 1fr 1fr;
+  .newShelfInput {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    padding-left: 43px;
+    padding-top: 25px;
+    input {
+      width: 150px;
+    }
+  }
+  .newShelfSubmit {
+    grid-row: 2/3;
+    padding-left: 43px;
+    justify-self: left;
+  }
   button {
-    width: 190px;
-    height: 45px;
+    width: 170px;
+    height: 39px;
   }
 }
-
