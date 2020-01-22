@@ -1,4 +1,4 @@
-Readable is a social network for book lovers. This webapp allows users to search for their favourite book, track their progress and share this with followers.
+Readable is a social network for book lovers. This webapp allows users to search for their favourite book, add it to different categories, track their progress and update their followers. 
 
 
 
